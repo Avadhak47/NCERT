@@ -1,0 +1,40 @@
+{
+  "state_name": "Lakshadweep",
+  "source_file": "Lakshadweep_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Lakshadweep - Fairs and Festivals- Id-ul-fitr",
+      "content": "Id-ul-fitr is observed as soon as the new moon is sighted at the end of Ramadan or month of fasting. It is a festive occasion. On this day special food and delicacies are made and distributed to neighbors and friends.",
+      "images": [],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Lakshadweep - Fairs and Festivals",
+      "content": "Bakrid is a festival of sacrifice. Thisis observed to pay homage to Prophet Ibrahim's readiness to sacrifice his son for God's sake. On this auspicious day special prayers are recited by thousands of Muslims for peace and prosperity. Not only this, it is a festival that marks the completion of pilgrimage to Mecca.",
+      "images": [],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Interesting facts",
+      "content": "Muharram is not about festive celebration. Muharram commemorates the martyrdom of Hazrat Imam Hussain, the grandson of the Holy Prophet Mohammed who was killed in the Battle of Karbala in AD 680. The prophet's son-in-law Ali, and Ali's elder son Hassan, are also remembered during this period as having suffered and died for righteous causes. As Muharram, the first month of the Muslim year, approaches, they put on black clothes, as black is regarded as a color of mourning. Majalis (assemblies) are held every day during the first nine days .On the 10th day of Muharram, large processions are formed and the devoted followers parade the streets holding banners and carrying decorated taziyas which are the replicas of martyr's tomb or mausoleum of Hazrat Imam Hussain and his people, who fell at Karbala. They show their grief and sorrow by inflicting wounds on their own bodies with sharp metal tied to chain with which they scourge themselves and beat their chests and lament over the murder of Imam Husain. Andrott Island in Lakshadweep is the longest island amongst the Lakshadweep group of islands. The famous monument of this island Buddhist archaeological remains are and the tomb of Hazrat Ubaidullah renowned for introducing Islam in archipelago. The coral remains on the eastern shores of the island are the remnants of a vicious storm that took place in 1847. The main monument at Kalpeni is the Moidin Mosque that has walls made of coral. Minicoy is a striking island dotted with palm trees and enclosed with coral reefs. One of the most impressive sights of Minicoy is a 50 meter tall Lighthouse, built by the British.",
+      "images": [
+        {
+          "original_path": "images/Lakshadweep/Ldeep1.jpg",
+          "new_path": "Lakshadweep/Ldeep1.jpg",
+          "caption": "Andrott Island"
+        },
+        {
+          "original_path": "images/Lakshadweep/Ldeep2.jpg",
+          "new_path": "Lakshadweep/Ldeep2.jpg",
+          "caption": "Andrott Island"
+        },
+        {
+          "original_path": "images/Lakshadweep/Ldeep3.jpg",
+          "new_path": "Lakshadweep/Ldeep3.jpg",
+          "caption": "Andrott Island"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    }
+  ]
+}

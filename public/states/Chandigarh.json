@@ -1,0 +1,56 @@
+{
+  "state_name": "Chandigarh",
+  "source_file": "chandigarh_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Interesting Fact",
+      "content": "Le Corbusier planned the city to reflect the human body. Thus the head coincides with the Capitol complex, the heart with the city centre, the lungs with the leisure valley and its many open spaces, the intellect with the cultural institutions, and the circulatory system with a well-planned network of roads that divide the city into sections known as sectors.",
+      "images": [],
+      "timeperiod": "1947-1980"
+    },
+    {
+      "heading": "Chandigarh Museum",
+      "content": "The Government Museum and Art Gallery, Chandigarh, has a very rich collection of Gandharan sculptures, Pahari and Rajasthani miniature paintings. The six hundred and twenty seven Gandhara sculptures are of various sizes and stylistic denominations. There are some large sized Buddha and Bodhisattva images and also a few depicting Buddhist deities. There are numerous panels showing Buddhist narratives, some of which are of rare variety. The Museum has a good collection of Pahari, Rajasthani miniature paintings and Sikh art displayed in the galleries. Almost all important centres of Pahari Schools are represented in the collection of miniatures. A rich collection of contemporary art including oil paintings, water colour paintings, drawings both black and white and in colour is a highlight of this Museum.",
+      "images": [
+        {
+          "original_path": "images/chandigarh/CityMuseum[1].jpg",
+          "new_path": "Chandigarh/CityMuseum1.jpg",
+          "caption": "Chandigarh Museum"
+        }
+      ],
+      "timeperiod": "1947-2000"
+    },
+    {
+      "heading": "Interesting Fact",
+      "content": "Sprawling over 64 acres, the Rock Garden is a unique garden- an artists dream and effort. This vast open air museum displays a massive array of natural rock forms and stones configured in the most innovative way. Nek Chand, an ordinary public works department employee, conceived the idea of the garden as a solution to the disposal of city waste. There are no flowers or plants in this garden. The garden was created section by section with rocks and discarded objects like bottle tops, fluorescent lights, mud guard, tin cans, broken glass, building waste etc. which he meticulously collected from door to door. The creative artist built dolls and figures of birds, men and women and set them along a maze of paths. He was duly honored and appointed as the director of the garden. By reinvesting waste and imbuing it with an aesthetic appeal, balance and harmony a sculptural park has been created. Nek Chand has demonstrated the harmony between man-made waste and nature. Chandigarh, the first planned modern city of India, designed by the French architect Le Corbusier serves as the capital of Punjab and Haryana. Located on the foothills of the Shivalik range, the city is named after the goddess, Chandi Devi. It is divided into various sectors and has well-laid roads lined with rows of trees and beautifully planned buildings.",
+      "images": [
+        {
+          "original_path": "images/chandigarh/rockgarden[1].jpg",
+          "new_path": "Chandigarh/rockgarden1.jpg",
+          "caption": "Rock Garden"
+        },
+        {
+          "original_path": "images/chandigarh/rockgarden 2.jpg",
+          "new_path": "Chandigarh/rockgarden-2.jpg",
+          "caption": "Rock Garden"
+        },
+        {
+          "original_path": "images/chandigarh/rockgarden3.jpg",
+          "new_path": "Chandigarh/rockgarden3.jpg",
+          "caption": "Rock Garden"
+        },
+        {
+          "original_path": "images/chandigarh/chandigarh-assembly[1].jpg",
+          "new_path": "Chandigarh/chandigarh-assembly1.jpg",
+          "caption": "Le Corbusier"
+        },
+        {
+          "original_path": "images/chandigarh/corbusier.jpg",
+          "new_path": "Chandigarh/corbusier.jpg",
+          "caption": "Le Corbusier"
+        }
+      ],
+      "timeperiod": "1947-1980"
+    }
+  ]
+}

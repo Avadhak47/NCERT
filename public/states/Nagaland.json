@@ -1,0 +1,97 @@
+{
+  "state_name": "Nagaland",
+  "source_file": "Nagaland_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Nagaland- Handicrafts- Basketry",
+      "content": "The cane baskets of the Khonoma village and of the Khiamngan weavers in the Tuensang District are known for their intricate weaves. Fine bamboo and cane strips are also used for making headgear and mats. These baskets are well known for their utility as well as for aesthetic value.",
+      "images": [
+        {
+          "original_path": "images/Nagaland/basket4.jpg",
+          "new_path": "Nagaland/basket4.jpg",
+          "caption": "Basketry"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Nagaland- Handicrafts- Weaving",
+      "content": "Spinning and weaving is an exclusive monopoly of the women. Colourful shawls, bags and jackets are woven here. The natural dyes used by them are extracted from barks, roots and plants. Works of each tribe can be identified by the distinguishing colors and motifs which are often based on folklore.",
+      "images": [],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Nagaland- Handicrafts- Woodcarving",
+      "content": "Woodcarving is another work of artistry by which Naga people are known. It can be explained under three heads namely headhunting, decoration of the Morungs, and funerary images. Though most of the tribes have skills in woodcarving, the Wanchos, Konyaks and Phom tribes are the finest wood-carvers in this genre.",
+      "images": [
+        {
+          "original_path": "images/Nagaland/woodhead[1].jpg",
+          "new_path": "Nagaland/woodhead1.jpg",
+          "caption": "Woodcarving"
+        },
+        {
+          "original_path": "images/Nagaland/woodcarving 1.jpg",
+          "new_path": "Nagaland/woodcarving-1.jpg",
+          "caption": "Woodcarving"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Pottery",
+      "content": "The pots are generally very simple and mainly functional. Some of the designs and the motifs found on these potteries have been inspired by the design of the textiles. The pots of villages of Tseminyu and Ungma are well known in the region. These pots are made on the pottery wheel, then the pot is heated and finally rice water is boiled to remove the taste of the baked clay and ensure durability.",
+      "images": [
+        {
+          "original_path": "images/Nagaland/bcft206b.jpg",
+          "new_path": "Nagaland/bcft206b.jpg",
+          "caption": "Pottery"
+        },
+        {
+          "original_path": "images/Nagaland/bcft206c.jpg",
+          "new_path": "Nagaland/bcft206c.jpg",
+          "caption": "Pottery"
+        },
+        {
+          "original_path": "images/Nagaland/Nagaland pottery.jpg",
+          "new_path": "Nagaland/Nagaland-pottery.jpg",
+          "caption": "Pottery"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Nagaland- Handicrafts- Metal Work",
+      "content": "Some of the crafted items are spears, chisels, ornaments and items of utility. Nagas are attached to their weapons and it might be because their survival in the past depended on this skill. These weapons are different in shape and pattern from tribe to tribe. Among all the tribes, the Rengmas are considered the best blacksmiths.",
+      "images": [
+        {
+          "original_path": "images/Metal_img/metal 2 tools.jpg",
+          "new_path": "Nagaland/metal-2-tools.jpg",
+          "caption": "Metal Work"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Nagaland- Performing Arts",
+      "content": "Tribal dances are performed mainly during festivals, marriages and harvest. War dances, dance during festivals and bamboo dance are some of the commonest. When the ritual is performed, the dancers are usually clothed in colourful costumes and jewellery. Nagaland, with its bountiful resources, makes it excel in the tradition of arts and crafts. With a wide array of workmanship, the delight of the craftsman can be found on the baskets, weaving, wood carving, pottery and metal works, jewellery and bead works. Village gates, house posts and Morungs show true workmanship. Morung are guardhouses, recreational clubs and centers of education used as an important ceremonial domain. Morung may vary in function and size from onr tribe to another. The pillars of Morung are adorned and carved with human figures, tigers, elephants, horn bills, pythons and other designs.",
+      "images": [
+        {
+          "original_path": "images/Nagaland/basket1.jpg",
+          "new_path": "Nagaland/basket1.jpg",
+          "caption": "Morung"
+        },
+        {
+          "original_path": "images/Nagaland/basket 2.jpg",
+          "new_path": "Nagaland/basket-2.jpg",
+          "caption": "Morung"
+        },
+        {
+          "original_path": "images/Nagaland/basket 3.jpg",
+          "new_path": "Nagaland/basket-3.jpg",
+          "caption": "Morung"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "state_name": "Meghalaya",
+  "source_file": "Meghalaya_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Cane and Bamboo Craft",
+      "content": "Cane and bamboo are available in plenty in Meghalaya and used for making houses. Mats of bamboo are made from thin strips which are used for making walls of the houses. Varieties of baskets are made in Meghalaya. The artistic baskets are known as meghum khoks locally. Thugis and other baskets are used for storing day to day items. The Khasi are masters in weaving cane into mats, stools and even umbrellas. The umbrellas are known as Kurup in the local language.",
+      "images": [
+        {
+          "original_path": "images/Meghalaya/bcft204c.jpg",
+          "new_path": "Meghalaya/bcft204c.jpg",
+          "caption": "Cane and Bamboo Craft"
+        },
+        {
+          "original_path": "images/Meghalaya/cane bamboo.jpg",
+          "new_path": "Meghalaya/cane-bamboo.jpg",
+          "caption": "Cane and Bamboo Craft"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Textiles",
+      "content": "Women weave Endi silk in their spare time using loin-looms. Garos also use frame-looms. Endi silk-weaving is famous for its smooth texture and sturdiness. Cotton with geometrical motifs are also used in clothes worn by the people of this region. Dakmanda, is a kind of blouse worn by the garo women. Daksari is another dress which is wrapped around and looks like the mekhla (dress worn by the Assamese women). Khasi women wear a dress called Jainsem which flows loose up to the ankles. The upper part of the body being clad in a blouse. Over these, they tie both ends of a checkered cotton cloth on one shoulder. The Tapmohkhlieh or head-shawl is worn by knotting both ends behind the neck.",
+      "images": [
+        {
+          "original_path": "images/Meghalaya/textile.jpg",
+          "new_path": "Meghalaya/textile.jpg",
+          "caption": "Textiles"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Museum- Megalaya- The State Museum of Meghalaya",
+      "content": "Located in Shillong, Meghalaya State Museum, also known as Williamson Sangma State Museum is a store house of ethnic art and culture, with an array of artifacts including replicas of Ashoka pillar, utensils, weapons, pottery, ornaments, traditional cutting tools and musical instruments. The museum has a habitat section tribes, instruments used for hunting, fishing appliances, weapons, agricultural implements, transport equipments, domestic articles like pots, spoons, water jugs, tobacco boxes, baskets etc.",
+      "images": [],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Wangala Festival",
+      "content": "Among the Garos, the most important festival is the Wangala or the hundred-drum festival. A harvest festival celebrated in honour of Saljong, the Sun-God of fertility it marks the end of the hard work in the fields, bringing a good yield of crops. The men beat the drums and move forward in rhythmic union. Doregata dance is another interesting dance. In this dance, women try to knock off the turbans of their male partners, using their heads. The Khasis have two important festivals - Nongkrem and Shad-Suk Mynsiem. Nongkrem dance festival, held for five days is a religious",
+      "images": [
+        {
+          "original_path": "images/Meghalaya/wangala-dance-meghalaya.jpg",
+          "new_path": "Meghalaya/wangala-dance-meghalaya.jpg",
+          "caption": "Wangala Festival"
+        },
+        {
+          "original_path": "images/Meghalaya/meghalaya-festival2.jpg",
+          "new_path": "Meghalaya/meghalaya-festival2.jpg",
+          "caption": "Wangala Festival"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    }
+  ]
+}

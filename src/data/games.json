@@ -1,0 +1,40 @@
+{
+    "games": [
+        {
+            "id": 1,
+            "title": "State Capital Match",
+            "type": "Quiz",
+            "difficulty": "Easy",
+            "color": "bg-emerald-500",
+            "description": "Test your memory by matching the correct capital to its state.",
+            "validationApi": "states.geography.capital"
+        },
+        {
+            "id": 2,
+            "title": "Heritage Site Builder",
+            "type": "Puzzle",
+            "difficulty": "Medium",
+            "color": "bg-blue-500",
+            "description": "Reconstruct famous monuments from mixed puzzle pieces.",
+            "validationApi": "states.monuments"
+        },
+        {
+            "id": 3,
+            "title": "Guess the Dance Form",
+            "type": "Interactive",
+            "difficulty": "Medium",
+            "color": "bg-purple-500",
+            "description": "Watch a short animated silhouette and identify the classical dance.",
+            "validationApi": "states.art_forms.performing_arts"
+        },
+        {
+            "id": 4,
+            "title": "Historical Timeline",
+            "type": "Drag & Drop",
+            "difficulty": "Hard",
+            "color": "bg-orange-500",
+            "description": "Drag historical events into their correct chronological order on the timeline.",
+            "validationApi": "timeline.eras.events"
+        }
+    ]
+}

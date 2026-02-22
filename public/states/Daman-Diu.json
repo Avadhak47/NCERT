@@ -1,0 +1,41 @@
+{
+  "state_name": "Daman & Diu",
+  "source_file": "DamanDiu_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Diu Fort",
+      "content": "Of greatest interest in Diu, is the fort of Diu which occupies a very prominent position. It is an expansive and imposing structure situated on the extreme coast of the island. Towards the west of the fort lies the town of Diu. A number of old cannons and collection of iron shells can be seen here. Near the Diu Fort, is Panikotha fortress in the sea which can be reached by bo",
+      "images": [
+        {
+          "original_path": "images/Diu/diufort.jpg",
+          "new_path": "Daman_Diu/diufort.jpg",
+          "caption": "Diu Fort"
+        },
+        {
+          "original_path": "images/Diu/diufort2.jpg",
+          "new_path": "Daman_Diu/diufort2.jpg",
+          "caption": "Diu Fort"
+        }
+      ],
+      "timeperiod": "Early Medieval 1400-1450"
+    },
+    {
+      "heading": "Tortoise shellcraft",
+      "content": "Diu is famous for the tortoise shell craft where chiefly trinket boxes are made in combination with bone. The shell surface of the box is covered with intricate designs of bones. The designs include fine geometrical patterns, epic figures and animals fringed by floral motifs. A combination of horns, bone and tortoise shells are alsocombined to make products. Bone is also combined with sandalwood, ebony and tortoise shells to create intricate patterns of fretwork that are mounted or inlaid to make ornate octagonal jewel boxes.",
+      "images": [
+        {
+          "original_path": "images/Diu/tortoise shell.jpg",
+          "new_path": "Daman_Diu/tortoise-shell.jpg",
+          "caption": "Tortoise shellcraft"
+        }
+      ],
+      "timeperiod": "Contemporary"
+    },
+    {
+      "heading": "Diu-Festivals and Fairs- Gangaji fair",
+      "content": "Gangaji fair is held every year in the village Dabhel, near the Somnatha Mahadev temple. Large number of people both from within the district as well as outside gather here, take bath in the nearby tank and worship Lord Shiva.",
+      "images": [],
+      "timeperiod": "Contemporary"
+    }
+  ]
+}

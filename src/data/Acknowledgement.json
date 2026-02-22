@@ -1,0 +1,36 @@
+{
+  "title": "Acknowledgement",
+  "primaryAcknowledger": {
+    "organization": "National Council for Educational Research and Training",
+    "departments": [
+      "Department of Education in Arts & Aesthetics",
+      "Department of Computer Education and Technological Aides"
+    ]
+  },
+  "mainCollaborator": {
+    "name": "Indira Gandhi National Centre for the Arts, New Delhi",
+    "description": "without whose contribution and collaboration this venture could not have been possibly completed."
+  },
+  "organizations": [
+    "Central Institute of Educational Technology, NCERT",
+    "Archaeological Survey of India",
+    "National Handicrafts and Handloom Museum",
+    "Centre for Cultural Resources and Training",
+    "Sanskriti Foundation, Dastkari Haat Samiti and Dastkar"
+  ],
+  "individuals": [
+    {
+      "name": "Dr. Shobita Punja",
+      "affiliation": "INTACH"
+    },
+    {
+      "name": "Mr. Jayaram Poduval",
+      "affiliation": "Faculty of Fine Arts, M. S. University, Vadodara"
+    }
+  ],
+  "specialMention": {
+    "name": "Ms. Seema Srivastava",
+    "description": "for preparing the script after compiling the materials for research for this multi-media programme."
+  }
+}
+

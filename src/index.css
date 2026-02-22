@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #0284c7;
+  /* Sky Blue - WCAG AA compliant on white */
+  --color-brand-secondary: #ea580c;
+  /* Bright Orange */
+  --color-brand-accent: #16a34a;
+  /* Vibrant Green */
+  --color-brand-purple: #9333ea;
+  /* Playful Purple */
+
+  --color-surface-light: #ffffff;
+  --color-surface-muted: #f8fafc;
+  /* Slate 50 */
+  --color-surface-warm: #fffbeb;
+  /* Amber 50 for kid-friendly warmth */
+
+  --color-text-main: #0f172a;
+  /* Slate 900 for high contrast text */
+  --color-text-muted: #475569;
+  /* Slate 600 */
+
+  --font-sans: "Inter", "system-ui", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", serif;
+
+  --animate-map-focus: mapFocus 800ms ease-in-out forwards;
+  --animate-panel-entry: panelEntry 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-node-hover: nodeHover 200ms ease-out forwards;
+}
+
+@keyframes mapFocus {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes panelEntry {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nodeHover {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-warm);
+    color: var(--color-text-main);
+  }
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Accessibility focus styles passing WCAG AA/AAA */
+  *:focus-visible {
+    outline: 3px solid var(--color-brand-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

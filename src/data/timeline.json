@@ -1,0 +1,158 @@
+{
+  "periods": [
+    {
+      "id": "prehistoric",
+      "name": "Pre-Historic",
+      "years": "Until 3000 BCE",
+      "color": "#9900CC",
+      "description": "The earliest period of Indian civilization, marked by cave paintings, rock shelters, and primitive tools. The Bhimbetka rock shelters in Madhya Pradesh contain some of the oldest known rock art in India.",
+      "highlights": [
+        {
+          "name": "Bhimbetka Rock Shelters",
+          "location": "Madhya Pradesh",
+          "description": "UNESCO World Heritage site with prehistoric rock paintings dating back 30,000 years",
+          "image": "/time-line-images/bhimbetka.jpg"
+        }
+      ]
+    },
+    {
+      "id": "protohistoric",
+      "name": "Proto-Historic",
+      "years": "3000 - 600 BCE",
+      "color": "#A87E00",
+      "description": "The age of the Indus Valley Civilization, one of the world's earliest urban cultures. Cities like Harappa, Mohenjo-daro, and Dholavira showcased remarkable urban planning, drainage systems, and standardized weights.",
+      "highlights": [
+        {
+          "name": "Dholavira",
+          "location": "Gujarat",
+          "description": "One of the five largest Harappan sites, known for its sophisticated water management system",
+          "image": "/time-line-images/dholavira.jpg"
+        },
+        {
+          "name": "Rakhigarhi",
+          "location": "Haryana",
+          "description": "Largest Indus Valley Civilization site in India",
+          "image": "/time-line-images/rakhigariwheel.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ancient",
+      "name": "Ancient",
+      "years": "600 BCE - 750 CE",
+      "color": "#E1005A",
+      "description": "The golden age of Indian civilization - the era of Mauryas, Guptas, and the birth of Buddhism and Jainism. This period saw the construction of the great stupas, the Ashoka pillars, and the caves of Ajanta.",
+      "highlights": [
+        {
+          "name": "Lion Capital of Ashoka",
+          "location": "Sarnath, Uttar Pradesh",
+          "description": "The national emblem of India, originally placed atop an Ashoka Pillar",
+          "image": "/time-line-images/sarnath_Lion_Capital_of_Ashoka.jpg"
+        },
+        {
+          "name": "Deogarh Dashavatara Temple",
+          "location": "Uttar Pradesh",
+          "description": "One of the earliest Hindu stone temples with remarkable Gupta-era sculptures",
+          "image": "/time-line-images/deogarh.jpg"
+        }
+      ]
+    },
+    {
+      "id": "early-medieval",
+      "name": "Early Medieval",
+      "years": "750 - 1550 CE",
+      "color": "#009933",
+      "description": "The age of regional kingdoms - Cholas, Chalukyas, Rashtrakutas, and Rajputs. This period saw the construction of magnificent temples like Brihadeeswarar, Khajuraho, and the Sun Temple at Konark.",
+      "highlights": [
+        {
+          "name": "Ellora Caves",
+          "location": "Maharashtra",
+          "description": "Rock-cut caves with Hindu, Buddhist and Jain monuments including the incredible Kailasa Temple",
+          "image": "/time-line-images/ellora1.jpg"
+        },
+        {
+          "name": "Qutub Minar",
+          "location": "Delhi",
+          "description": "The tallest brick minaret in the world, begun by Qutb-ud-din Aibak",
+          "image": "/time-line-images/d_007.jpg"
+        },
+        {
+          "name": "Maitreya Buddha",
+          "location": "Thiksey, Ladakh",
+          "description": "The 15-meter high statue of Maitreya Buddha at Thiksey Monastery",
+          "image": "/time-line-images/maitreya-buddhathiksey.jpg"
+        }
+      ]
+    },
+    {
+      "id": "medieval",
+      "name": "Medieval",
+      "years": "1550 - 1750 CE",
+      "color": "#BB2F00",
+      "description": "The Mughal era - a period of architectural magnificence and cultural synthesis. The Taj Mahal, Red Fort, and countless miniature paintings were created during this period.",
+      "highlights": [
+        {
+          "name": "Basilica of Bom Jesus",
+          "location": "Goa",
+          "description": "UNESCO World Heritage baroque church containing the remains of St. Francis Xavier",
+          "image": "/time-line-images/Basilica-of-Bom-Jesus-1.jpg"
+        },
+        {
+          "name": "Meenakshi Temple",
+          "location": "Madurai, Tamil Nadu",
+          "description": "Dravidian masterpiece with 14 colorful gopurams and thousands of sculptures",
+          "image": "/time-line-images/meenkshi temple 4.jpg"
+        },
+        {
+          "name": "Bundi Miniature Paintings",
+          "location": "Rajasthan",
+          "description": "A distinct school of Rajasthani miniature painting known for its turquoise backgrounds",
+          "image": "/time-line-images/bundi miniature-painting.jpg"
+        }
+      ]
+    },
+    {
+      "id": "modern",
+      "name": "Modern",
+      "years": "1750 - 1980 CE",
+      "color": "#003399",
+      "description": "The colonial period and post-independence era. This period saw the Bengal Renaissance, the freedom struggle, and the building of new institutions and monuments like Victoria Memorial and India Gate.",
+      "highlights": [
+        {
+          "name": "Victoria Memorial",
+          "location": "Kolkata, West Bengal",
+          "description": "A grand marble building dedicated to Queen Victoria, now a museum",
+          "image": "/time-line-images/vic memorial.jpg"
+        },
+        {
+          "name": "India Gate",
+          "location": "Delhi",
+          "description": "War memorial honoring Indian soldiers who died in World War I",
+          "image": "/time-line-images/d_066.jpg"
+        }
+      ]
+    },
+    {
+      "id": "contemporary",
+      "name": "Contemporary",
+      "years": "1980 - Present",
+      "color": "#FF8040",
+      "description": "Modern India continues its rich artistic traditions while embracing contemporary forms. Living art forms, traditional crafts, and classical performing arts flourish alongside modern expressions.",
+      "highlights": [
+        {
+          "name": "Lotus Temple",
+          "location": "Delhi",
+          "description": "Bahá'í House of Worship designed in the shape of a lotus flower",
+          "image": "/time-line-images/BahaiLotusTemple.jpg"
+        },
+        {
+          "name": "Manipuri Dance",
+          "location": "Manipur",
+          "description": "One of the major classical dance forms of India, known for its graceful movements",
+          "image": "/time-line-images/manipuri dance2.jpg"
+        }
+      ]
+    }
+  ]
+}
+

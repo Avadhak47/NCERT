@@ -1,0 +1,38 @@
+{
+  "state_name": "Andaman & Nicobar",
+  "source_file": "Andaman_Introduction.htm",
+  "sections": [
+    {
+      "heading": "Cellular Jail Museum",
+      "content": "In the Cellular Jail Museum more than 200 photographs of all freedom fighters who were in the Jail are exhibited. Reports about the atrocities, the Jail authorities used to commit in those days and articles published in national newspapers on the mainland are on display. Certain paintings on the barbarous treatment on the prisoners, utensils, vessels, uniforms etc. of the prisoners used in those days and the tools, machines which the prisoners were made to operate, are all in the museum reminding us the untold sufferings of the freedom fighters Jail. The Cellular Jail was where the British Government used to send the prisoners. The structural speciality of the Cellular Jail is that the whole jail consists of cells. Each cell was meant for one inmate only and hence the name. On the inside walls of the central tower of the Cellular Jail, one can find the names of more than three hundred and thirty six freedom fighters and revolutionaries who were imprisoned in the cellular jail for their patriotic fervor.",
+      "images": [
+        {
+          "original_path": "images/Andaman Nicobar/jailmuseum.jpg",
+          "new_path": "Andaman_Nicobar/jailmuseum.jpg",
+          "caption": "Cellular Jail Museum"
+        },
+        {
+          "original_path": "images/Andaman Nicobar/jailmuseum2.jpg",
+          "new_path": "Andaman_Nicobar/jailmuseum2.jpg",
+          "caption": "Cellular Jail Museum"
+        },
+        {
+          "original_path": "images/Andaman Nicobar/jailmuseum3.jpg",
+          "new_path": "Andaman_Nicobar/jailmuseum3.jpg",
+          "caption": "Cellular Jail Museum"
+        },
+        {
+          "original_path": "images/Andaman Nicobar/jail1.jpg",
+          "new_path": "Andaman_Nicobar/jail1.jpg",
+          "caption": "Cellular Jail"
+        },
+        {
+          "original_path": "images/Andaman Nicobar/jail3.jpg",
+          "new_path": "Andaman_Nicobar/jail3.jpg",
+          "caption": "Cellular Jail"
+        }
+      ],
+      "timeperiod": "Modern 1900-1947"
+    }
+  ]
+}
