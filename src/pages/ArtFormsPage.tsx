@@ -1,10 +1,37 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin } from 'lucide-react';
 import statesData from '../data/states.json';
+import { getImageUrl, hasImage } from '../utils/imageUrl';
+import { getFallbackImage } from '../utils/fallbackImages';
+
+interface ArtFormItem {
+    id: string;
+    title?: string;
+    name?: string;
+    desc?: string;
+    img?: string;
+    state: string;
+    type: string;
+    height: number;
+    historical_significance?: string;
+    materials?: string;
+}
+
+function artTypeToFallbackType(t: string): string {
+    if (t === 'Handicrafts') return 'handicraft';
+    if (t === 'Performing Arts') return 'performing arts';
+    return t;
+}
 
 const ArtFormsPage = () => {
     const [activeTab, setActiveTab] = useState('All');
+    const [failedImageUrls, setFailedImageUrls] = useState<Set<string>>(new Set());
+
+    const handleImageError = useCallback((failedUrl: string, fallbackUrl: string, e: React.SyntheticEvent<HTMLImageElement>) => {
+        setFailedImageUrls(prev => new Set(prev).add(failedUrl));
+        (e.target as HTMLImageElement).src = fallbackUrl;
+    }, []);
 
     // Flatten all art forms from states.json into a single array
     const allArtForms = useMemo(() => {
@@ -59,7 +86,7 @@ const ArtFormsPage = () => {
 
     const tabs = ['All', 'Painting', 'Performing Arts', 'Handicrafts', 'Monuments', 'Festivals'];
 
-    const [selectedArt, setSelectedArt] = useState<any | null>(null);
+    const [selectedArt, setSelectedArt] = useState<ArtFormItem | null>(null);
 
     // Stop scrolling on body when modal is open
     if (typeof document !== 'undefined') {
@@ -67,24 +94,24 @@ const ArtFormsPage = () => {
     }
 
     return (
-        <div className="w-full h-full overflow-y-auto px-6 py-8 md:px-12 lg:px-24 bg-[var(--color-surface-warm)] relative">
-            <header className="mb-8 text-center mt-4">
-                <h2 className="text-5xl md:text-6xl font-serif text-[var(--color-brand-primary)] mb-4 drop-shadow-sm font-black tracking-tight">Cultural Gallery</h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-lg font-medium font-sans">
-                    Explore the diverse tapestry of Indian heritage, from classical dances to ancient monuments. Click any tile to dive deep.
+        <div className="w-full h-full overflow-y-auto px-4 sm:px-6 py-6 sm:py-8 md:px-12 lg:px-24 bg-[var(--color-surface-warm)] relative">
+            <header className="mb-6 sm:mb-8 text-center mt-2 sm:mt-4">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-gradient-brand mb-3 sm:mb-4">Cultural Gallery</h2>
+                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-base sm:text-lg font-medium font-sans px-2">
+                    Explore the diverse tapestry of Indian heritage — classical dances, ancient monuments, and crafts. Click any tile to dive deep.
                 </p>
             </header>
 
-            {/* Chic Filter Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 sm:mb-12">
                 {tabs.map(tab => (
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-5 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 focus:outline-none shadow-sm
+                        className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm tracking-wide transition-all duration-250 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] focus:ring-offset-2
                             ${activeTab === tab
-                                ? 'bg-slate-900 text-white shadow-md scale-105 transform'
-                                : 'bg-white text-slate-500 hover:text-slate-900 hover:bg-slate-100 hover:-translate-y-0.5 border border-slate-200'}
+                                ? 'bg-gradient-to-r from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)] text-white shadow-md scale-[1.02]'
+                                : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 hover:border-slate-300'}
                         `}
                     >
                         {tab}
@@ -103,15 +130,19 @@ const ArtFormsPage = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.4 }}
                             onClick={() => setSelectedArt(art)}
-                            className="w-full break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-white shadow-sm hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-[var(--color-brand-secondary)] text-left hover:-translate-y-2 border border-slate-100"
+                            className="w-full break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-white shadow-md hover:shadow-[0_16px_48px_-12px_rgba(2,132,199,0.25)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[var(--color-brand-primary)]/50 text-left hover:-translate-y-1.5 border border-slate-100 hover:border-[var(--color-brand-primary)]/30"
                             aria-label={`View details for ${art.title} - ${art.state}`}
                         >
                             <div style={{ height: art.height }} className="w-full overflow-hidden bg-gray-100 relative">
                                 <img
-                                    src={art.img}
-                                    alt={art.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    src={hasImage(art.img) && !failedImageUrls.has(getImageUrl(art.img!)) ? getImageUrl(art.img!) : getFallbackImage(art.title ?? art.name, artTypeToFallbackType(art.type))}
+                                    alt={art.title ?? ''}
+                                    className="w-full h-full object-cover object-center bg-slate-200 group-hover:scale-105 transition-transform duration-700"
                                     loading="lazy"
+                                    onError={(e) => {
+                                        const src = (e.target as HTMLImageElement).currentSrc;
+                                        handleImageError(src, getFallbackImage(art.title ?? art.name, artTypeToFallbackType(art.type)), e);
+                                    }}
                                 />
                                 {/* Glassmorphic gradient overlay on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 sm:opacity-0 sm:group-hover:opacity-80 transition-opacity duration-500" />
@@ -139,19 +170,27 @@ const ArtFormsPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-black/50 backdrop-blur-md"
                         onClick={() => setSelectedArt(null)}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 50 }}
+                            initial={{ scale: 0.92, opacity: 0, y: 24 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                            className="bg-white rounded-3xl overflow-hidden w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row shadow-2xl relative"
+                            exit={{ scale: 0.96, opacity: 0, y: 12 }}
+                            transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+                            className="bg-white rounded-3xl overflow-hidden w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row shadow-[0_24px_80px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5 relative"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden relative">
-                                <img src={selectedArt.img} alt={selectedArt.title} className="w-full h-full object-cover" />
+                            <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden relative bg-slate-100">
+                                <img
+                                    src={hasImage(selectedArt.img) && !failedImageUrls.has(getImageUrl(selectedArt.img!)) ? getImageUrl(selectedArt.img!) : getFallbackImage(selectedArt.title ?? selectedArt.name, artTypeToFallbackType(selectedArt.type))}
+                                    alt={selectedArt.title ?? ''}
+                                    className="w-full h-full object-cover object-center"
+                                    onError={(e) => {
+                                        const src = (e.target as HTMLImageElement).currentSrc;
+                                        handleImageError(src, getFallbackImage(selectedArt.title ?? selectedArt.name, artTypeToFallbackType(selectedArt.type)), e);
+                                    }}
+                                />
                                 <div className="absolute top-4 left-4 flex gap-2">
                                     <span className="px-4 py-1.5 bg-white/90 backdrop-blur text-[var(--color-brand-primary)] text-sm font-bold tracking-widest uppercase rounded-full shadow-lg">
                                         {selectedArt.type}
