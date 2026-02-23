@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { createPortal } from 'react-dom';
 import InteractiveMap from '../components/map/InteractiveMap';
 import StateTile from '../components/core/StateTile';
 import { getFallbackImage } from '../utils/fallbackImages';
@@ -233,14 +234,15 @@ const ExplorePage = () => {
                     </div>
                 </motion.section>
 
-                {selectedState && (
+                {selectedState && typeof document !== 'undefined' && createPortal(
                     <div className="fixed inset-0 z-[110] bg-white">
                         <StateTile
                             stateId={selectedState.id}
                             stateName={selectedState.name}
                             onClose={handleCloseTile}
                         />
-                    </div>
+                    </div>,
+                    document.body
                 )}
             </div>
         </div>
