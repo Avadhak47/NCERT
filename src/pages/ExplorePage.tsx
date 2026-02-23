@@ -31,14 +31,7 @@ const HERO_IMAGES = [
     'https://images.unsplash.com/photo-1580126435011-37d457b01b22?q=80&w=2070&auto=format&fit=crop', // Konark Sun Temple, Odisha
 ];
 
-const REGION_PILLS = [
-    { id: 'North', label: 'NORTH' },
-    { id: 'South', label: 'SOUTH' },
-    { id: 'East', label: 'EAST' },
-    { id: 'West', label: 'WEST' },
-    { id: 'Central', label: 'CENTRAL' },
-    { id: 'Northeast', label: 'NORTH EAST' },
-] as const;
+
 
 const ROTATE_BG_MS = 5500;
 
@@ -48,7 +41,6 @@ const ExplorePage = () => {
     const { stateId: stateIdParam } = useParams<{ stateId?: string }>();
     const [selectedState, setSelectedState] = useState<{ id: string, name: string } | null>(null);
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
-    const [regionFilter, setRegionFilter] = useState<string | null>(null);
     const [bgImageIndex, setBgImageIndex] = useState(0);
     const stats = { states: 36, cultures: 0 };
 
@@ -91,9 +83,7 @@ const ExplorePage = () => {
         navigate('/explore', { replace: true });
     };
 
-    const handleRegionPillClick = (regionId: string) => {
-        setRegionFilter(prev => (prev === regionId ? null : regionId));
-    };
+
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -223,70 +213,35 @@ const ExplorePage = () => {
                 </motion.div>
 
                 {/* Map card: region filters + legend + map (Bharat Heritage style) */}
-            <motion.section
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="relative z-10 flex-shrink-0 px-4 sm:px-6 md:px-12 mt-4 sm:mt-6 pb-8"
-            >
-                <div className="rounded-2xl sm:rounded-3xl bg-white shadow-xl border border-slate-200/80 overflow-hidden max-w-5xl mx-auto">
-                    {/* Region filter pills */}
-                    <div className="flex flex-wrap gap-2 p-3 sm:p-4 border-b border-slate-100">
-                        {REGION_PILLS.map(({ id, label }) => (
-                            <button
-                                key={id}
-                                onClick={() => handleRegionPillClick(id)}
-                                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wide transition-all duration-200
-                                    ${regionFilter === id
-                                        ? 'bg-slate-800 text-white shadow-md'
-                                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                                    }`}
-                            >
-                                {label}
-                            </button>
-                        ))}
-                    </div>
+                <motion.section
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="relative z-10 flex-shrink-0 px-4 sm:px-6 md:px-12 mt-4 sm:mt-6 pb-8"
+                >
+                    <div className="rounded-2xl sm:rounded-3xl bg-white shadow-xl border border-slate-200/80 overflow-hidden max-w-5xl mx-auto">
 
-                    {/* Legend */}
-                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 px-3 sm:px-4 py-2 sm:py-3 border-b border-slate-100 bg-slate-50/50">
-                        <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider">Heritage density</span>
-                        <div className="flex items-center gap-3 sm:gap-5">
-                            <span className="flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-red-500" aria-hidden />
-                                <span className="text-xs font-semibold text-slate-600">High</span>
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-amber-400" aria-hidden />
-                                <span className="text-xs font-semibold text-slate-600">Medium</span>
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden />
-                                <span className="text-xs font-semibold text-slate-600">Low</span>
-                            </span>
+
+                        {/* Map container - bg extends behind via fixed layer */}
+                        <div className="relative min-h-[55vh] sm:min-h-[60vh] bg-slate-900/40 backdrop-blur-[2px]">
+                            <InteractiveMap
+                                onStateSelect={handleStateSelect}
+                                onRegionSelect={handleRegionSelect}
+                                activeStateId={selectedState?.id || null}
+                            />
                         </div>
                     </div>
+                </motion.section>
 
-                    {/* Map container - bg extends behind via fixed layer */}
-                    <div className="relative min-h-[55vh] sm:min-h-[60vh] bg-slate-900/40 backdrop-blur-[2px]">
-                        <InteractiveMap
-                            onStateSelect={handleStateSelect}
-                            onRegionSelect={handleRegionSelect}
-                            activeStateId={selectedState?.id || null}
-                            regionFilter={regionFilter}
+                {selectedState && (
+                    <div className="fixed inset-0 z-50 bg-white">
+                        <StateTile
+                            stateId={selectedState.id}
+                            stateName={selectedState.name}
+                            onClose={handleCloseTile}
                         />
                     </div>
-                </div>
-            </motion.section>
-
-            {selectedState && (
-                <div className="fixed inset-0 z-50 bg-white">
-                    <StateTile
-                        stateId={selectedState.id}
-                        stateName={selectedState.name}
-                        onClose={handleCloseTile}
-                    />
-                </div>
-            )}
+                )}
             </div>
         </div>
     );
