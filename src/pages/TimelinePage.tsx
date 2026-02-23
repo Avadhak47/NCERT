@@ -1,11 +1,35 @@
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import timelineData from '../data/timeline.json';
+import { getImageUrl, hasImage } from '../utils/imageUrl';
+import { getTimelineFallbackImage } from '../utils/timelineFallbackImages';
+
+interface TimelineItem {
+    id: string;
+    type: 'era' | 'event';
+    title: string;
+    desc?: string;
+    yearVal?: string;
+    period?: string;
+    year?: string;
+    img?: string;
+    parentEra?: string;
+}
 
 const TimelinePage = () => {
     const [activeItem, setActiveItem] = useState<any>(null);
     const [expandedEraId, setExpandedEraId] = useState<string | null>(null);
+    const [failedImageIds, setFailedImageIds] = useState<Set<string>>(new Set());
     const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+    const getEventImageUrl = useCallback((item: TimelineItem) => {
+        const useLocal = hasImage(item.img) && !failedImageIds.has(item.id);
+        return useLocal ? getImageUrl(item.img!) : getTimelineFallbackImage(item.title, item.desc);
+    }, [failedImageIds]);
+
+    const handleImageError = useCallback((itemId: string) => {
+        setFailedImageIds(prev => new Set(prev).add(itemId));
+    }, []);
 
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +76,7 @@ const TimelinePage = () => {
 
     // Dynamic array that injects events only for the active era
     const timelineItems = useMemo(() => {
-        let items: any[] = [];
+        const items: TimelineItem[] = [];
         timelineData.periods.forEach(period => {
             // Push Era marker
             items.push({
@@ -85,7 +109,7 @@ const TimelinePage = () => {
         return items;
     }, [expandedEraId]);
 
-    const handleItemClick = (item: any) => {
+    const handleItemClick = (item: TimelineItem) => {
         if (activeItem?.id === item.id) {
             // Collapse if clicking the already active item
             setActiveItem(null);
@@ -110,9 +134,9 @@ const TimelinePage = () => {
     return (
         <div className="w-full h-full flex flex-col bg-[var(--color-surface-warm)] relative overflow-hidden">
             {/* Instructions Header */}
-            <div className={`px-6 md:px-12 pt-8 pb-4 shrink-0 bg-transparent z-10 transition-all duration-300 ${activeItem ? 'opacity-0 h-0 p-0 overflow-hidden' : 'opacity-100'}`}>
-                <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-brand-primary)] mb-2 drop-shadow-sm font-black tracking-tight">Timeline</h2>
-                <p className="text-[var(--color-text-muted)] text-base font-medium font-sans">Scroll horizontally or select a node to explore history.</p>
+            <div className={`px-4 sm:px-6 md:px-12 pt-6 sm:pt-8 pb-4 shrink-0 bg-transparent z-10 transition-all duration-300 ${activeItem ? 'opacity-0 h-0 p-0 overflow-hidden' : 'opacity-100'}`}>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black tracking-tight text-gradient-brand mb-2">Timeline</h2>
+                <p className="text-[var(--color-text-muted)] text-sm sm:text-base font-medium font-sans">Scroll horizontally or tap a node to explore India's history.</p>
             </div>
 
             {/* The Scrollable Horizontal Timeline Section */}
@@ -141,12 +165,12 @@ const TimelinePage = () => {
                                                 {/* Distinct Era Node */}
                                                 <button
                                                     onClick={() => handleItemClick(item)}
-                                                    className="w-6 h-6 rounded-full border-2 transition-all duration-300 focus:outline-none shadow-lg z-10 hover:scale-125 bg-white border-[var(--color-brand-primary)]"
+                                                    className="w-6 h-6 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] focus:ring-offset-2 shadow-md z-10 hover:scale-110 bg-white border-[var(--color-brand-primary)] ring-2 ring-white"
                                                     aria-label={`View era ${item.title}`}
                                                 />
-                                                <div className={`absolute ${verticalPos} w-48 text-center pointer-events-none group-hover:-translate-y-1 transition-transform`}>
-                                                    <span className="block text-[10px] font-bold tracking-[0.2em] text-[var(--color-brand-secondary)] mb-1 uppercase opacity-80">{item.period}</span>
-                                                    <h3 className="font-serif font-bold text-xl text-[var(--color-brand-primary)] leading-tight">{item.title}</h3>
+                                                <div className={`absolute ${verticalPos} w-48 text-center pointer-events-none group-hover:-translate-y-0.5 transition-transform`}>
+                                                    <span className="block text-[10px] font-bold tracking-[0.2em] text-[var(--color-brand-secondary)] mb-1 uppercase opacity-90">{item.period}</span>
+                                                    <h3 className="font-serif font-bold text-lg sm:text-xl text-[var(--color-brand-primary)] leading-tight">{item.title}</h3>
                                                 </div>
                                             </>
                                         ) : (
@@ -158,13 +182,13 @@ const TimelinePage = () => {
                                                     aria-label={`View details for ${item.title}`}
                                                 />
                                                 <button
-                                                    className={`absolute ${verticalPos} w-40 bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/50 cursor-pointer overflow-hidden hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all text-left z-20 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-accent)]`}
+                                                    className={`absolute ${verticalPos} w-36 sm:w-40 bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl shadow-lg border border-slate-200/80 cursor-pointer overflow-hidden hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--color-brand-primary)]/30 transition-all duration-300 text-left z-20 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] focus:ring-offset-2`}
                                                     onClick={() => handleItemClick(item)}
                                                 >
-                                                    <div className="h-24 w-full overflow-hidden bg-gray-100/50">
-                                                        <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                                    <div className="h-20 sm:h-24 w-full overflow-hidden bg-slate-100">
+                                                        <img src={getEventImageUrl(item)} alt={item.title} onError={() => handleImageError(item.id)} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                                                     </div>
-                                                    <div className="p-3 bg-gradient-to-b from-white/50 to-white/95">
+                                                    <div className="p-2.5 sm:p-3 bg-gradient-to-b from-white to-slate-50/80">
                                                         <span className="text-[9px] font-bold text-[var(--color-brand-accent)] block mb-0.5 tracking-wider uppercase">{item.year}</span>
                                                         <h4 className="font-serif font-bold text-xs text-slate-800 leading-snug line-clamp-2">{item.title}</h4>
                                                     </div>
@@ -181,14 +205,14 @@ const TimelinePage = () => {
                                         animate={{ opacity: 1, scaleX: 1 }}
                                         exit={{ opacity: 0, scaleX: 0.8 }}
                                         transition={{ duration: 0.4 }}
-                                        className="w-full flex bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-slate-200 overflow-hidden relative z-50 h-[500px]"
+                                        className="w-full flex bg-white/98 backdrop-blur-xl rounded-2xl sm:rounded-[2.5rem] shadow-[0_24px_64px_-12px_rgba(2,132,199,0.2)] border border-slate-200 overflow-hidden relative z-50 h-[420px] sm:h-[500px]"
                                     >
                                         <button onClick={() => { setActiveItem(null); if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('nav-collapse', { detail: { collapsed: false } })); }} className="absolute top-6 right-6 z-50 w-10 h-10 bg-black/10 hover:bg-black/20 rounded-full flex items-center justify-center transition-colors">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                                         </button>
 
                                         <div className="w-2/5 h-full relative shrink-0 overflow-hidden bg-slate-100">
-                                            <img src={activeItem.img || 'https://images.unsplash.com/photo-1599839619721-397dd3ebf7f5?w=600&q=80'} alt={activeItem.title} className="w-full h-full object-cover absolute inset-0" />
+                                            <img src={activeItem.type === 'event' ? getEventImageUrl(activeItem) : getTimelineFallbackImage(activeItem.title, activeItem.desc)} alt={activeItem.title} onError={(e) => { handleImageError(activeItem.id); (e.target as HTMLImageElement).src = getTimelineFallbackImage(activeItem.title, activeItem.desc); }} className="w-full h-full object-cover object-center absolute inset-0" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                             <div className="absolute bottom-8 left-8 text-white font-bold tracking-widest text-xl font-sans drop-shadow-md">
                                                 {activeItem.type === 'era' ? activeItem.period : activeItem.year}

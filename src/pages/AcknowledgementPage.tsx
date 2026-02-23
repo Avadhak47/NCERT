@@ -16,31 +16,31 @@ const AcknowledgementPage = () => {
 
                     <div className="flex flex-col gap-12 w-full max-w-sm">
                         <section>
-                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent-cyan)] mb-3 uppercase">Concept & Content</h3>
-                            <p className="text-xl font-serif text-white/90 mb-1">NCERT</p>
-                            <p className="text-xs text-white/50 leading-relaxed font-sans">National Council of Educational<br />Research and Training</p>
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-cyan-400 mb-3 uppercase">Concept & Content</h3>
+                            <p className="text-xl font-serif text-white mb-1">NCERT</p>
+                            <p className="text-xs text-slate-300 leading-relaxed font-sans">National Council of Educational<br />Research and Training</p>
                         </section>
 
                         <section>
-                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent-cyan)] mb-3 uppercase">Cartographic Data</h3>
-                            <p className="text-xl font-serif text-white/90 mb-1">Survey of India</p>
-                            <p className="text-xs text-white/50 leading-relaxed font-sans">Official boundary guidelines<br />and geospatial compliance</p>
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-cyan-400 mb-3 uppercase">Cartographic Data</h3>
+                            <p className="text-xl font-serif text-white mb-1">Survey of India</p>
+                            <p className="text-xs text-slate-300 leading-relaxed font-sans">Official boundary guidelines<br />and geospatial compliance</p>
                         </section>
 
                         <section>
-                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent-cyan)] mb-3 uppercase">Design Inspiration</h3>
-                            <p className="text-xl font-serif text-white/90 mb-1">UNESCO Digital Museum</p>
-                            <p className="text-xs text-white/50 leading-relaxed font-sans">Aesthetic guidelines and<br />accessibility frameworks</p>
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-cyan-400 mb-3 uppercase">Design Inspiration</h3>
+                            <p className="text-xl font-serif text-white mb-1">UNESCO Digital Museum</p>
+                            <p className="text-xs text-slate-300 leading-relaxed font-sans">Aesthetic guidelines and<br />accessibility frameworks</p>
                         </section>
 
                         <section>
-                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent-cyan)] mb-3 uppercase">Platform Development</h3>
-                            <p className="text-xl font-serif text-white/90 mb-1">Digital India Initiative</p>
-                            <p className="text-xs text-white/50 leading-relaxed font-sans">Engineering and interactive<br />systems integration</p>
+                            <h3 className="text-[10px] font-bold tracking-[0.3em] text-cyan-400 mb-3 uppercase">Platform Development</h3>
+                            <p className="text-xl font-serif text-white mb-1">Digital India Initiative</p>
+                            <p className="text-xs text-slate-300 leading-relaxed font-sans">Engineering and interactive<br />systems integration</p>
                         </section>
                     </div>
 
-                    <div className="w-full mt-20 pt-8 border-t border-white/10 opacity-60 text-[10px] text-center font-sans tracking-[0.2em] uppercase text-white/70">
+                    <div className="w-full mt-16 sm:mt-20 pt-6 sm:pt-8 border-t border-white/10 text-[10px] text-center font-sans tracking-[0.2em] uppercase text-slate-400">
                         Designed for accessibility and digital inclusion
                     </div>
                 </div>

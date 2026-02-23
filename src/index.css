@@ -10,6 +10,10 @@
   --color-brand-purple: #9333ea;
   /* Playful Purple */
 
+  --color-accent-cyan: #22d3ee;
+  --color-accent-amber: #fbbf24;
+  --color-accent-magenta: #ec4899;
+
   --color-surface-light: #ffffff;
   --color-surface-muted: #f8fafc;
   /* Slate 50 */
@@ -63,11 +67,30 @@
   }
 }
 
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @layer base {
   :root {
     font-family: var(--font-sans);
     background-color: var(--color-surface-warm);
     color: var(--color-text-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body,
@@ -84,6 +107,11 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Subtle background depth - warm gradient */
+  body {
+    background: linear-gradient(160deg, var(--color-surface-warm) 0%, #fef3c7 50%, var(--color-surface-warm) 100%);
   }
 
   /* Accessibility focus styles passing WCAG AA/AAA */
@@ -103,5 +131,33 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+/* Hide scrollbar while keeping scroll (nav, glossary sidebar) */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gradient text for hero headings */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card lift on hover - consistent across app */
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -12px rgba(2, 132, 199, 0.2), 0 0 0 1px rgba(2, 132, 199, 0.06);
   }
 }
