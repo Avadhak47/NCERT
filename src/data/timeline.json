@@ -11,7 +11,7 @@
           "name": "Bhimbetka Rock Shelters",
           "location": "Madhya Pradesh",
           "description": "UNESCO World Heritage site with prehistoric rock paintings dating back 30,000 years",
-          "image": "/time-line-images/bhimbetka.jpg"
+          "image": "/time-line-images/bhimbetka.webp"
         }
       ]
     },
@@ -26,13 +26,13 @@
           "name": "Dholavira",
           "location": "Gujarat",
           "description": "One of the five largest Harappan sites, known for its sophisticated water management system",
-          "image": "/time-line-images/dholavira.jpg"
+          "image": "/time-line-images/dholavira.webp"
         },
         {
           "name": "Rakhigarhi",
           "location": "Haryana",
           "description": "Largest Indus Valley Civilization site in India",
-          "image": "/time-line-images/rakhigariwheel.jpg"
+          "image": "/time-line-images/rakhigariwheel.webp"
         }
       ]
     },
@@ -47,13 +47,13 @@
           "name": "Lion Capital of Ashoka",
           "location": "Sarnath, Uttar Pradesh",
           "description": "The national emblem of India, originally placed atop an Ashoka Pillar",
-          "image": "/time-line-images/sarnath_Lion_Capital_of_Ashoka.jpg"
+          "image": "/time-line-images/sarnath_Lion_Capital_of_Ashoka.webp"
         },
         {
           "name": "Deogarh Dashavatara Temple",
           "location": "Uttar Pradesh",
           "description": "One of the earliest Hindu stone temples with remarkable Gupta-era sculptures",
-          "image": "/time-line-images/deogarh.jpg"
+          "image": "/time-line-images/deogarh.webp"
         }
       ]
     },
@@ -68,19 +68,19 @@
           "name": "Ellora Caves",
           "location": "Maharashtra",
           "description": "Rock-cut caves with Hindu, Buddhist and Jain monuments including the incredible Kailasa Temple",
-          "image": "/time-line-images/ellora1.jpg"
+          "image": "/time-line-images/ellora1.webp"
         },
         {
           "name": "Qutub Minar",
           "location": "Delhi",
           "description": "The tallest brick minaret in the world, begun by Qutb-ud-din Aibak",
-          "image": "/time-line-images/d_007.jpg"
+          "image": "/time-line-images/d_007.webp"
         },
         {
           "name": "Maitreya Buddha",
           "location": "Thiksey, Ladakh",
           "description": "The 15-meter high statue of Maitreya Buddha at Thiksey Monastery",
-          "image": "/time-line-images/maitreya-buddhathiksey.jpg"
+          "image": "/time-line-images/maitreya-buddhathiksey.webp"
         }
       ]
     },
@@ -95,19 +95,19 @@
           "name": "Basilica of Bom Jesus",
           "location": "Goa",
           "description": "UNESCO World Heritage baroque church containing the remains of St. Francis Xavier",
-          "image": "/time-line-images/Basilica-of-Bom-Jesus-1.jpg"
+          "image": "/time-line-images/Basilica-of-Bom-Jesus-1.webp"
         },
         {
           "name": "Meenakshi Temple",
           "location": "Madurai, Tamil Nadu",
           "description": "Dravidian masterpiece with 14 colorful gopurams and thousands of sculptures",
-          "image": "/time-line-images/meenkshi temple 4.jpg"
+          "image": "/time-line-images/meenkshi temple 4.webp"
         },
         {
           "name": "Bundi Miniature Paintings",
           "location": "Rajasthan",
           "description": "A distinct school of Rajasthani miniature painting known for its turquoise backgrounds",
-          "image": "/time-line-images/bundi miniature-painting.jpg"
+          "image": "/time-line-images/bundi miniature-painting.webp"
         }
       ]
     },
@@ -122,13 +122,13 @@
           "name": "Victoria Memorial",
           "location": "Kolkata, West Bengal",
           "description": "A grand marble building dedicated to Queen Victoria, now a museum",
-          "image": "/time-line-images/vic memorial.jpg"
+          "image": "/time-line-images/vic memorial.webp"
         },
         {
           "name": "India Gate",
           "location": "Delhi",
           "description": "War memorial honoring Indian soldiers who died in World War I",
-          "image": "/time-line-images/d_066.jpg"
+          "image": "/time-line-images/d_066.webp"
         }
       ]
     },
@@ -143,13 +143,13 @@
           "name": "Lotus Temple",
           "location": "Delhi",
           "description": "Bahá'í House of Worship designed in the shape of a lotus flower",
-          "image": "/time-line-images/BahaiLotusTemple.jpg"
+          "image": "/time-line-images/BahaiLotusTemple.webp"
         },
         {
           "name": "Manipuri Dance",
           "location": "Manipur",
           "description": "One of the major classical dance forms of India, known for its graceful movements",
-          "image": "/time-line-images/manipuri dance2.jpg"
+          "image": "/time-line-images/manipuri dance2.webp"
         }
       ]
     }
