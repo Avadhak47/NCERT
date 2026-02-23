@@ -217,9 +217,9 @@ const ExplorePage = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="relative z-10 flex-shrink-0 px-4 sm:px-6 md:px-12 mt-4 sm:mt-6 pb-8"
+                    className="relative z-10 flex-shrink-0 w-full px-4 sm:px-6 md:px-12 mt-4 sm:mt-6 pb-8"
                 >
-                    <div className="rounded-2xl sm:rounded-3xl bg-white shadow-xl border border-slate-200/80 overflow-hidden max-w-5xl mx-auto">
+                    <div className="w-full rounded-2xl sm:rounded-3xl bg-white shadow-xl border border-slate-200/80 overflow-hidden max-w-5xl mx-auto">
 
 
                         {/* Map container - bg extends behind via fixed layer */}
