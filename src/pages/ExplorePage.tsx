@@ -234,7 +234,7 @@ const ExplorePage = () => {
                 </motion.section>
 
                 {selectedState && (
-                    <div className="fixed inset-0 z-50 bg-white">
+                    <div className="fixed inset-0 z-[110] bg-white">
                         <StateTile
                             stateId={selectedState.id}
                             stateName={selectedState.name}
