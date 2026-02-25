@@ -36,10 +36,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
     const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
     const [expandedArticleId, setExpandedArticleId] = useState<string | null>(null);
 
-    const handleImageError = useCallback((failedUrl: string, fallbackUrl: string, e: React.SyntheticEvent<HTMLImageElement>) => {
-        setFailedImageUrls(prev => new Set(prev).add(failedUrl));
-        (e.target as HTMLImageElement).src = fallbackUrl;
-    }, []);
+    // Removed old handleImageError since it was redeclared further down
 
     // Look up the specific state from JSON
     const stateRecord = useMemo(() => {
@@ -113,16 +110,37 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
         }
     }, [activeMonumentId]);
 
+    const handleImageError = useCallback((failedUrl: string, fallbackUrl: string, e: React.SyntheticEvent<HTMLImageElement>) => {
+        // Prevent infinite loop if the fallback itself fails
+        if (failedUrl === fallbackUrl || failedImageUrls.has(fallbackUrl)) {
+            return; // Give up trying to load images for this element if fallback fails
+        }
+
+        setFailedImageUrls(prev => new Set(prev).add(failedUrl));
+        (e.target as HTMLImageElement).src = fallbackUrl;
+    }, [failedImageUrls]);
+
+    // ...
+
     const renderImage = (item: GalleryItem, className: string) => {
-        const url = hasImage(item.img) && !failedImageUrls.has(getImageUrl(item.img!))
-            ? getImageUrl(item.img!)
-            : getFallbackImage(item.name, item.type.toLowerCase() as any);
+        const primaryUrl = getImageUrl(item.img!);
+        const fallbackUrl = getFallbackImage(item.name, item.type.toLowerCase() as any);
+
+        // If primary URL has failed previously, use fallback directly
+        const urlToUse = hasImage(item.img) && !failedImageUrls.has(primaryUrl)
+            ? primaryUrl
+            : fallbackUrl;
+
+        // If fallback has also failed previously, maybe render a solid color block instead
+        if (failedImageUrls.has(fallbackUrl)) {
+            return <div className={`${className} bg-slate-800 flex items-center justify-center text-white/20`}><ImageIcon className="w-12 h-12" /></div>;
+        }
 
         return (
             <img
-                src={url}
+                src={urlToUse}
                 alt={item.name}
-                onError={(e) => handleImageError((e.target as HTMLImageElement).currentSrc, getFallbackImage(item.name, item.type.toLowerCase() as any), e)}
+                onError={(e) => handleImageError((e.target as HTMLImageElement).currentSrc || urlToUse, fallbackUrl, e)}
                 className={className}
             />
         );
