@@ -6,7 +6,7 @@ const GamesPage = () => {
     const [activeGame, setActiveGame] = useState<number | null>(null);
 
     return (
-        <div className="w-full h-full overflow-y-auto px-6 py-8 md:p-12">
+        <div className="w-full h-full overflow-y-auto pt-28 sm:pt-36 pb-8 px-6 md:px-12 md:pb-12">
             <header className="mb-12 text-center">
                 <h2 className="text-4xl md:text-5xl font-serif text-[var(--color-accent-amber)] mb-4 drop-shadow-md">Play & Learn</h2>
                 <p className="text-gray-300 max-w-2xl mx-auto text-lg">

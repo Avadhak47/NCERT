@@ -8,13 +8,7 @@ import GlossaryPage from './pages/GlossaryPage';
 import AcknowledgementPage from './pages/AcknowledgementPage';
 
 function App() {
-  // #region agent log
-  try {
-    const payload = { sessionId: 'a384df', runId: 'init', hypothesisId: 'H1', location: 'App.tsx:render', message: 'App render', data: { path: typeof window !== 'undefined' ? window.location.pathname : 'ssr' }, timestamp: Date.now() };
-    console.log('[DEBUG a384df]', JSON.stringify(payload));
-    fetch('http://127.0.0.1:7916/ingest/c9913420-3ae7-4281-95f6-9d1d10e6cbdc', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'a384df' }, body: JSON.stringify(payload) }).catch(() => {});
-  } catch (_) {}
-  // #endregion
+
   return (
     <BrowserRouter>
       <Routes>

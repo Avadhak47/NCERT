@@ -94,10 +94,10 @@ const ArtFormsPage = () => {
     }
 
     return (
-        <div className="w-full h-full overflow-y-auto px-4 sm:px-6 py-6 sm:py-8 md:px-12 lg:px-24 bg-[var(--color-surface-warm)] relative">
+        <div className="w-full h-full overflow-y-auto px-4 sm:px-6 pt-28 sm:pt-32 pb-6 sm:pb-8 md:px-12 lg:px-24 bg-transparent relative">
             <header className="mb-6 sm:mb-8 text-center mt-2 sm:mt-4">
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-gradient-brand mb-3 sm:mb-4">Cultural Gallery</h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-base sm:text-lg font-medium font-sans px-2">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white drop-shadow-md mb-3 sm:mb-4">Cultural Gallery</h2>
+                <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg font-medium font-sans px-2">
                     Explore the diverse tapestry of Indian heritage — classical dances, ancient monuments, and crafts. Click any tile to dive deep.
                 </p>
             </header>
@@ -110,8 +110,8 @@ const ArtFormsPage = () => {
                         onClick={() => setActiveTab(tab)}
                         className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm tracking-wide transition-all duration-250 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-primary)] focus:ring-offset-2
                             ${activeTab === tab
-                                ? 'bg-gradient-to-r from-[var(--color-brand-primary)] to-[var(--color-brand-secondary)] text-white shadow-md scale-[1.02]'
-                                : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 hover:border-slate-300'}
+                                ? 'bg-white/30 backdrop-blur-md text-white shadow-md scale-[1.02] border border-white/50'
+                                : 'bg-white/10 text-white/80 hover:text-white hover:bg-white/20 border border-white/20 hover:border-white/40 backdrop-blur-sm'}
                         `}
                     >
                         {tab}
@@ -130,10 +130,10 @@ const ArtFormsPage = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.4 }}
                             onClick={() => setSelectedArt(art)}
-                            className="w-full break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-white shadow-md hover:shadow-[0_16px_48px_-12px_rgba(2,132,199,0.25)] transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[var(--color-brand-primary)]/50 text-left hover:-translate-y-1.5 border border-slate-100 hover:border-[var(--color-brand-primary)]/30"
+                            className="w-full break-inside-avoid relative group rounded-[1.5rem] overflow-hidden bg-white/10 backdrop-blur-xl shadow-md hover:shadow-2xl hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 text-left hover:-translate-y-1.5 border border-white/20 hover:border-white/40"
                             aria-label={`View details for ${art.title} - ${art.state}`}
                         >
-                            <div style={{ height: art.height }} className="w-full overflow-hidden bg-gray-100 relative">
+                            <div style={{ height: art.height }} className="w-full overflow-hidden bg-white/5 relative">
                                 <img
                                     src={hasImage(art.img) && !failedImageUrls.has(getImageUrl(art.img!)) ? getImageUrl(art.img!) : getFallbackImage(art.title ?? art.name, artTypeToFallbackType(art.type))}
                                     alt={art.title ?? ''}
@@ -154,7 +154,7 @@ const ArtFormsPage = () => {
                                 </span>
                                 <h3 className="text-xl font-serif text-white font-bold leading-tight drop-shadow-md mb-1">{art.title}</h3>
                                 <p className="text-white/80 text-xs font-medium flex items-center gap-1">
-                                    <MapPin className="w-3 h-3 text-[var(--color-brand-accent)] drop-shadow-sm" />
+                                    <MapPin className="w-3 h-3 text-white/50 drop-shadow-sm" />
                                     {art.state}
                                 </p>
                             </div>
@@ -178,57 +178,57 @@ const ArtFormsPage = () => {
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.96, opacity: 0, y: 12 }}
                             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-                            className="bg-white rounded-3xl overflow-hidden w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row shadow-[0_24px_80px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5 relative"
+                            className="bg-white/10 backdrop-blur-2xl rounded-3xl overflow-hidden w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row shadow-[0_24px_80px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20 relative"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden relative bg-slate-100">
+                            <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden relative bg-white/5">
                                 <img
                                     src={hasImage(selectedArt.img) && !failedImageUrls.has(getImageUrl(selectedArt.img!)) ? getImageUrl(selectedArt.img!) : getFallbackImage(selectedArt.title ?? selectedArt.name, artTypeToFallbackType(selectedArt.type))}
                                     alt={selectedArt.title ?? ''}
-                                    className="w-full h-full object-cover object-center"
+                                    className="w-full h-full object-cover object-center opacity-90"
                                     onError={(e) => {
                                         const src = (e.target as HTMLImageElement).currentSrc;
                                         handleImageError(src, getFallbackImage(selectedArt.title ?? selectedArt.name, artTypeToFallbackType(selectedArt.type)), e);
                                     }}
                                 />
                                 <div className="absolute top-4 left-4 flex gap-2">
-                                    <span className="px-4 py-1.5 bg-white/90 backdrop-blur text-[var(--color-brand-primary)] text-sm font-bold tracking-widest uppercase rounded-full shadow-lg">
+                                    <span className="px-4 py-1.5 bg-white/20 backdrop-blur-md text-white border border-white/30 text-sm font-bold tracking-widest uppercase rounded-full shadow-lg">
                                         {selectedArt.type}
                                     </span>
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto bg-[var(--color-surface-warm)] relative">
+                            <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto bg-transparent relative">
                                 <button
                                     onClick={() => setSelectedArt(null)}
-                                    className="absolute top-6 right-6 p-2 bg-white rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-brand-secondary)] hover:bg-[var(--color-surface-muted)] shadow-sm transition-colors focus:ring-2 focus:ring-[var(--color-brand-primary)]"
+                                    className="absolute top-6 right-6 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 shadow-sm transition-colors focus:ring-2 focus:ring-white border border-white/20"
                                     aria-label="Close details"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
 
-                                <div className="flex items-center gap-2 text-[var(--color-brand-accent)] font-bold mb-4">
+                                <div className="flex items-center gap-2 text-white/70 font-bold mb-4">
                                     <MapPin className="w-5 h-5" />
                                     <span className="text-lg">{selectedArt.state}</span>
                                 </div>
 
-                                <h2 className="text-4xl font-serif text-[var(--color-brand-primary)] font-black mb-6">{selectedArt.title}</h2>
+                                <h2 className="text-4xl font-serif text-white font-black drop-shadow-md mb-6">{selectedArt.title}</h2>
 
                                 <div className="space-y-4">
-                                    <p className="text-lg text-[var(--color-text-main)] font-medium leading-relaxed">
+                                    <p className="text-lg text-white/90 font-medium leading-relaxed">
                                         {selectedArt.desc}
                                     </p>
 
                                     {/* Rich details section for prototype filling */}
-                                    <div className="p-6 bg-white rounded-2xl border-2 border-[var(--color-surface-muted)] shadow-sm mt-8">
-                                        <h4 className="text-[var(--color-brand-secondary)] font-bold mb-2">Historical Significance</h4>
-                                        <p className="text-[var(--color-text-muted)] leading-relaxed">
+                                    <div className="p-6 bg-white/5 rounded-2xl border-2 border-white/10 shadow-sm mt-8">
+                                        <h4 className="text-white font-bold mb-2">Historical Significance</h4>
+                                        <p className="text-white/70 leading-relaxed">
                                             {selectedArt.historical_significance || "This art form has been passed down through generations, strictly adhering to ancient principles while evolving subtly over time. Used historically for storytelling, worship, and celebrating changing seasons, it forms a core part of the intangible cultural heritage of India."}
                                         </p>
                                     </div>
-                                    <div className="p-6 bg-white rounded-2xl border-2 border-[var(--color-surface-muted)] shadow-sm">
-                                        <h4 className="text-[var(--color-brand-purple)] font-bold mb-2">Materials & Process</h4>
-                                        <p className="text-[var(--color-text-muted)] leading-relaxed">
+                                    <div className="p-6 bg-white/5 rounded-2xl border-2 border-white/10 shadow-sm">
+                                        <h4 className="text-white font-bold mb-2">Materials & Process</h4>
+                                        <p className="text-white/70 leading-relaxed">
                                             {selectedArt.materials || "Natural dyes, locally sourced materials, and intricate manual processes are the hallmarks of this tradition. The skill requires years of rigorous practice, often starting from a very young age under the guidance of a master artisan."}
                                         </p>
                                     </div>

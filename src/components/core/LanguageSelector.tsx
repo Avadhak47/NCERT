@@ -41,6 +41,10 @@ const LanguageSelector: React.FC = () => {
     const handleSelect = (lang: (typeof LANGUAGES)[0]) => {
         setSelectedLang(lang);
         setIsOpen(false);
+        // TODO(Bhashini): Integrate Bhashini API for entire site translation here
+        // 1. Send the requested language code (`lang.code`) to the Bhashini service.
+        // 2. Fetch or trigger the translation stream.
+        // 3. Update the internationalization context (e.g. i18n overlay or language provider bindings).
         console.log(`[Bhashini API Mock] Triggering translation to: ${lang.code}`);
     };
 
