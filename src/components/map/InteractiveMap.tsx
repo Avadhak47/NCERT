@@ -2,24 +2,30 @@ import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as d3 from 'd3';
 
 interface InteractiveMapProps {
-    onStateSelect: (stateId: string, stateName: string) => void;
-    onRegionSelect?: (regionName: string | null) => void;
-    activeStateId?: string | null;
+    // Engine State & Actions
+    activeState: string | null;
+    activeRegion: string | null;
+    pois: any[];
+    mapData: any;
+    colors: any;
+    onStateClick: (stateName: string, stateId: string) => void;
+    onRegionClick: (regionName: string) => void;
+    onBackgroundClick: () => void;
+
+    // Legacy props kept for now to avoid breaking other pages if any
+    onMonumentSelect?: (monumentId: string) => void;
+    activeMonumentId?: string | null;
 }
 
-// Maps specific Indian state ISO/Names to general regions
-// Maps map JSON property 'st_nm' to states.json 'name'
 const STATE_NAME_MAPPING: Record<string, string> = {
     'Andaman and Nicobar Islands': 'Andaman & Nicobar',
     'Dadra and Nagar Haveli': 'Dadar & Nagar Haveli',
     'Daman and Diu': 'Daman & Diu',
     'Jammu and Kashmir': 'Jammu & Kashmir',
     'Odisha': 'Orissa',
-    'Uttarakhand': 'Uttarkhand',
-    'Ladakh': 'Jammu & Kashmir' // Fall back to J&K dashboard for Ladakh data
+    'Uttarakhand': 'Uttarkhand'
 };
 
-// Maps specific Indian state ISO/Names to general regions
 const REGION_MAP: Record<string, string> = {
     // North
     'Jammu and Kashmir': 'North',
@@ -68,59 +74,20 @@ const REGION_MAP: Record<string, string> = {
 
 const REGIONS = ['North', 'West', 'Central', 'East', 'South', 'Northeast'];
 
-// Geographic coordinates for all state capitals
-const POIS = [
-    { name: "New Delhi", lat: 28.6139, lon: 77.2090, type: "capital" },
-    { name: "Srinagar", lat: 34.0836, lon: 74.7973, type: "capital" },
-    { name: "Leh", lat: 34.1526, lon: 77.5770, type: "capital" },
-    { name: "Shimla", lat: 31.1048, lon: 77.1734, type: "capital" },
-    { name: "Dehradun", lat: 30.3165, lon: 78.0322, type: "capital" },
-    { name: "Chandigarh", lat: 30.7333, lon: 76.7794, type: "capital" },
-    { name: "Jaipur", lat: 26.9124, lon: 75.7873, type: "capital" },
-    { name: "Lucknow", lat: 26.8467, lon: 80.9462, type: "capital" },
-    { name: "Patna", lat: 25.5941, lon: 85.1376, type: "capital" },
-    { name: "Ranchi", lat: 23.3441, lon: 85.3096, type: "capital" },
-    { name: "Bhubaneswar", lat: 20.2961, lon: 85.8245, type: "capital" },
-    { name: "Kolkata", lat: 22.5726, lon: 88.3639, type: "capital" },
-    { name: "Gangtok", lat: 27.3389, lon: 88.6065, type: "capital" },
-    { name: "Dispur", lat: 26.1433, lon: 91.7898, type: "capital" },
-    { name: "Itanagar", lat: 27.0844, lon: 93.6053, type: "capital" },
-    { name: "Kohima", lat: 25.6751, lon: 94.1086, type: "capital" },
-    { name: "Imphal", lat: 24.8170, lon: 93.9368, type: "capital" },
-    { name: "Aizawl", lat: 23.7271, lon: 92.7176, type: "capital" },
-    { name: "Agartala", lat: 23.8315, lon: 91.2868, type: "capital" },
-    { name: "Shillong", lat: 25.5788, lon: 91.8933, type: "capital" },
-    { name: "Bhopal", lat: 23.2599, lon: 77.4126, type: "capital" },
-    { name: "Raipur", lat: 21.2514, lon: 81.6296, type: "capital" },
-    { name: "Gandhinagar", lat: 23.2156, lon: 72.6369, type: "capital" },
-    { name: "Mumbai", lat: 19.0760, lon: 72.8777, type: "capital" },
-    { name: "Panaji", lat: 15.4909, lon: 73.8278, type: "capital" },
-    { name: "Bengaluru", lat: 12.9716, lon: 77.5946, type: "capital" },
-    { name: "Thiruvananthapuram", lat: 8.5241, lon: 76.9366, type: "capital" },
-    { name: "Chennai", lat: 13.0827, lon: 80.2707, type: "capital" },
-    { name: "Hyderabad", lat: 17.3850, lon: 78.4867, type: "capital" },
-    { name: "Amaravati", lat: 16.5062, lon: 80.5214, type: "capital" },
-    { name: "Port Blair", lat: 11.6234, lon: 92.7265, type: "capital" },
-    { name: "Kavaratti", lat: 10.5667, lon: 72.6417, type: "capital" },
-    { name: "Puducherry", lat: 11.9416, lon: 79.8083, type: "capital" },
-    { name: "Silvassa", lat: 20.2736, lon: 73.0039, type: "capital" },
-    { name: "Daman", lat: 20.3974, lon: 72.8328, type: "capital" }
-];
-
-const InteractiveMap: React.FC<InteractiveMapProps> = ({ onStateSelect, onRegionSelect, activeStateId }) => {
+const InteractiveMap: React.FC<InteractiveMapProps> = ({
+    activeState,
+    activeRegion,
+    pois,
+    mapData,
+    colors,
+    onStateClick,
+    onRegionClick,
+    onBackgroundClick,
+    onMonumentSelect,
+    activeMonumentId
+}) => {
     const svgRef = useRef<SVGSVGElement>(null);
-    const [activeRegion, setActiveRegion] = useState<string | null>(null);
-    const [activeState, setActiveState] = useState<string | null>(null);
-    const [mapData, setMapData] = useState<any>(null);
     const [pathGen, setPathGen] = useState<any>(null);
-
-    useEffect(() => {
-        // Fetch accurate GeoJSON for India from local public folder
-        fetch('public/india-states.json')
-            .then(res => res.json())
-            .then(data => setMapData(data))
-            .catch(err => console.error("Error fetching map data: ", err));
-    }, []);
 
     // Memoize bounding boxes for each region
     const regionBounds = useMemo(() => {
@@ -129,7 +96,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onStateSelect, onRegion
         const bounds: Record<string, [[number, number], [number, number]]> = {};
 
         REGIONS.forEach(region => {
-            // Find all features belonging to this region
             const features = mapData.features.filter((f: any) => {
                 const name = f.properties.st_nm;
                 return REGION_MAP[name] === region;
@@ -137,7 +103,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onStateSelect, onRegion
 
             if (features.length === 0) return;
 
-            // Calculate merged bounding box
             let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
             features.forEach((f: any) => {
                 const b = pathGen.bounds(f);
@@ -153,287 +118,365 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onStateSelect, onRegion
         return bounds;
     }, [mapData, pathGen]);
 
+    // Initialize Map Projection
     useEffect(() => {
         if (!svgRef.current || !mapData) return;
         const svg = d3.select(svgRef.current);
 
-        // Only set up projection/paths on initial load
         if (svg.select('g.map-group').empty()) {
             const width = 800;
             const height = 850;
 
-            // Setup projection to fit India
             const projection = d3.geoMercator().fitSize([width, height], mapData);
             const pathGenerator = d3.geoPath().projection(projection);
-            setPathGen(() => pathGenerator); // Store for later zoom calculations
+            setPathGen(() => pathGenerator);
 
             const g = svg.append('g').attr('class', 'map-group transition-opacity duration-500');
 
-            // Draw states
             g.selectAll('path.state')
-                .data(mapData.features)
+                .data(mapData?.features || [])
                 .enter()
                 .append('path')
                 .attr('class', 'state cursor-pointer transition-all duration-300 hover:brightness-110 focus:outline-none focus:ring-2')
-                .attr('id', (d: any) => `state-${(d.properties.st_nm || '').toString().replace(/\s+/g, '-')}`)
                 .attr('d', pathGenerator as any)
-                .attr('fill', (_d: any, i) => {
-                    const colors = ['#0284c7', '#ea580c', '#16a34a', '#8b5cf6', '#eab308', '#ec4899', '#14b8a6'];
-                    return colors[i % colors.length];
+                .attr('fill', (_d: any, i: number) => {
+                    const palette = colors.fill;
+                    return palette[i % palette.length];
                 })
-                .attr('stroke', '#ffffff')
-                .attr('stroke-width', '1')
-                .attr('tabindex', 0)
-                .attr('role', 'button')
-                .attr('aria-label', (d: any) => `State ${d.properties.st_nm}`)
-                .style('opacity', 1);
+                .attr('stroke', colors.stroke)
+                .attr('stroke-width', '1');
 
-            // Draw POI markers
-            const poiGroup = svg.append('g').attr('class', 'poi-group pointer-events-none transition-opacity duration-500');
-            poiGroup.selectAll('circle.poi')
-                .data(POIS)
-                .enter()
-                .append('circle')
-                .attr('class', 'poi')
-                .attr('cx', d => { const coord = projection([d.lon, d.lat]); return coord ? coord[0] : 0; })
-                .attr('cy', d => { const coord = projection([d.lon, d.lat]); return coord ? coord[1] : 0; })
-                .attr('r', 4)
-                .attr('fill', d => {
-                    if (d.type === 'capital') return '#dc2626'; // red
-                    if (d.type === 'monument') return '#fbbf24'; // amber
-                    if (d.type === 'geography') return '#16a34a'; // green
-                    return '#e5e7eb'; // default city dot
-                })
-                .attr('stroke', '#fff')
-                .attr('stroke-width', 1);
-
-            poiGroup.selectAll('text.poi-label')
-                .data(POIS)
-                .enter()
-                .append('text')
-                .attr('class', 'poi-label text-[8px] font-bold fill-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]')
-                .attr('x', d => { const coord = projection([d.lon, d.lat]); return coord ? coord[0] + 6 : 0; })
-                .attr('y', d => { const coord = projection([d.lon, d.lat]); return coord ? coord[1] + 3 : 0; })
-                .text(d => d.name);
+            // Create POI group container once
+            svg.append('g').attr('class', 'poi-group transition-opacity duration-500');
         }
+    }, [mapData, colors]); // colors dependency to re-render if theme changes? Ideally updates d3 attr.
 
-        // Update handlers to rely on current state
-        const svgUpdate = d3.select(svgRef.current);
-        svgUpdate.selectAll('path.state')
-            .on('click', (_event, d: any) => handleStateClick(d))
-            .on('keydown', (event, d: any) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    handleStateClick(d);
+    // Update click handlers with fresh state
+    useEffect(() => {
+        if (!svgRef.current) return;
+        const svg = d3.select(svgRef.current);
+
+        svg.selectAll('path.state')
+            .on('click', (event, d: any) => {
+                event.stopPropagation();
+                const stNm = d.properties.st_nm;
+                const stateName = STATE_NAME_MAPPING[stNm] || stNm;
+                const stateRegion = REGION_MAP[stNm] || 'Unknown';
+
+                console.log('Click on:', stNm, 'Region:', stateRegion, 'ActiveRegion:', activeRegion, 'ActiveState:', activeState);
+
+                if (activeRegion !== stateRegion) {
+                    console.log('Switching to region:', stateRegion);
+                    onRegionClick(stateRegion);
+                } else {
+                    console.log('Opening state:', stateName);
+                    onStateClick(stateName, stateName);
                 }
             });
+    }, [activeRegion, activeState, mapData]);
 
-        // Background click to zoom out
-        svgUpdate.on('dblclick', () => {
-            if (activeRegion || activeState) {
-                resetZoom();
-            }
-        });
-
-    }, [mapData, activeRegion, activeState, regionBounds]);
-
-    // Track external resets (e.g. closing dashboard)
+    // Update colors when theme changes
     useEffect(() => {
-        if (activeStateId === null && activeState !== null) {
-            setActiveState(null);
-            if (activeRegion && regionBounds[activeRegion]) {
-                zoomToBounds(d3.select(svgRef.current), regionBounds[activeRegion], 120);
-            } else {
-                resetZoom();
-            }
-        }
-    }, [activeStateId, activeState, activeRegion, regionBounds]);
+        if (!svgRef.current) return;
+        const svg = d3.select(svgRef.current);
+        svg.selectAll('path.state')
+            .attr('fill', (_d: any, i: number) => {
+                const palette = colors.fill;
+                return palette[i % palette.length];
+            })
+            .attr('stroke', colors.stroke);
 
-    // Handle styling changes distinctly from path generation
+        svg.selectAll('circle.poi')
+            .attr('fill', d => (d as any).id === activeMonumentId ? '#dc2626' : colors.poi);
+
+    }, [colors, activeMonumentId]);
+
+
+    // Styling and Opacity Logic
     useEffect(() => {
-        if (!svgRef.current || !mapData) return;
+        if (!svgRef.current) return;
         const svg = d3.select(svgRef.current);
 
         svg.selectAll('path.state').each(function (d: any) {
-            const stateName = d.properties.st_nm;
-            const stateRegion = REGION_MAP[stateName] || 'Unknown';
+            const rawStateName = d.properties.st_nm;
+            const mappedStateName = STATE_NAME_MAPPING[rawStateName] || rawStateName;
+            const stateRegion = REGION_MAP[rawStateName] || 'Unknown';
             const element = d3.select(this);
 
-            // Styling logic based on current zoom level
             if (activeState) {
-                // Dim everything except active state
-                if (stateName === activeState) {
-                    element.style('opacity', 1).attr('stroke-width', '3').attr('stroke', '#0f172a');
+                if (mappedStateName === activeState) {
+                    element.style('opacity', 1).attr('stroke-width', '2');
                 } else {
-                    element.style('opacity', 0.2).attr('stroke-width', '1').attr('stroke', '#ffffff');
+                    element.style('opacity', 0).attr('stroke-width', '0');
                 }
             } else if (activeRegion) {
-                // Dim states outside the active region, highlight border
                 if (stateRegion === activeRegion) {
-                    element.style('opacity', 1).attr('stroke-width', '2').attr('stroke', '#ffffff');
+                    element.style('opacity', 1).attr('stroke-width', '2');
                 } else {
-                    element.style('opacity', 0.1).attr('stroke-width', '0.5').attr('stroke', '#ffffff');
+                    element.style('opacity', 0.1).attr('stroke-width', '0.5');
                 }
             } else {
-                // Default state
-                element.style('opacity', 1).attr('stroke-width', '1').attr('stroke', '#ffffff');
+                element.style('opacity', 1).attr('stroke-width', '1');
             }
         });
 
-        // Handle POI visibility based on zoom
-        if (activeRegion || activeState) {
-            svg.select('g.poi-group').style('opacity', 1);
-        } else {
-            svg.select('g.poi-group').style('opacity', 0);
-        }
-    }, [activeRegion, activeState, mapData]);
+    }, [activeState, activeRegion, mapData]);
 
-    const handleStateClick = (d: any) => {
-        playSwooshAudio();
+    // Zoom Logic
+    useEffect(() => {
+        if (!svgRef.current || !pathGen || !mapData) return;
         const svg = d3.select(svgRef.current);
-        const stNm = d.properties.st_nm;
-        const stateName = STATE_NAME_MAPPING[stNm] || stNm;
-        const stateId = STATE_NAME_MAPPING[stNm] || stNm;
-        const stateRegion = REGION_MAP[stNm] || 'Unknown';
 
-        if (!activeRegion) {
-            // STEP 1: Zoom to Region
-            setActiveRegion(stateRegion);
-            if (onRegionSelect) onRegionSelect(stateRegion);
-            setActiveState(null);
+        let bounds: [[number, number], [number, number]] | null = null;
+        let padding = 20;
 
-            const bounds = regionBounds[stateRegion];
-            if (bounds) zoomToBounds(svg, bounds, 120);
+        if (activeState) {
+            // Find ALL features that map to this activeState (e.g. J&K + Ladakh might both map to "Jammu & Kashmir")
+            const features = mapData.features.filter((f: any) => {
+                const n = STATE_NAME_MAPPING[f.properties.st_nm] || f.properties.st_nm;
+                return n === activeState;
+            });
 
-        } else if (activeRegion === stateRegion && activeState !== stateName) {
-            // STEP 2: Inside Region, Click State -> Zoom to State
-            setActiveState(stateName);
+            if (features.length > 0) {
+                // To encompass all features, we find the min/max bounds across all of them
+                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
 
-            const bounds = pathGen.bounds(d);
-            zoomToBounds(svg, bounds, 60);
+                features.forEach((feature: any) => {
+                    const featureBounds = pathGen.bounds(feature);
+                    minX = Math.min(minX, featureBounds[0][0]);
+                    minY = Math.min(minY, featureBounds[0][1]);
+                    maxX = Math.max(maxX, featureBounds[1][0]);
+                    maxY = Math.max(maxY, featureBounds[1][1]);
+                });
 
-            // Bubble up selection to parent
-            setTimeout(() => {
-                onStateSelect(stateId, stateName);
-            }, 800);
+                bounds = [[minX, minY], [maxX, maxY]];
 
-        } else if (activeState === stateName) {
-            // Click active state -> zoom back to region
-            setActiveState(null);
-            const bounds = regionBounds[stateRegion];
-            if (bounds) zoomToBounds(svg, bounds, 120);
-            onStateSelect('', ''); // Clear parent selection
+                // Adjust padding to ensure it fits nicely alongside the expanded state info panel
+                // On desktop, the panel takes up the right ~53%, so we pad the right side specifically or just
+                // overall pad tighter to leave room.
+                padding = 20;
+            }
+        } else if (activeRegion) {
+            bounds = regionBounds[activeRegion];
+            padding = 120;
         } else {
-            // Click state in different region -> Zoom to new region entirely
-            setActiveRegion(stateRegion);
-            if (onRegionSelect) onRegionSelect(stateRegion);
-            setActiveState(null);
-            const bounds = regionBounds[stateRegion];
-            if (bounds) zoomToBounds(svg, bounds, 120);
-            onStateSelect('', '');
+            // India View (Reset)
+            // Hardcoded viewbox for India
+            zoomToViewBox(svg, '-20 -140 840 1060');
+            return;
         }
-    };
 
-    const zoomToBounds = (svg: any, bounds: [[number, number], [number, number]], padding: number) => {
+        if (bounds) {
+            zoomToBounds(svg, bounds, padding);
+        }
+
+    }, [activeState, activeRegion, mapData, pathGen, regionBounds]);
+
+    // POI Rendering
+    useEffect(() => {
+        if (!svgRef.current || !mapData || !pathGen) return;
+
+        // 1. Calculate Target Scale so sizes stay consistent visually when zooming
+        let vw = 840;
+        if (activeState) {
+            const feature = mapData.features.find((f: any) => (STATE_NAME_MAPPING[f.properties.st_nm] || f.properties.st_nm) === activeState);
+            if (feature) {
+                const bounds = pathGen.bounds(feature);
+                const dx = bounds[1][0] - bounds[0][0];
+                vw = dx + 20; // smaller padding for state
+            }
+        } else if (activeRegion) {
+            const bounds = regionBounds[activeRegion];
+            if (bounds) {
+                const dx = bounds[1][0] - bounds[0][0];
+                vw = dx + 240; // region padding
+            }
+        }
+
+        const scale = vw / 840; // 1 for India, e.g. 0.1 for a small state
+
+        // Dynamic base sizes
+        const dynRadius = Math.max(0.5, 5 * scale);
+        const dynActiveRadius = Math.max(0.8, 8 * scale);
+        const dynFontSize = Math.max(1, 14 * scale); // Increased for readability
+        const dynLinkDistance = Math.max(1.5, 14 * scale);
+        const dynCollideRadius = Math.max(2, 26 * scale);
+
+        // --- Handle dynamic drawing of POIs based on active state ---
+        const svgUpdate = d3.select(svgRef.current);
+        const poiGroup = svgUpdate.select('g.poi-group');
+        const projection = d3.geoMercator().fitSize([800, 850], mapData);
+
+        // Bind new data
+        const circles = poiGroup.selectAll('circle.poi').data(pois, (d: any) => d.id);
+        const labels = poiGroup.selectAll('text.poi-label').data(pois, (d: any) => d.id);
+
+        circles.exit().transition().duration(300).style('opacity', 0).remove();
+        labels.exit().transition().duration(300).style('opacity', 0).remove();
+
+        const circlesEnter = circles.enter()
+            .append('circle')
+            .attr('class', 'poi cursor-pointer hover:stroke-[3px] transition-all')
+            .attr('r', 0)
+            .style('opacity', 0)
+            .attr('cx', d => projection([d.lon, d.lat])?.[0] || 0)
+            .attr('cy', d => projection([d.lon, d.lat])?.[1] || 0)
+            .attr('fill', d => d.id === activeMonumentId ? '#dc2626' : colors.poi)
+            .attr('stroke', d => d.id === activeMonumentId ? '#ffffff' : colors.poiStroke)
+            .attr('stroke-width', d => d.id === activeMonumentId ? 2 * scale : 1 * scale)
+            .on('click', (event, d: any) => {
+                event.stopPropagation();
+                if (onMonumentSelect) onMonumentSelect(d.id);
+            });
+
+        circlesEnter.merge(circles as any)
+            .transition().duration(800) // Match zoom duration
+            .attr('cx', d => projection([d.lon, d.lat])?.[0] || 0)
+            .attr('cy', d => projection([d.lon, d.lat])?.[1] || 0)
+            .attr('r', d => (d as any).id === activeMonumentId ? dynActiveRadius : dynRadius)
+            .attr('fill', d => (d as any).id === activeMonumentId ? '#dc2626' : colors.poi)
+            .attr('stroke', d => (d as any).id === activeMonumentId ? '#ffffff' : colors.poiStroke)
+            .attr('stroke-width', d => (d as any).id === activeMonumentId ? 2 * scale : 1 * scale)
+            .style('opacity', 1);
+
+        // 2. Simulate label physics to prevent overlap & decide multi-direction placement
+        // Create an anchor node (fixed) and label node (movable) for each POI
+        const nodes: any[] = [];
+        const links: any[] = [];
+
+        pois.forEach((d: any) => {
+            const coord = projection([d.lon, d.lat]);
+            const cx = coord ? coord[0] : 0;
+            const cy = coord ? coord[1] : 0;
+
+            // Anchor (fixed POI position)
+            const anchor = { id: `anchor_${d.id}`, fx: cx, fy: cy };
+            // Label (starts slightly offset to bottom-right by default, then physics takes over)
+            const label = { id: d.id, name: d.name, x: cx + dynLinkDistance, y: cy + dynLinkDistance, anchor: true };
+
+            nodes.push(anchor, label);
+            links.push({ source: anchor.id, target: label.id });
+        });
+
+        if (activeState && pois.length > 0) {
+            const sim = d3.forceSimulation(nodes)
+                .force('link', d3.forceLink(links).id((d: any) => d.id).distance(dynLinkDistance).strength(1))
+                .force('collide', d3.forceCollide().radius((d: any) => d.anchor ? dynCollideRadius : 0).iterations(3)) // labels repel labels
+                .force('charge', d3.forceManyBody().strength(-20 * scale)) // Slight repulsion overall
+                .stop();
+
+            // Run simulation synchronously
+            for (let i = 0; i < 150; ++i) sim.tick();
+        }
+
+        const labelMap = new Map();
+        nodes.filter(n => n.anchor === true).forEach(n => labelMap.set(n.id, { x: n.x, y: n.y }));
+
+        // Enter + Update Labels
+        const labelsEnter = labels.enter()
+            .append('text')
+            .attr('class', 'poi-label font-bold fill-white/90 tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] pointer-events-none')
+            .style('font-size', `${dynFontSize}px`)
+            .style('paint-order', 'stroke fill')
+            .style('stroke', 'rgba(0,0,0,0.8)')
+            .style('stroke-width', `${2.5 * Math.max(0.5, scale)}px`)
+            .style('stroke-linecap', 'round')
+            .style('stroke-linejoin', 'round')
+            .style('opacity', 0)
+            .attr('x', d => projection([d.lon, d.lat])?.[0] || 0)
+            .attr('y', d => projection([d.lon, d.lat])?.[1] || 0)
+            .attr('text-anchor', d => {
+                const pos = labelMap.get((d as any).id);
+                const cx = projection([d.lon, d.lat])?.[0] || 0;
+                return pos && pos.x < cx ? 'end' : 'start'; // Align left or right depending on which side it landed
+            })
+            .text(d => d.name);
+
+        labelsEnter.merge(labels as any)
+            .transition().duration(800)
+            .style('font-size', `${dynFontSize}px`)
+            .style('stroke-width', `${2.5 * Math.max(0.5, scale)}px`)
+            .attr('x', d => labelMap.get((d as any).id)?.x || 0)
+            .attr('y', d => labelMap.get((d as any).id)?.y || 0)
+            .attr('text-anchor', d => {
+                const pos = labelMap.get((d as any).id);
+                const cx = projection([d.lon, d.lat])?.[0] || 0;
+                return pos && pos.x < cx ? 'end' : 'start';
+            })
+            .style('opacity', 1);
+
+        // Show/Hide POI Group
+        svgUpdate.select('g.poi-group')
+            .transition().duration(800)
+            .style('opacity', activeState ? 1 : 0);
+
+    }, [pois, activeState, activeRegion, mapData, colors, activeMonumentId, pathGen]);
+
+
+    // Helpers
+    const zoomToBounds = (svg: any, bounds: [[number, number], [number, number]], padding: number, rightOffset: number = 0) => {
         const dx = bounds[1][0] - bounds[0][0];
         const dy = bounds[1][1] - bounds[0][1];
-        const x = (bounds[0][0] + bounds[1][0]) / 2;
-        const y = (bounds[0][1] + bounds[1][1]) / 2;
 
-        const vw = dx + padding * 2;
+        // Original geometric center of the state
+        const cx = (bounds[0][0] + bounds[1][0]) / 2;
+        const cy = (bounds[0][1] + bounds[1][1]) / 2;
+
+        // We need to fit the state (dx by dy) into the viewport, but we artificially inflate
+        // the required width (vw) to account for the UI panel on the right.
+        // If rightOffset > 0, we effectively tell D3 that our "safe area" requires more width.
+        const effectiveWidthScale = 1 + rightOffset;
+
+        const vw = (dx + padding * 2) * effectiveWidthScale;
         const vh = dy + padding * 2;
-        const vx = x - vw / 2;
-        const vy = y - vh / 2;
 
-        const targetViewBox = `${vx} ${vy} ${vw} ${vh}`;
+        // Calculate raw top-left
+        let vx = cx - vw / 2;
+        const vy = cy - vh / 2;
 
+        // The center of our bounding box cx is currently in the absolute middle of the new vw.
+        // We want the state (which natively has width `dx`) to be visually centered in the 
+        // *left portion* of the screen (the remaining 47%). 
+        // To do this, we shift the viewBox X coordinate further negative, pushing the map rightward? 
+        // No, we decrease vx to shift the SVG camera left, meaning the map objects move RIGHT on screen. 
+        // We actually want the map objects to move LEFT to get out of the way of the right panel.
+        // So we INCREASE vx to move the camera right.
+
+        // Shift camera right by half the offset amount to push the content left
+        const shiftX = (vw * rightOffset) / 4;
+        vx += shiftX;
+
+        zoomToViewBox(svg, `${vx} ${vy} ${vw} ${vh}`);
+    };
+
+    const zoomToViewBox = (svg: any, viewBox: string) => {
         svg.transition()
             .duration(800)
             .attrTween('viewBox', function () {
-                const currentViewBox = svgRef.current?.getAttribute('viewBox') || '-20 -60 840 980';
-                const i = d3.interpolateString(currentViewBox, targetViewBox);
+                const currentViewBox = svgRef.current?.getAttribute('viewBox') || '-20 -140 840 1060';
+                const i = d3.interpolateString(currentViewBox, viewBox);
                 return function (t: number) { return i(t); };
             });
-    };
-
-    const resetZoom = () => {
-        playSwooshAudio();
-        setActiveRegion(null);
-        if (onRegionSelect) onRegionSelect(null);
-        setActiveState(null);
-        onStateSelect('', '');
-
-        d3.select(svgRef.current).transition().duration(800)
-            .attrTween('viewBox', function () {
-                const currentViewBox = svgRef.current?.getAttribute('viewBox') || '-20 -60 840 980';
-                const i = d3.interpolateString(currentViewBox, '-20 -60 840 980');
-                return function (t: number) { return i(t); };
-            });
-    };
-
-    const playSwooshAudio = () => {
-        // We would use an AudioContext or HTMLAudioElement here.
-        console.log('Audio: Swoosh!');
     };
 
     return (
-        <div className="w-full h-full relative flex items-center justify-center bg-[var(--color-surface-muted)]">
+        <div className="w-full h-full relative flex items-center justify-center bg-transparent">
             {!mapData && (
                 <div className="absolute flex flex-col items-center justify-center text-[var(--color-brand-primary)]">
-                    <div className="w-12 h-12 border-4 border-[var(--color-brand-secondary)] border-t-transparent rounded-full animate-spin"></div>
-                    <p className="mt-4 font-bold animate-pulse text-xl">Loading India Map...</p>
-                </div>
-            )}
-
-            {/* Visual indication for double click to reset */}
-            {mapData && (activeRegion || activeState) && (
-                <div className="absolute top-6 text-center z-10 animate-bounce pointer-events-none">
-                    <span className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm text-[var(--color-text-muted)] text-sm font-bold border-2 border-white/50">
-                        Double-click background to zoom out
-                    </span>
+                    <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p className="mt-4 font-bold animate-pulse text-xl">Loading Map Engine...</p>
                 </div>
             )}
 
             <svg
                 ref={svgRef}
-                viewBox="-20 -60 840 980"
-                className={`w-full h-full drop-shadow-2xl transition-opacity duration-500 scale-[1.05] md:scale-100 ${mapData ? 'opacity-100' : 'opacity-0'}`}
+                viewBox="-20 -140 840 1060"
+                className={`w-full h-full drop-shadow-2xl transition-opacity duration-500 ${mapData ? 'opacity-100' : 'opacity-0'}`}
                 style={{ filter: 'drop-shadow(0 20px 25px rgba(0,0,0,0.5))' }}
+                onClick={onBackgroundClick}
             >
-                {/* Background Rect to catch double clicks safely */}
                 <rect width="100%" height="100%" fill="transparent" />
             </svg>
-
-            {/* Breadcrumb controls */}
-            {activeRegion && (
-                <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex items-center gap-2 bg-white/90 backdrop-blur-sm p-2 rounded-2xl shadow-xl border-2 border-[var(--color-brand-primary)] z-10 transition-all">
-                    <button
-                        onClick={resetZoom}
-                        className="px-4 py-2 text-sm font-bold text-[var(--color-text-muted)] hover:text-[var(--color-brand-primary)] hover:bg-[var(--color-surface-muted)] rounded-xl transition-colors"
-                    >
-                        India
-                    </button>
-                    <span className="text-[var(--color-brand-secondary)]">›</span>
-                    <button
-                        onClick={() => {
-                            setActiveState(null);
-                            const bounds = regionBounds[activeRegion];
-                            if (bounds) zoomToBounds(d3.select(svgRef.current), bounds, 120);
-                            onStateSelect('', '');
-                        }}
-                        className={`px-4 py-2 text-sm font-bold rounded-xl transition-colors ${!activeState ? 'text-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10' : 'text-[var(--color-text-muted)] hover:text-[var(--color-brand-primary)] hover:bg-[var(--color-surface-muted)]'}`}
-                    >
-                        {activeRegion} Region
-                    </button>
-                    {activeState && (
-                        <>
-                            <span className="text-[var(--color-brand-secondary)]">›</span>
-                            <div className="px-4 py-2 text-sm font-black text-white bg-[var(--color-brand-primary)] shadow-md rounded-xl">
-                                {activeState}
-                            </div>
-                        </>
-                    )}
-                </div>
-            )}
         </div>
     );
 };
