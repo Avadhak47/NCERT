@@ -127,7 +127,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose }) => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {stateRecord.monuments.map((monument: Monument) => (
                                 <div key={monument.id} className="group relative rounded-[2rem] overflow-hidden shadow-lg aspect-video isolate bg-slate-100">
-                                    <img src={hasImage(monument.img) && !failedImageUrls.has(getImageUrl(monument.img!)) ? getImageUrl(monument.img!) : getFallbackImage(monument.name, 'monument')} alt={monument.name} onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(monument.name, 'monument'), e); }} className="absolute inset-0 w-full h-full object-cover object-center bg-slate-200 group-hover:scale-105 transition-transform duration-700 -z-10" />
+                                    <img src={hasImage(monument.img) && !failedImageUrls.has(getImageUrl(monument.img!)) ? getImageUrl(monument.img!) : getFallbackImage(monument.name, 'monument')} alt="" onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(monument.name, 'monument'), e); }} className="absolute inset-0 w-full h-full object-cover object-center bg-slate-200 group-hover:scale-105 transition-transform duration-700 -z-10" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent -z-10 opacity-80 group-hover:opacity-100 transition-opacity" />
                                     <div className="p-8 absolute bottom-0 left-0 right-0 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                         <h3 className="text-3xl font-serif font-bold mb-2 drop-shadow-md">{monument.name}</h3>
@@ -150,7 +150,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose }) => {
                             {stateRecord.art_forms.paintings.map((painting: Painting, idx: number) => (
                                 <div key={painting.id || idx} className="flex flex-col md:flex-row gap-8 items-center">
                                     <div className="w-full md:w-5/12 aspect-square rounded-3xl overflow-hidden shadow-md shrink-0 border-4 border-slate-50 bg-slate-100">
-                                        <img src={hasImage(painting.img) && !failedImageUrls.has(getImageUrl(painting.img!)) ? getImageUrl(painting.img!) : getFallbackImage(painting.title ?? painting.name, 'painting')} alt={painting.title ?? ''} onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(painting.title ?? painting.name, 'painting'), e); }} className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                                        <img src={hasImage(painting.img) && !failedImageUrls.has(getImageUrl(painting.img!)) ? getImageUrl(painting.img!) : getFallbackImage(painting.title ?? painting.name, 'painting')} alt="" onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(painting.title ?? painting.name, 'painting'), e); }} className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-3xl font-serif font-bold text-[var(--color-brand-primary)] mb-4">{painting.title}</h3>
@@ -188,7 +188,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose }) => {
                             {stateRecord.art_forms.performing_arts.map((art: PerformingArt, idx: number) => (
                                 <div key={art.id || idx} className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 flex flex-col h-full hover:shadow-lg transition-shadow">
                                     <div className="h-64 overflow-hidden bg-slate-200">
-                                        <img src={hasImage(art.img) && !failedImageUrls.has(getImageUrl(art.img!)) ? getImageUrl(art.img!) : getFallbackImage(art.title ?? art.name, 'performing arts')} alt={art.title ?? ''} onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(art.title ?? art.name, 'performing arts'), e); }} className="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-700" />
+                                        <img src={hasImage(art.img) && !failedImageUrls.has(getImageUrl(art.img!)) ? getImageUrl(art.img!) : getFallbackImage(art.title ?? art.name, 'performing arts')} alt="" onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(art.title ?? art.name, 'performing arts'), e); }} className="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-700" />
                                     </div>
                                     <div className="p-8 flex-1 flex flex-col">
                                         <h3 className="text-2xl font-serif font-bold text-slate-800 mb-3">{art.title}</h3>
@@ -258,7 +258,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose }) => {
                             {stateRecord.art_forms.handicrafts.map((craft: Handicraft, idx: number) => (
                                 <div key={craft.id || idx} className="bg-white border border-rose-200 rounded-3xl overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow">
                                     <div className="h-64 overflow-hidden bg-slate-200">
-                                            <img src={hasImage(craft.img) && !failedImageUrls.has(getImageUrl(craft.img!)) ? getImageUrl(craft.img!) : getFallbackImage(craft.title ?? craft.name, 'handicraft')} alt={craft.title ?? ''} onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(craft.title ?? craft.name, 'handicraft'), e); }} className="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-700" />
+                                            <img src={hasImage(craft.img) && !failedImageUrls.has(getImageUrl(craft.img!)) ? getImageUrl(craft.img!) : getFallbackImage(craft.title ?? craft.name, 'handicraft')} alt="" onError={(e) => { const src = (e.target as HTMLImageElement).currentSrc; handleImageError(src, getFallbackImage(craft.title ?? craft.name, 'handicraft'), e); }} className="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-700" />
                                         </div>
                                     <div className="p-8 flex-1 flex flex-col">
                                         <h3 className="text-2xl font-serif font-bold text-slate-800 mb-3">{craft.title}</h3>
