@@ -92,3 +92,12 @@ export const REGION_TO_STATES: Record<string, string[]> = (() => {
     }
     return out;
 })();
+
+/** State name (app format) → region id (for games) */
+export const STATE_TO_REGION: Record<string, string> = (() => {
+    const out: Record<string, string> = {};
+    for (const [region, states] of Object.entries(REGION_TO_STATES)) {
+        states.forEach(s => { out[s] = region; });
+    }
+    return out;
+})();
