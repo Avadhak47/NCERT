@@ -77,11 +77,10 @@ const GlossaryPage = () => {
                             initial={{ opacity: 0, x: -6 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.012, duration: 0.2 }}
-                            className={`relative shrink-0 w-9 md:w-11 aspect-square flex items-center justify-center rounded-2xl font-bold text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:ring-offset-2 focus:ring-offset-slate-900 ${
-                                hasEntries
+                            className={`relative shrink-0 w-9 md:w-11 aspect-square flex items-center justify-center rounded-2xl font-bold text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:ring-offset-2 focus:ring-offset-slate-900 ${hasEntries
                                     ? 'bg-slate-700/70 text-slate-200 hover:bg-gradient-to-br hover:from-[var(--color-brand-primary)] hover:to-sky-600 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-sky-500/20'
                                     : 'text-slate-600 cursor-default pointer-events-none'
-                            }`}
+                                }`}
                             onClick={(e) => !hasEntries && e.preventDefault()}
                             aria-disabled={!hasEntries}
                         >
@@ -212,7 +211,7 @@ const GlossaryPage = () => {
                                 initial="hidden"
                                 animate="visible"
                             >
-                                {filteredGrouped.map(([letter, terms], sectionIndex) => (
+                                {filteredGrouped.map(([letter, terms]) => (
                                     <motion.section
                                         key={letter}
                                         id={`letter-${letter}`}

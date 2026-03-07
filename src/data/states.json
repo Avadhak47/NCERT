@@ -7,10 +7,27 @@
         "capital": "Port Blair",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Island woven mats; coir products \nNo image",
+        "Artists: Local community artists",
+        "Tribal Culture: Jarawa; Onge; Great Andamanese\n\nhttps://share.google/DJ5zw3Zc0ttDDUg0H ",
+        "Tribal Dance: Jarawa ceremonial dances\nhttps://share.google/hWJZHlGEIiEcM1t27 \nhttps://commons.wikimedia.org/wiki/File:Jarawa_statue-2-samudrika_museum-andaman-India.jpg \n; Onge rituals (No Image)"
+      ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_r08kp",
+            "title": "Visual Arts",
+            "desc": "Shell and coconut craft; island motifs\n(No IMAGE)"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_d56pw",
+            "title": "Performing Arts",
+            "desc": "Tribal dances; canoe songs\n(No Image)"
+          }
+        ],
         "handicrafts": []
       },
       "monuments": [],
@@ -35,7 +52,15 @@
         "key_cities": []
       },
       "facts": [
-        "Salar jang Museum holds the ancient and rare collection of manuscripts in Arabic, Urdu and Persian languages. It includes the great Arabic Al Quran in Nashq (1288 AD) done by calligrapher Yakut-al-Mustsami bearing the autographs of Mughal emperors, Jehangir, Shahjehan and Aurangzeb; Roudat-ul-Muhabbin by Amir Hussaini Saadat (1329 A.D.); Urdu poetic composition Diwan-e-Mohamed Quli Qutub Shah (1595 A.D.) done by Quli Qutub Shah himself acquired from the Golconda Royal Library etc."
+        "Salar jang Museum holds the ancient and rare collection of manuscripts in Arabic, Urdu and Persian languages. It includes the great Arabic Al Quran in Nashq (1288 AD) done by calligrapher Yakut-al-Mustsami bearing the autographs of Mughal emperors, Jehangir, Shahjehan and Aurangzeb; Roudat-ul-Muhabbin by Amir Hussaini Saadat (1329 A.D.); Urdu poetic composition Diwan-e-Mohamed Quli Qutub Shah (1595 A.D.) done by Quli Qutub Shah himself acquired from the Golconda Royal Library etc.",
+        "Textile: Pochampalli Saris; Gadwal saree (No image of creative commomns)",
+        "Artists: Sri Ranga Rao; local folk painters",
+        "Tribal Culture: Lambadi (Banjara) traditions",
+        "Tribal Dance: Lambadi folk dance",
+        "Textile: Pochampally ikat; Gadwal saree ( https://socialwelfare.vikaspedia.in/viewcontent/social-welfare/entrepreneurship/indian-handloom/gadwal-saree?lgn=en )",
+        "Artists: Cheriyal artists; folk painters\n\nhttps://caleidoscope.in/art-culture/gond-art-madhya-pradesh ",
+        "Tribal Culture: Lambadi; Gond",
+        "Tribal Dance: Lambadi dance\n( https://commons.wikimedia.org/wiki/File:Lambadi_Dance.jpg \n\nhttps://commons.wikimedia.org/wiki/File:Folk_culture_of_telangana.jpg )\n\nGond Tribe dances\n\nhttps://commons.wikimedia.org/wiki/File:Gussadi_Dance_Of_Gond_Tribals.jpg \n\nhttps://commons.wikimedia.org/wiki/File:Dandari_Gussadi_dance_22.jpg \n\nhttps://commons.wikimedia.org/wiki/File:The_Deity_of_Gusadi.jpg \n \nhttps://commons.wikimedia.org/wiki/File:Costume_of_gond_tribe_during_dandari_festival.jpg \n\nhttps://commons.wikimedia.org/wiki/File:Gussadi_Dancers_at_Telangana_Tribal_Open_Knowledge_Conference.jpg \n\nMathuri Dance \n\nhttps://www.youtube.com/watch?v=wgdrmkL0Pms \n\nhttps://www.facebook.com/SCZCC/videos/mathuri-nrityasczcc-amritmahotsavthis-dance-is-performed-by-the-inhabitants-of-t/3444524245816652/ "
       ],
       "art_forms": {
         "paintings": [
@@ -47,6 +72,16 @@
             "img": "/state-images/Andhra_Pradesh/Muggulu-Andhra.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_1xyv0",
+            "title": "Visual Arts",
+            "desc": "Kalamkari painting; Cheriyal scroll"
+          },
+          {
+            "id": "va_1772913899361_gaob4",
+            "title": "Visual Arts",
+            "desc": "Cheriyal scroll painting, Nirmal paintings, Golconda and Hyderabad styles, Dokra metal craft, Silver filigree, Bidri craft"
           }
         ],
         "performing_arts": [
@@ -67,6 +102,16 @@
             "img": "",
             "historical_significance": "Modern 1947-1980",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_mryp8",
+            "title": "Performing Arts",
+            "desc": "Kuchipudi dance"
+          },
+          {
+            "id": "pa_1772913899361_fe925",
+            "title": "Performing Arts",
+            "desc": "Perini Sivatandavam  https://share.google/QPQRG5dHxdpR5Z0qG \nhttps://share.google/mPb44ZKWpGDU85sNR \nhttps://share.google/Fr4WeWQzmZOfz6RkI \n Burrakatha,\nBonalu festival dance ( https://commons.wikimedia.org/wiki/File:India._Telangana_bonalu.jpg \nhttps://commons.wikimedia.org/wiki/File:Bonaalu_Artform_performance_in_Janapada_Jathara_(2019)_10.jpg )   ,Carnatic and folk music,Famous composers and folk singers,Oggu Katha"
           }
         ],
         "handicrafts": [
@@ -231,7 +276,11 @@
         "key_cities": []
       },
       "facts": [
-        "**Jewellery**: made of brass, bone, ivory, silver, and gold are made by many tribes of Arunachal Pradesh. The Monpas are known traditional silversmiths. Brass is skilfully shaped into ornaments, dishes, sacred bells and smoking pipes. The Khamtis work mainly in gold, iron, silver and ivory. The Gallong women wear ear-plugs and earrings. Plugs are generally of leaf, wood or bamboo, while the rings are heavy and coiled and made of iron. The rings are and specially used by the Gallong women. Beads of various colours and sizes, blue feathered wings of birds and green wings of beetles are also used as embellishment."
+        "**Jewellery**: made of brass, bone, ivory, silver, and gold are made by many tribes of Arunachal Pradesh. The Monpas are known traditional silversmiths. Brass is skilfully shaped into ornaments, dishes, sacred bells and smoking pipes. The Khamtis work mainly in gold, iron, silver and ivory. The Gallong women wear ear-plugs and earrings. Plugs are generally of leaf, wood or bamboo, while the rings are heavy and coiled and made of iron. The rings are and specially used by the Gallong women. Beads of various colours and sizes, blue feathered wings of birds and green wings of beetles are also used as embellishment.",
+        "Textile: Handwoven wool shawls; yak wool textiles",
+        "Artists: Local tribal painters",
+        "Tribal Culture: Adi; Apatani; Nishi",
+        "Tribal Dance: Adi war dances; Apatani ceremonial dances"
       ],
       "art_forms": {
         "paintings": [
@@ -243,6 +292,11 @@
             "img": "/state-images/Arunachal_Pradesh/thangka-painting.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_ez8hd",
+            "title": "Visual Arts",
+            "desc": "Traditional mask carving; folk mural motifs"
           }
         ],
         "performing_arts": [
@@ -254,6 +308,11 @@
             "img": "/state-images/Arunachal_Pradesh/dance.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_54rp2",
+            "title": "Performing Arts",
+            "desc": "Bori; Nyibu ritual dances\n\nInstrument - Pepa (Arunachal Pradesh) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -363,10 +422,27 @@
         "capital": "Dispur",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Muga silk\nhttps://commons.wikimedia.org/wiki/File:Assam_Muga_Silk_Mekhela_Chador.jpg \n\n Mekhla chador\nhttps://commons.wikimedia.org/wiki/File:Traditional_Motif_of_Assamese_Mekhela-Chadar.jpg ",
+        "Artists: Zubeen Garg; traditional artisans",
+        "Tribal Culture: Bodo; Karbi; Mising",
+        "Tribal Dance: Bihu dance; Bodo bagurumba"
+      ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_wxvl5",
+            "title": "Visual Arts",
+            "desc": "Xorai metalwork; folk painting\n\nhttps://centreforcontemporaryfolklore.org/2025/12/12/queen-kamala-kuori-assam/ \n\nhttps://commons.wikimedia.org/wiki/File:Traditional_painting,_Assam.JPG  \n\nRabha Tribe - Mask Making\n\nhttps://commons.wikimedia.org/wiki/File:Traditional_mask_making_from_Rabha_Tribe.jpg \n\n"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_hukge",
+            "title": "Performing Arts",
+            "desc": "Sattriya dance; Bihu performances\n\n- Anand Lahiri /Gopi Jantra / Gapchu (Assam, West Bengal, Odisha) \n- Khol (East and North East India)\nhttps://ncert.nic.in/textbook.php?hekr1=6-19 \n\nInstrument - Pepa (Assam) https://ncert.nic.in/textbook.php?gekr1=8-20 \n-Jhanjh (Assam, Odisha) https://ncert.nic.in/textbook.php?gekr1=8-20  "
+          }
+        ],
         "handicrafts": [
           {
             "id": "75fas6nwo",
@@ -485,7 +561,11 @@
       },
       "facts": [
         "Regarded as one of the finest example of Indian art, this 5'4\" tall sculpture of Ashokan period, the Didarganj Yakshi is carved out of a single piece of stone. The prominent breasts, the narrow waist, the creases on the lower abdomen, and broad hips, are classic features of feminine beauty of all ages. They show the painstaking attention to details by the artisans and especially the glossy polish. Equally striking is the depiction of clothes with which her body is draped. Elegantly folded and pleated in the front, held in place by exquisite waist ornaments (kamar-bandh).",
-        "**Sujini embroidery**: The Sujini is a traditional quilt made in Bihar. Old clothes are used for the inner stuffing and threads drawn from the saree border are used for the embriodery. The embroidery is done in running stitch and depicts village scenes such as bride in palanquin, dancing peacocks, boy flying kite, etc. Durga depicted in sombre brown, ochre and black is another favourite imagery. The applique work of Bihar is called Khatwa and is used to craft decorative tents, canopies, shamianas, etc. The applique designs for tents are Persian type trees, flowers, animals, birds, etc."
+        "**Sujini embroidery**: The Sujini is a traditional quilt made in Bihar. Old clothes are used for the inner stuffing and threads drawn from the saree border are used for the embriodery. The embroidery is done in running stitch and depicts village scenes such as bride in palanquin, dancing peacocks, boy flying kite, etc. Durga depicted in sombre brown, ochre and black is another favourite imagery. The applique work of Bihar is called Khatwa and is used to craft decorative tents, canopies, shamianas, etc. The applique designs for tents are Persian type trees, flowers, animals, birds, etc.",
+        "Textile: Tussar silk; Bhagalpuri silk",
+        "Artists: Renowned Madhubani masters",
+        "Tribal Culture: Santhal; Oraon; ",
+        "Tribal Dance: Santhal jhumar"
       ],
       "art_forms": {
         "paintings": [
@@ -497,6 +577,11 @@
             "img": "/state-images/Bihar/madhubani.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_0pigl",
+            "title": "Visual Arts",
+            "desc": "Madhubani\n\nKhobar Painting \n\nhttps://www.biharmuseum.org/kohbar/ \n\nhttps://commons.wikimedia.org/wiki/File:34545016_kohbar_auspicious_marriage_diagram_dh93.jpg \n\nhttps://www.worldhistory.org/article/1527/madhubani-paintings-peoples-living-cultural-herita/ \n\nhttps://share.google/glVLdAK1kqkRf5qk5 \n\nhttps://share.google/7b76X4Xw59lV25LHF "
           }
         ],
         "performing_arts": [
@@ -508,6 +593,11 @@
             "img": "/state-images/Bihar/rajgirdance.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_h006d",
+            "title": "Performing Arts",
+            "desc": "Bidesia; nautanki\n\nPipahi (like Shehnai) (Bihar) - https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -646,11 +736,27 @@
       },
       "facts": [
         "Le Corbusier planned the city to reflect the human body. Thus the head coincides with the Capitol complex, the heart with the city centre, the lungs with the leisure valley and its many open spaces, the intellect with the cultural institutions, and the circulatory system with a well-planned network of roads that divide the city into sections known as sectors.",
-        "Sprawling over 64 acres, the Rock Garden is a unique garden- an artists dream and effort. This vast open air museum displays a massive array of natural rock forms and stones configured in the most innovative way. Nek Chand, an ordinary public works department employee, conceived the idea of the garden as a solution to the disposal of city waste. There are no flowers or plants in this garden. The garden was created section by section with rocks and discarded objects like bottle tops, fluorescent lights, mud guard, tin cans, broken glass, building waste etc. which he meticulously collected from door to door. The creative artist built dolls and figures of birds, men and women and set them along a maze of paths. He was duly honored and appointed as the director of the garden. By reinvesting waste and imbuing it with an aesthetic appeal, balance and harmony a sculptural park has been created. Nek Chand has demonstrated the harmony between man-made waste and nature. Chandigarh, the first planned modern city of India, designed by the French architect Le Corbusier serves as the capital of Punjab and Haryana. Located on the foothills of the Shivalik range, the city is named after the goddess, Chandi Devi. It is divided into various sectors and has well-laid roads lined with rows of trees and beautifully planned buildings."
+        "Sprawling over 64 acres, the Rock Garden is a unique garden- an artists dream and effort. This vast open air museum displays a massive array of natural rock forms and stones configured in the most innovative way. Nek Chand, an ordinary public works department employee, conceived the idea of the garden as a solution to the disposal of city waste. There are no flowers or plants in this garden. The garden was created section by section with rocks and discarded objects like bottle tops, fluorescent lights, mud guard, tin cans, broken glass, building waste etc. which he meticulously collected from door to door. The creative artist built dolls and figures of birds, men and women and set them along a maze of paths. He was duly honored and appointed as the director of the garden. By reinvesting waste and imbuing it with an aesthetic appeal, balance and harmony a sculptural park has been created. Nek Chand has demonstrated the harmony between man-made waste and nature. Chandigarh, the first planned modern city of India, designed by the French architect Le Corbusier serves as the capital of Punjab and Haryana. Located on the foothills of the Shivalik range, the city is named after the goddess, Chandi Devi. It is divided into various sectors and has well-laid roads lined with rows of trees and beautifully planned buildings.",
+        "Textile: Urban handloom crafts",
+        "Artists: Contemporary local artists",
+        "Tribal Culture: Minimal indigenous tribal presence",
+        "Tribal Dance: Punjabi folk dances performed locally"
       ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_wyqxs",
+            "title": "Visual Arts",
+            "desc": "Modern public art; murals"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_7jc7q",
+            "title": "Performing Arts",
+            "desc": "Punjabi folk performances\n\nInstruments - Chimta (Chandigarh) https://ncert.nic.in/textbook.php?gekr1=8-20 "
+          }
+        ],
         "handicrafts": []
       },
       "monuments": [],
@@ -675,11 +781,27 @@
         "key_cities": []
       },
       "facts": [
-        "**Jewellery**: from Chhattisgarh is crafted in a variety of silver, bronze and mixed metal. Ornament made out of beads, cowries and feathers are part of tribal costumes. Tribal men and women wear traditional ornaments that are very attractive and colourful."
+        "**Jewellery**: from Chhattisgarh is crafted in a variety of silver, bronze and mixed metal. Ornament made out of beads, cowries and feathers are part of tribal costumes. Tribal men and women wear traditional ornaments that are very attractive and colourful.",
+        "Textile: Kosa silk; tribal handloom",
+        "Artists: Local Bastar artists; metalworkers",
+        "Tribal Culture: Gond; Baiga; Halba",
+        "Tribal Dance: Gondi dances; Baiga ritual dances\n\nhttps://cgtrti.gov.in/baiga \n\nMadiya Tribe \n\nhttps://commons.wikimedia.org/wiki/File:The_Madiya_tribal_dance,_rooted_in_the_Bastar_region_of_Chhattisgarh.jpg \n\n "
       ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_y61ka",
+            "title": "Visual Arts",
+            "desc": "Bastar metalcraft; bell-metal art"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_ho2k5",
+            "title": "Performing Arts",
+            "desc": "Panthi; Raut Nacha\n\n\n-Madal/Mandar\n(Bihar and Jharkhand) - https://ncert.nic.in/textbook.php?hekr1=6-19 \n\nMohuri (Chattisgarh) - https://ncert.nic.in/textbook.php?gekr1=8-20 "
+          }
+        ],
         "handicrafts": [
           {
             "id": "rmw1g9pkg",
@@ -777,10 +899,27 @@
         "capital": "Silvassa",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Indigenous weaving; local handloom",
+        "Artists: Local tribal artisans; Warli practitioners",
+        "Tribal Culture: Warli; Dhodia; tribal groups",
+        "Tribal Dance: Warli dances; Dhodia folk dances"
+      ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_3sxbi",
+            "title": "Visual Arts",
+            "desc": "Warli; tribal craft motifs"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_k1y97",
+            "title": "Performing Arts",
+            "desc": "Local folk dances\n\nInstrument-Pavri (Dadra and Nagar Haveli) https://ncert.nic.in/textbook.php?gekr1=8-20  \n- Tarpo (Daman and Diu, Lakshadweep) "
+          }
+        ],
         "handicrafts": []
       },
       "monuments": [],
@@ -843,7 +982,11 @@
       },
       "facts": [
         "Joseph Allen Stein was born, in the United States of America. After studies and practice in San Francisco he moved to India in 1952, and became head of the department of architecture at the Bengal Engineering College in Calcutta. Several other foreign architects arrived in India about the same time, including the French architect Le Corbusier, who designed the city of Chandigarh, the Americans Louis Kahn and Charles Eames, who were working on projects at Ahmedabad. But unlike others, Mr. Stein stayed on and practiced architecture in New Delhi from 1955 until his retirement in 1995. Mr. Stein's best-known Indian creations were probably the Triveni Kala Sangam arts complex, a collection of buildings on Lodi Estate in New Delhi, including headquarters of the Ford Foundation, UNICEF and the World Wide Fund for Nature, the India International Center, and the India Habitat Center. Distinguished by their elegant formal spaces, beautifully muted covered walkways, extensive planting and landscaping and their meticulous detailing make them great examples of modern Indian architecture.",
-        "**2000- Contemporary**: Nicknamed Indias Spiritual Theme Park, the Swaminarayan Akshardham complex is one of the finest structures build in the modern India. The Akshardham Temples main monument is constructed of pink stone and white marble having two-hundred-and-thirty carved pillars, nine ornate domes, a magnificent base of carved elephants, and twenty-thousand statues of saints. The gardens, or Bharat Upvan, consist of lush lawns and manicured gardens, with sixty bronze statues of different historical and mythological subjects."
+        "**2000- Contemporary**: Nicknamed Indias Spiritual Theme Park, the Swaminarayan Akshardham complex is one of the finest structures build in the modern India. The Akshardham Temples main monument is constructed of pink stone and white marble having two-hundred-and-thirty carved pillars, nine ornate domes, a magnificent base of carved elephants, and twenty-thousand statues of saints. The gardens, or Bharat Upvan, consist of lush lawns and manicured gardens, with sixty bronze statues of different historical and mythological subjects.",
+        "Textile: Urban textile markets; block prints",
+        "Artists: Prominent resident artists; street artists",
+        "Tribal Culture: Migrant tribal representations; indigenous links",
+        "Tribal Dance: Kathak shows; migrant tribal folk performances"
       ],
       "art_forms": {
         "paintings": [
@@ -855,9 +998,20 @@
             "img": "/state-images/Delhi/rashtrapati-bhavan.webp",
             "historical_significance": "1900-1947 Modern",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_27msb",
+            "title": "Visual Arts",
+            "desc": "Contemporary visual arts; street art"
           }
         ],
-        "performing_arts": [],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_6karc",
+            "title": "Performing Arts",
+            "desc": "Kathak; theatre; street performances"
+          }
+        ],
         "handicrafts": [
           {
             "id": "btzkwuqv1",
@@ -1056,10 +1210,20 @@
         "key_cities": []
       },
       "facts": [
-        "**Crochet and Embroidery**: It is due to the arrival of the nuns and missionaries from Portugal that the craft of crochet and embroidery found roots in Goa. In due course of time it developed fast and found its way in almost every house of Goa. At the time of marriage, a few pieces of embroidered linen and crochet are given to the bride as part of her trousseau. It is customery in Goa with both, Christians and Hindus to display before the guests the crochet and embroidery items the bride has brought with her at the time of marriage. This perhaps is to demostrate the skills of the bride in crochet and embroidery work. The craft of crochet and embroidery is passed on from one generation to another, with a variation in quality and design."
+        "**Crochet and Embroidery**: It is due to the arrival of the nuns and missionaries from Portugal that the craft of crochet and embroidery found roots in Goa. In due course of time it developed fast and found its way in almost every house of Goa. At the time of marriage, a few pieces of embroidered linen and crochet are given to the bride as part of her trousseau. It is customery in Goa with both, Christians and Hindus to display before the guests the crochet and embroidery items the bride has brought with her at the time of marriage. This perhaps is to demostrate the skills of the bride in crochet and embroidery work. The craft of crochet and embroidery is passed on from one generation to another, with a variation in quality and design.",
+        "Textile: Goan handloom; local embroidery",
+        "Artists: F.N. Souza (Goan)",
+        "Tribal Culture: Kunbi; tribal fishing communities",
+        "Tribal Dance: Fugdi; Dekhni folk dances\n\nhttps://commons.wikimedia.org/wiki/File:Dekhni_Dance_at_Vagator.jpg \nhttps://www.flickr.com/photos/joegoauk71/16508580838 \n\n"
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_vh6q9",
+            "title": "Visual Arts",
+            "desc": "Konkani frescoes (Kavi Art)\nhttps://commons.wikimedia.org/wiki/File:Kaavi_Kala.jpg \n\nchurch mural art"
+          }
+        ],
         "performing_arts": [
           {
             "id": "qp39p5a23",
@@ -1069,6 +1233,11 @@
             "img": "/state-images/Goa/G_027.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_omuqj",
+            "title": "Performing Arts",
+            "desc": "Mando; Fugdi\n\nInstrument - Ghummat (Goa) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -1217,7 +1386,11 @@
       "facts": [
         "Step-wells are one of India's most unique, but little-known, contributions to architecture. The concept of the vav, or stepwell, was a response to the harsh climate of Gujarat and Rajasthan and the acute shortage of water. The practice of making wells into an art form was begun by the Hindus of the Solanki kings but it developed under the Muslim rule. The galleries and chambers surrounding these wells were often carved profusely with elaborate detail and became cool, quiet retreats during the hot summers.",
         "**Rani ki Vav- Patan**: The Rani Vav at Patan, was built during the late eleventh century, by the Queen Udaymati after the death of her husband, King Bhimdeva I of the Solanki dynasty. A massive structure of seven storeys, it is probably the most magnificent step-well in Gujarat. Multi-storey colonnades and retaining walls link a stepped tank to a deep circular well. Throughout, there is a rich ornamentation. Columns, brackets and beams are encrusted with scrollwork and the wall niches are carved with figures. The designs on walls and pillars include, leaves, flowers, birds, fish and other breathtaking ornamental designs. At water level the figure of Vishnu on Seshanaga and the Buddha is included among the Dasavataras, the ten incarnations of Lord Vishnu.",
-        "**Embroidery**: is an integral part of life in Gujarat from superbly embroidered toranas to chaklas or wall hangings, beautifully embroidered dresses like lehngas, cholis and dupattas, mens kurtas, churidhars, childrens clothes and so on. Aribharat or hook embroidery, mochibarat, rabari, banni and soof embroidery and applique work are among the many beautiful embroideries of this state. Abhala is the embroidery where small round pieces of mirrors are fixed on to the fabric using buttonhole stitching; the embroidery is done in a herringbone stitch using silken thread. Rust, light green, indigo, blue, deep red, pink, and purple are the colours used. Kathi is the oldest embroidery which is known for its romantic motifs. Geometrical motifs are fabricated with multicolored fabric pieces leading to patch work effect. Varieties of items are prepared. Heer is an embossed stitch having shades of off-white, yellow, madder red, black, indigo, ivory, and green. Small mirror pieces are used to add more beauty to the embroidery. Ari embroidery with silk threads using a hook is a popular craft of Kutch. The motifs found commonly are, dancing peacocks, human figures in dancing poses etc. A Bandhani pattern with beautiful and delicate bead work is unique. The various communities in Gujarat, rabaris, ahirs, jats, bharwads have their own styles of embroidery. The embroidery of the Rabari community is usually done on a maroon background with the enclosed motifs. A style of embroidery in Saurashtra known as mahajan has a special design called kajuri in which a satin shine and fine effects are attained by special manipulation of the satin and herringbone stitches with interplay of glowing red and shades of violet. Applique is an integral part of the decorative needlework of Gujarat with its own distinctive style. It is done on patchwork in which pieces of coloured and patterned fabrics are finely cut in different shapes and sizes and then sewn together on a plain background to form a composite piece. Saurashtra and Kutch are also noted for their bead work whose designs lean heavily on the embroidery and the bandhini patterns. A whole gamut of articles are made of beads like decorations for domestic animals, cradles, coverlets, hangings, toranas, purses, little perches that sit on a woman's head to balance water pots, fans and a whole range of ornamental pieces for the house."
+        "**Embroidery**: is an integral part of life in Gujarat from superbly embroidered toranas to chaklas or wall hangings, beautifully embroidered dresses like lehngas, cholis and dupattas, mens kurtas, churidhars, childrens clothes and so on. Aribharat or hook embroidery, mochibarat, rabari, banni and soof embroidery and applique work are among the many beautiful embroideries of this state. Abhala is the embroidery where small round pieces of mirrors are fixed on to the fabric using buttonhole stitching; the embroidery is done in a herringbone stitch using silken thread. Rust, light green, indigo, blue, deep red, pink, and purple are the colours used. Kathi is the oldest embroidery which is known for its romantic motifs. Geometrical motifs are fabricated with multicolored fabric pieces leading to patch work effect. Varieties of items are prepared. Heer is an embossed stitch having shades of off-white, yellow, madder red, black, indigo, ivory, and green. Small mirror pieces are used to add more beauty to the embroidery. Ari embroidery with silk threads using a hook is a popular craft of Kutch. The motifs found commonly are, dancing peacocks, human figures in dancing poses etc. A Bandhani pattern with beautiful and delicate bead work is unique. The various communities in Gujarat, rabaris, ahirs, jats, bharwads have their own styles of embroidery. The embroidery of the Rabari community is usually done on a maroon background with the enclosed motifs. A style of embroidery in Saurashtra known as mahajan has a special design called kajuri in which a satin shine and fine effects are attained by special manipulation of the satin and herringbone stitches with interplay of glowing red and shades of violet. Applique is an integral part of the decorative needlework of Gujarat with its own distinctive style. It is done on patchwork in which pieces of coloured and patterned fabrics are finely cut in different shapes and sizes and then sewn together on a plain background to form a composite piece. Saurashtra and Kutch are also noted for their bead work whose designs lean heavily on the embroidery and the bandhini patterns. A whole gamut of articles are made of beads like decorations for domestic animals, cradles, coverlets, hangings, toranas, purses, little perches that sit on a woman's head to balance water pots, fans and a whole range of ornamental pieces for the house.",
+        "Textile: Patola; Bandhani; Kutch embroidery",
+        "Artists: Local miniature painters; craftspeople",
+        "Tribal Culture: Bhil; Rabari; other tribal groups",
+        "Tribal Dance: Bhil stick dances; tribal folk dances"
       ],
       "art_forms": {
         "paintings": [
@@ -1238,6 +1411,11 @@
             "img": "/state-images/Gujarat/rajaravivarma.webp",
             "historical_significance": "Modern 1800-1850",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_8u0hw",
+            "title": "Visual Arts",
+            "desc": "Miniature & folk painting; textile prints"
           }
         ],
         "performing_arts": [
@@ -1249,6 +1427,11 @@
             "img": "/state-images/Gujarat/garba.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_s8d6x",
+            "title": "Performing Arts",
+            "desc": "Garba; Dandiya Raas\n\nHalge\n(Gujarat and Karnataka) - https://ncert.nic.in/textbook.php?hekr1=6-19 "
           }
         ],
         "handicrafts": [
@@ -1483,9 +1666,20 @@
         "capital": "Chandigarh",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Phulkari-influenced textiles",
+        "Artists: Local folk artists; embroiderers",
+        "Tribal Culture: Ahirwal folk traditions",
+        "Tribal Dance: Jhumar"
+      ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_rts7d",
+            "title": "Visual Arts",
+            "desc": "Phulkari-influenced motif (Mainly in Punjab)"
+          }
+        ],
         "performing_arts": [
           {
             "id": "9gksdk48b",
@@ -1504,6 +1698,11 @@
             "img": "/state-images/Haryana/Ha_016.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_24ea2",
+            "title": "Performing Arts",
+            "desc": " Swang Dance; Ragini.\n\nPanchmukh vadya\n(Haryana and\nSouthern States) https://ncert.nic.in/textbook.php?hekr1=6-19 "
           }
         ],
         "handicrafts": [
@@ -1581,10 +1780,20 @@
         "For centuries, wood has been used in Himachal in the construction and ornamentation of temples, homes, idols and so on. The skill is passed on from one generation to the other. The master wood carver of Chamba, Malik Lateef, for example, belongs to a family of traditional carpenters. His father Ali Baksh worked in the courts of the Chamba king and his artifacts are still preserved in the Bhuri Singh Museum in Chamba.",
         "**Jewellery**: in Himachal is artistic, elaborate in style and is inspired from nature itself. The designs reflect nature in simple motifs like seeds, flowers and leaves being developed into exquisite patterns. Different communities wear jewellery unique to their traditions, but some ornaments are worn all over the state, which include the hemispherical shaped chak  worn on the forehead and both sides of the head, neck ornaments like hansli or small pendants called toke, chandanhaar - a necklace comprising five or seven rows of facetted gold beads. The choker worn here is called kach and consists of silver beads and triangular plaques. Chiri tikka is a flat piece of silver, enamelled or embedded with pearls and suspended from the centre of the forehead while several chains hang along the hairline on both sides. A heavy bunch of silver tassels or flowers, attached to the plait with a smaller ornament is tied to the plait ends. Men, women and children often wear silver amulets to ward off evil spirits. Sunarion ki Gaon near Rohru is a village, where many families are engaged in jewellery designing and crafting.",
         "Historically, the craft mainly flourished during the reign of Raja Umed Singh of Chamba (1748-68). The oldest rumal dates back to the 16th century and is said to have been embroidered by Bebe Nanki, sister of Guru Nanak. This piece is now kept in the Sikh shrine in Hoshiarpur. Another important rumal was presented by Raja Gopal Singh to the British in 1883 and is now displayed at the Victoria Albert Museum, London. This piece depicts the battle of Kurukshetra.",
-        "The Paharis are partial to a whole lot of musical instruments without which pahari music wouldnt be half as interesting. The kangarange is the most commonly used stringed instrument. Among the wind instruments are the bhopal, shamal, bugial, and shehnai (different kinds of pipes), the damentu (horn), the highly ornate narsingha (hornpipe) and the sanai (hautboy). To keep the rhythm of the various dances percussion instruments like the damane, anga, dhol and dholak (drums), the hulki (an hourglass-shaped drum), the kartal (clappers), khanjiri (tambourine) and jhanja (large cymbals) are played."
+        "The Paharis are partial to a whole lot of musical instruments without which pahari music wouldnt be half as interesting. The kangarange is the most commonly used stringed instrument. Among the wind instruments are the bhopal, shamal, bugial, and shehnai (different kinds of pipes), the damentu (horn), the highly ornate narsingha (hornpipe) and the sanai (hautboy). To keep the rhythm of the various dances percussion instruments like the damane, anga, dhol and dholak (drums), the hulki (an hourglass-shaped drum), the kartal (clappers), khanjiri (tambourine) and jhanja (large cymbals) are played.",
+        "Textile: Kinnauri shawls; Himachali caps",
+        "Artists: Sobha Singh influence; local painters",
+        "Tribal Culture: Gaddi; Kinnaura; Lahaula",
+        "Tribal Dance: Kinnauri chharu; Lahauli ritual dances\n\nhttps://share.google/oztw5AHBhDMYBPMa5 \n\nhttps://commons.wikimedia.org/wiki/File:Hadimba_Temple_-_HP.JPG "
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_3twa4",
+            "title": "Visual Arts",
+            "desc": "Pahari miniature; Thangka-influenced art"
+          }
+        ],
         "performing_arts": [
           {
             "id": "k44uy9ali",
@@ -1594,6 +1803,11 @@
             "img": "/state-images/Himachal_Pradesh/dangi-dance.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_gtxhd",
+            "title": "Performing Arts",
+            "desc": "Kinnauri dances; Lahauli folk\n\nInstruments - Damamatu (Himachal Pradesh) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -1751,10 +1965,29 @@
       "facts": [
         "**Chashma-i- Shahi**: Mughal Gardens were the Emperors' concept of paradise. These were developed as a retreat from their capitals during the summer. They were adorned with terraced lawns, gushing fountains, bright flowerbeds with the panorama of the lake in front of them - the three Mughal Gardens of Chashma-i- Shahi, Nishat and Shalimar. Shalimar Bagh, built by Emperor Jehangir for his wife Nur Jehan, is a beautiful garden with sweeping vistas over gardens and lakes, and shallow terraces. The plan of the garden is based on the Persian charbagh design in which a square garden is divided into four equal parts by water channels which are lined with polished stones. The garden has four terraces, rising one above the other. The lowest was the public garden while the middle one was the Emperors and the fourth terrace, by far the best, was reserved for royal ladies or the zenana. Nishat Bagh or the garden of bliss was designed in 1633 CE by Asaf Khan, brother of Nur Jehan during the reign of or the royal spring is a tastefully laid garden in terraces which was built by Shah Jehan. It is an exquisite garden laid around a natural spring.",
         "1600-1650 Medieval Built in 1630 and houses monks of the Brokpa or Red Hat sect. Beautiful frescoes adorn the walls and the largest Thangka paintings in Ladakh can be seen here. The mask dance performed by the lamas at the Hemis monastery, during the Hemis festival is representative of the Mahayana Buddhist tradition of the victory of good over evil. Drums and long horns are the musical accompaniments. A thangka is a painted or embroidered Buddhist banner which was hung in a monastery or a family altar and occasionally carried by monks in ceremonial processions. Thangka, has different functions. Images of deities can be used as teaching tools when depicting the life (or lives) of the Buddha, describing historical events concerning important Lamas, or retelling myths associated with other deities. Devotional images act as the centerpiece during a ritual or ceremony and are often used as mediums through which one can offer prayers or make requests. Overall, and perhaps most importantly, religious art is used as a meditation tool to help bring one further down the path to enlightenment. Painted thangkas are done on cotton canvas or silk with water soluble pigments, both mineral and organic, tempered with a herb and glue solution. The entire process demands great mastery over the drawing and perfect understanding of iconography. The composition of a thangka, is highly geometric. Arms, legs, eyes, nostrils, ears, are all in a systematic grid of angles and intersecting lines.",
-        "Pashmina is one of the world's rare fibers coming from the special undercoat or pashm of Central Asian mountain goats. Nomads living in the remote Himalayan mountains tend to these mountain goats."
+        "Pashmina is one of the world's rare fibers coming from the special undercoat or pashm of Central Asian mountain goats. Nomads living in the remote Himalayan mountains tend to these mountain goats.",
+        "Textile: Pashmina; Kashmiri shawls; crewelwork",
+        "Artists: Renowned Pashmina craftsmen; local artists",
+        "Tribal Culture: Gujjar; Bakarwal pastoral tribes",
+        "Tribal Dance: Rouf dance; Bakarwal folk dances\n\nhttps://www.youtube.com/watch?v=Ru_LpgEdza8 ",
+        "Textile: Pattu woolens; hand-stitched garments",
+        "Artists: Local thangka painters; monastery artists",
+        "Tribal Culture: Ladakhi tribal-monastic culture",
+        "Tribal Dance: Cham masked dances; Ladakhi folk dances\n\nhttps://share.google/eUSxQCuCbaOXWDfyL \nhttps://share.google/w5j4ECf4pFt6UFVxl \nhttps://share.google/9afyLm8wmoXXhG4B8 \nhttps://commons.wikimedia.org/wiki/File:Folk_dance,_Kargil.jpg \nhttps://share.google/mGNhziF1CvN9lXtRU \nhttps://commons.wikimedia.org/wiki/File:Spituk_Gustor_Festival_2014.JPG -Festival \nhttps://share.google/iiYg8WAnbXW70ET0G \n"
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_7yqmi",
+            "title": "Visual Arts",
+            "desc": "Papier-mâché - Papier-mâché is a technique through which this mixture of paper, water and glue are molded into a three-dimensional form. These forms are inspired by the artist’s environment and their culture. They are then painted using pigments available in the region. Even though artists use the same base of papier-mâché, the motifs and patterns vary from region to region. https://ncert.nic.in/textbook.php?hekr1=18-19 \n\n Pashmina embroidery"
+          },
+          {
+            "id": "va_1772913899361_xo2bv",
+            "title": "Visual Arts",
+            "desc": "Thangka painting -  — Ladakh, Sikkim, Jammu, Kashmir and Arunachal Pradesh; Stories from Buddhist\nscriptures, events in the lives of saints and local folk stories. https://ncert.nic.in/textbook.php?gekr1=4-20 ch-7 ch-4\n\nyak-bone carving (No Image)"
+          }
+        ],
         "performing_arts": [
           {
             "id": "7c1txtmly",
@@ -1782,6 +2015,16 @@
             "img": "",
             "historical_significance": "",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_18mwy",
+            "title": "Performing Arts",
+            "desc": "Rouf; Bhand Pather theatre (No image)\n\nNoot (Jammu and Kashmir) - https://ncert.nic.in/textbook.php?gekr1=8-20 "
+          },
+          {
+            "id": "pa_1772913899361_ebgtz",
+            "title": "Performing Arts",
+            "desc": "Cham masked dance; monastic dances\n\nKopong (Ladakh) - https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -1926,7 +2169,12 @@
         "capital": "Ranchi",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Tussar silk; tribal beadwork",
+        "Artists: Ram Dayal Munda (cultural leader)",
+        "Tribal Culture: Munda; Santhal; Ho",
+        "Tribal Dance: Santhal jhumar; Ho dances\n\nhttps://jharkhandculture.com/node/36 \n\nhttps://jharkhandculture.com/node/32 "
+      ],
       "art_forms": {
         "paintings": [
           {
@@ -1937,6 +2185,11 @@
             "img": "",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_65ssv",
+            "title": "Visual Arts",
+            "desc": "Sohrai; Khovar painting"
           }
         ],
         "performing_arts": [
@@ -1948,6 +2201,11 @@
             "img": "/state-images/Jharkhand/dance21.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_yuvn0",
+            "title": "Performing Arts",
+            "desc": "Jhumar; Paika.\n\nMadal/Mandar\n(Bihar and Jharkhand) - https://ncert.nic.in/textbook.php?hekr1=6-19 ,  https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -1992,10 +2250,20 @@
         "key_cities": []
       },
       "facts": [
-        "In Karnataka, the puppet theatre is said to have existed since ancient times. The two prominent forms of puppetry in the state are string puppets or Marionettes and Leather or Shadow puppets. At present many marionette troops exist in Karnataka in which the whole family works as a team. A string puppet means a puppet manipulated from above and controlled by long strings invisible to the audience. Made of wood, the puppets of North Karnataka are short and slim in appearance possessing a pair of legs and hands whereas the puppets of south Karnataka are three feet high but without legs. All puppets are controlled by strings and the strings are tied to the hands and the head of the puppet. Some of the puppet troupes have discarded strings and have replaced them with rods for easier manipulation of puppets.The usually consisting of a thick black backdrop, two or three wooden poles and a curtain to cover the puppet players from being seen by the audience. Prominent musical instruments used during the performance are mridangam (also known as Maddale in Kannada), mukhaveena (a unique wind instrument made of wood, measuring one feet long and consisting twelve holes), cymbals and a Harmonium. The puppeteers of Karnataka perform the dual role of a narrator and an operator simultaneously. They not only manipulate the puppets behind the curtains but also conduct dialogues. The puppet operator wear anklets and dance along with puppets but such actions are not visible to the audience. Leather puppetry is an ancient art which existed in the third century in Karnataka and Andhra Pradesh. At present, the leather puppetry is extensively found in Chitradurga, Bellary and Kolar districts. The puppeteers following this art are known as Gomberamas or Killekyatas. These troupes numbering forty are the only nomadic clan practicing this profession. The striking feature of shadow puppetry is that, they create a world of fantasy and colour just behind the screen. Their uniqueness lies in their shadow performance. In reality, in such a show, the actual puppet is concealed behind a screen and only its shadow is visible to the audience, requiring enormous skills to present a shadow puppet show. The leather puppets are made of either goat or deer skin which is painted with vegetable dyes. The leather puppets are flat structures and are transparent. The arms, legs and head of the puppet are movable. The musical narration is simple and vivid. The puppet show requires a simple stage. A white screen is important since it is behind this that the puppets are played and on which shadows of the performing puppets are cast. The puppeteers hide themselves from the audience's view behind a thick black blanket. A lamp is hung behind the white screen. The reflection of the light falls on the puppets whose shadows ultimately appear on the transparent white cotton screen."
+        "In Karnataka, the puppet theatre is said to have existed since ancient times. The two prominent forms of puppetry in the state are string puppets or Marionettes and Leather or Shadow puppets. At present many marionette troops exist in Karnataka in which the whole family works as a team. A string puppet means a puppet manipulated from above and controlled by long strings invisible to the audience. Made of wood, the puppets of North Karnataka are short and slim in appearance possessing a pair of legs and hands whereas the puppets of south Karnataka are three feet high but without legs. All puppets are controlled by strings and the strings are tied to the hands and the head of the puppet. Some of the puppet troupes have discarded strings and have replaced them with rods for easier manipulation of puppets.The usually consisting of a thick black backdrop, two or three wooden poles and a curtain to cover the puppet players from being seen by the audience. Prominent musical instruments used during the performance are mridangam (also known as Maddale in Kannada), mukhaveena (a unique wind instrument made of wood, measuring one feet long and consisting twelve holes), cymbals and a Harmonium. The puppeteers of Karnataka perform the dual role of a narrator and an operator simultaneously. They not only manipulate the puppets behind the curtains but also conduct dialogues. The puppet operator wear anklets and dance along with puppets but such actions are not visible to the audience. Leather puppetry is an ancient art which existed in the third century in Karnataka and Andhra Pradesh. At present, the leather puppetry is extensively found in Chitradurga, Bellary and Kolar districts. The puppeteers following this art are known as Gomberamas or Killekyatas. These troupes numbering forty are the only nomadic clan practicing this profession. The striking feature of shadow puppetry is that, they create a world of fantasy and colour just behind the screen. Their uniqueness lies in their shadow performance. In reality, in such a show, the actual puppet is concealed behind a screen and only its shadow is visible to the audience, requiring enormous skills to present a shadow puppet show. The leather puppets are made of either goat or deer skin which is painted with vegetable dyes. The leather puppets are flat structures and are transparent. The arms, legs and head of the puppet are movable. The musical narration is simple and vivid. The puppet show requires a simple stage. A white screen is important since it is behind this that the puppets are played and on which shadows of the performing puppets are cast. The puppeteers hide themselves from the audience's view behind a thick black blanket. A lamp is hung behind the white screen. The reflection of the light falls on the puppets whose shadows ultimately appear on the transparent white cotton screen.",
+        "Textile: Ilkal saree; Mysore silk",
+        "Artists: K. Shivaram Karanth links; local artists",
+        "Tribal Culture: Koraga; Soliga; other Adivasi groups",
+        "Tribal Dance: Koraga ritual dances; Adivasi folk dances"
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_e8oej",
+            "title": "Visual Arts",
+            "desc": "Mysore painting; Chitrakala works\n\nhttps://commons.wikimedia.org/wiki/File:ChitrakalaParishatCampus.jpg \n\nhttps://commons.wikimedia.org/wiki/File:Citrakala_Parishat.jpg \n\n"
+          }
+        ],
         "performing_arts": [
           {
             "id": "ud1jw98bd",
@@ -2005,6 +2273,11 @@
             "img": "/state-images/Karnataka/yakshagaana1.webp",
             "historical_significance": "",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_jxutc",
+            "title": "Performing Arts",
+            "desc": "Yakshagana; classical dance.\n\nInstrument-Halge (Gujarat and Karnataka) - https://ncert.nic.in/textbook.php?hekr1=6-19 \n- Khanjira (Karnataka) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -2194,7 +2467,12 @@
         "capital": "Thiruvananthapuram",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Kasavu saree; handloom",
+        "Artists: K. C. S. Paniker influence; mural artists",
+        "Tribal Culture: Paniya; Kurichiya; Adivasi communities",
+        "Tribal Dance: Thiruvathira; Adivasi ritual dances"
+      ],
       "art_forms": {
         "paintings": [
           {
@@ -2205,6 +2483,11 @@
             "img": "/state-images/Kerala/bamboo-mat.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_epxa3",
+            "title": "Visual Arts",
+            "desc": "Temple mural painting"
           }
         ],
         "performing_arts": [
@@ -2234,6 +2517,11 @@
             "img": "/state-images/Kerala/mohiniattam.webp",
             "historical_significance": "",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_nhctc",
+            "title": "Performing Arts",
+            "desc": "Kathakali; Mohiniyattam.\n\nChenda\n(Kerala) - https://ncert.nic.in/textbook.php?hekr1=6-19 "
           }
         ],
         "handicrafts": [
@@ -2344,11 +2632,27 @@
         "key_cities": []
       },
       "facts": [
-        "Muharram is not about festive celebration. Muharram commemorates the martyrdom of Hazrat Imam Hussain, the grandson of the Holy Prophet Mohammed who was killed in the Battle of Karbala in AD 680. The prophet's son-in-law Ali, and Ali's elder son Hassan, are also remembered during this period as having suffered and died for righteous causes. As Muharram, the first month of the Muslim year, approaches, they put on black clothes, as black is regarded as a color of mourning. Majalis (assemblies) are held every day during the first nine days .On the 10th day of Muharram, large processions are formed and the devoted followers parade the streets holding banners and carrying decorated taziyas which are the replicas of martyr's tomb or mausoleum of Hazrat Imam Hussain and his people, who fell at Karbala. They show their grief and sorrow by inflicting wounds on their own bodies with sharp metal tied to chain with which they scourge themselves and beat their chests and lament over the murder of Imam Husain. Andrott Island in Lakshadweep is the longest island amongst the Lakshadweep group of islands. The famous monument of this island Buddhist archaeological remains are and the tomb of Hazrat Ubaidullah renowned for introducing Islam in archipelago. The coral remains on the eastern shores of the island are the remnants of a vicious storm that took place in 1847. The main monument at Kalpeni is the Moidin Mosque that has walls made of coral. Minicoy is a striking island dotted with palm trees and enclosed with coral reefs. One of the most impressive sights of Minicoy is a 50 meter tall Lighthouse, built by the British."
+        "Muharram is not about festive celebration. Muharram commemorates the martyrdom of Hazrat Imam Hussain, the grandson of the Holy Prophet Mohammed who was killed in the Battle of Karbala in AD 680. The prophet's son-in-law Ali, and Ali's elder son Hassan, are also remembered during this period as having suffered and died for righteous causes. As Muharram, the first month of the Muslim year, approaches, they put on black clothes, as black is regarded as a color of mourning. Majalis (assemblies) are held every day during the first nine days .On the 10th day of Muharram, large processions are formed and the devoted followers parade the streets holding banners and carrying decorated taziyas which are the replicas of martyr's tomb or mausoleum of Hazrat Imam Hussain and his people, who fell at Karbala. They show their grief and sorrow by inflicting wounds on their own bodies with sharp metal tied to chain with which they scourge themselves and beat their chests and lament over the murder of Imam Husain. Andrott Island in Lakshadweep is the longest island amongst the Lakshadweep group of islands. The famous monument of this island Buddhist archaeological remains are and the tomb of Hazrat Ubaidullah renowned for introducing Islam in archipelago. The coral remains on the eastern shores of the island are the remnants of a vicious storm that took place in 1847. The main monument at Kalpeni is the Moidin Mosque that has walls made of coral. Minicoy is a striking island dotted with palm trees and enclosed with coral reefs. One of the most impressive sights of Minicoy is a 50 meter tall Lighthouse, built by the British.",
+        "Textile: Handloom mats; coir textiles\n",
+        "Artists: Local island artists; craft communities",
+        "Tribal Culture: Indigenous islander traditions",
+        "Tribal Dance: Sea-song dance forms; island ceremonial dances\nKolkali dance - https://share.google/ZW447Wl01kNjzGdBl \nhttps://share.google/TjVqsWLmVJFEj4eFm \nParchikali - https://share.google/oG2cetzrGYjVO0Nin "
       ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_tlai8",
+            "title": "Visual Arts",
+            "desc": "Coir craft; coral-inspired motifs"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_z0c7x",
+            "title": "Performing Arts",
+            "desc": "Sea-song traditions; island dances\n\nInstrument - Tarpo (Daman and Diu, Lakshadweep) https://ncert.nic.in/textbook.php?gekr1=8-20 "
+          }
+        ],
         "handicrafts": []
       },
       "monuments": [],
@@ -2383,7 +2687,11 @@
       },
       "facts": [
         "**Pre-Historic ---- 3000 BCE**: Bhimbhetka has remained a landmark of generations of prehistoric art in India. It is believed that these paintings are twenty thousand to five hundred thousand years old. Bhimbetka lies south of Bhopal and is surrounded by the Vindhya ranges. Indian archaeologists date some of these paintings to the very early periods, including the Upper Palaeolithic period. But the statement has no reliable grounds. It can be dated rather to the Mesolithic. The Bhimbhetka Caves or rock shelters in Bhimbetka have ancient prehistoric paintings depicting the lives and times of people living in these caves. The scenes painted on the walls include animals around by them like wild buffalo, tigers, and rhinoceros. The scenes also depict activities from their lives like dance, religious rituals and childbirth. Other paintings depict the tools they used for cooking, hunting and other purposes. This makes the Bhimbetka group an archaeological treasure, an invaluable chronicle in the history of man and a World Heritage site. In Bhimbhtka, mineral and vegetable colours are primarily used. The colours used by the cave dwellers were prepared combining manganese, haematite, soft red stone and wooden coal. Sometimes the fat of animals and extracts of leaves were also used in the mixture. The colours have remained intact for many centuries due to the chemical reaction resulting from the oxide present on the surface of the rocks. The themes are taken from the everyday events depicting hunting, dancing, music, horse and elephant riders, animals fighting, honey collection, decoration of bodies, disguises and household scenes. Animals such as bisons, tigers, lions, wild boar, elephants, antelopes, dogs, lizards, crocodiles etc. have been abundantly depicted in some caves. The superimposition of paintings shows that the same surface was used by people of different times. Rock art, thus, gives tremendous clues to understand the life-style, entertainment or the mysticism prevalent in that era. The detailed concepts of animals from filled types to stick and x-ray types are found in abundance.",
-        "**Jewellery**: Madhya Pradesh makes lac jewellery, the best known being in Rewa and Indore. In these places ornaments like chokers, earrings, rings, hair ornaments and large octagonal bead chains are made in traditional style. In this type of jewellery, lac is placed over the tin foil and melted so that the latter is fully covered by lac. This is largely used for ornaments which shine with a golden effect. One of the most attractive pieces made by this process is the anklet of clove shaped beads all cast in one piece called lauang kasauthi."
+        "**Jewellery**: Madhya Pradesh makes lac jewellery, the best known being in Rewa and Indore. In these places ornaments like chokers, earrings, rings, hair ornaments and large octagonal bead chains are made in traditional style. In this type of jewellery, lac is placed over the tin foil and melted so that the latter is fully covered by lac. This is largely used for ornaments which shine with a golden effect. One of the most attractive pieces made by this process is the anklet of clove shaped beads all cast in one piece called lauang kasauthi.",
+        "Textile: Chanderi; Maheshwari",
+        "Artists: Contemporary documentarians; Gond painters",
+        "Tribal Culture: Gond; Bhil; Baiga",
+        "Tribal Dance: Gondi dances; Bhil ghoomar\n\nhttps://commons.wikimedia.org/wiki/File:Ghhoommar.jpg "
       ],
       "art_forms": {
         "paintings": [
@@ -2404,9 +2712,20 @@
             "img": "",
             "historical_significance": "",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_nx28p",
+            "title": "Visual Arts",
+            "desc": "Gond; Pithora painting"
           }
         ],
-        "performing_arts": [],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_4d8a8",
+            "title": "Performing Arts",
+            "desc": "Ghoomar; folk theatre\n\nThe Maihar Band -  \nhttps://ncert.nic.in/textbook.php?hekr1=5-19 \nIt is a distinctive orchestra ensemble founded by Ustad Allauddin Khan renowned for harmonious blend of many different musical instruments."
+          }
+        ],
         "handicrafts": [
           {
             "id": "ph9k9dm25",
@@ -2585,7 +2904,11 @@
         "key_cities": []
       },
       "facts": [
-        "Mumbai is a major center of the Indian film industry being the largest in the world producing over 1200 films each year. The industry is supported mainly by a vast film-going Indian public, though Indian films have been gaining popularity in the rest of the world. Cinema first came to India in 1896, when the Lumiere Brothers' Cinematographe showed six short films in the Watson Hotel in Bombay. Three years later Harishchandra Bhatvadekar shot and exhibited two short films. Following that, there were several attempts to film stage plays and imported films were shown in the first decade of the twentieth century. The first indigenous silent feature film was Raja Harishchandra, released in 1913 and directed by Dhundiraj Govind Phalke, nicknamed \"Dadasaheb,\" who is known as the father of Indian films. Bollywood is the informal name given to the popular Mumbai-based Hindi film industry in India. The name is a combination of Bombay, the old name of Mumbai, and Hollywood, the center of the United States film industry."
+        "Mumbai is a major center of the Indian film industry being the largest in the world producing over 1200 films each year. The industry is supported mainly by a vast film-going Indian public, though Indian films have been gaining popularity in the rest of the world. Cinema first came to India in 1896, when the Lumiere Brothers' Cinematographe showed six short films in the Watson Hotel in Bombay. Three years later Harishchandra Bhatvadekar shot and exhibited two short films. Following that, there were several attempts to film stage plays and imported films were shown in the first decade of the twentieth century. The first indigenous silent feature film was Raja Harishchandra, released in 1913 and directed by Dhundiraj Govind Phalke, nicknamed \"Dadasaheb,\" who is known as the father of Indian films. Bollywood is the informal name given to the popular Mumbai-based Hindi film industry in India. The name is a combination of Bombay, the old name of Mumbai, and Hollywood, the center of the United States film industry.",
+        "Textile: Paithani; Paithani silk",
+        "Artists: S. H. Raza ties; Warli artists",
+        "Tribal Culture: Warli; Gond; other tribal groups",
+        "Tribal Dance: Warli dance; Gond ritual dances"
       ],
       "art_forms": {
         "paintings": [
@@ -2597,6 +2920,11 @@
             "img": "/state-images/Maharashtra/warli-1.webp",
             "historical_significance": "",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_vqr22",
+            "title": "Visual Arts",
+            "desc": "Warli; folk mural art"
           }
         ],
         "performing_arts": [
@@ -2617,6 +2945,11 @@
             "img": "/state-images/Maharashtra/ellora1.webp",
             "historical_significance": "Modern 1900-1947",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_4mx0k",
+            "title": "Performing Arts",
+            "desc": "Lavani; Tamasha"
           }
         ],
         "handicrafts": [
@@ -2799,11 +3132,27 @@
         "key_cities": []
       },
       "facts": [
-        "**Hand-Embroidery**: Hand embroidery is a popular craft practiced by both men and women in Manipur. There are about ten different varieties of embroidery designs in which they generally make tablecloths, bed-covers, shawls, handkerchiefs etc. Prominent legendry figures and animal motifs are stitched with perfection."
+        "**Hand-Embroidery**: Hand embroidery is a popular craft practiced by both men and women in Manipur. There are about ten different varieties of embroidery designs in which they generally make tablecloths, bed-covers, shawls, handkerchiefs etc. Prominent legendry figures and animal motifs are stitched with perfection.",
+        "Textile: Phanek; handloom textiles, loincloth ",
+        "Artists: Ratan Thiyam; local artists",
+        "Tribal Culture: Meitei; Naga tribes",
+        "Tribal Dance: Manipuri folk dances; Naga tribal dances"
       ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_knodb",
+            "title": "Visual Arts",
+            "desc": "Indigenous motifs; manuscript art,Poirei visual arts"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_wawe4",
+            "title": "Performing Arts",
+            "desc": "Manipuri classical dance; Ras Lila, Meitei dance,Pung cholom, Kabui Dance, stick dance, kabuli naga dance, Khampa Thoipi Chatkoi, jilla durbar,Halankara dance,Pung-Kartal Cholom, Pena Khongba\n\n- Pung (Manipur) https://ncert.nic.in/textbook.php?hekr1=6-19 , https://ncert.nic.in/textbook.php?gekr1=8-20 \nSobha Mani playing the Nata Pung https://ncert.nic.in/textbook.php?gekr1=6-20 cl-7 ch-6 pg no. 70"
+          }
+        ],
         "handicrafts": [
           {
             "id": "qd0m1816o",
@@ -2920,10 +3269,27 @@
         "capital": "Shillong",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Khasi shawls; handloom,Khasi textiles, garo textiles,Khneng embroidery, black pottery, cane craft",
+        "Artists: Local folk artists; weavers",
+        "Tribal Culture: Khasi; Garo; Jaintia,Koch,Hajong,Rabha,Boro",
+        "Tribal Dance: Khasi shad suk; Garo dances"
+      ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_1ilw4",
+            "title": "Visual Arts",
+            "desc": "Weaving motifs; bamboo crafts"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_capsv",
+            "title": "Performing Arts",
+            "desc": "Khasi dances\nhttps://share.google/2G09mBg66JIAMbPbw \n\n; Shad Suk Mynsiem https://share.google/rDJupiG5brjjyX6Q1 \n,Nongkrem Dance https://share.google/bCDxPRmdgnJaPMcst \nhttps://share.google/s5ENkeyT9JTJqO6at \n, Ka Shad Shyngwiang-Thangiap,Laho Dance https://share.google/1u6ST4r6pYIj1PjO1 ,Behdienkhlam Festival https://share.google/AGXsOGM72mIHZpKa4 , Wangala Dance https://share.google/r1li5XfAQcHI07KJv , Doregata Dance - Garo Dance https://share.google/ZldOurqVYx4jZE5Ta \n\nInstrument - Khuang (Meghalaya) https://ncert.nic.in/textbook.php?gekr1=8-20 "
+          }
+        ],
         "handicrafts": [
           {
             "id": "s3qu8t235",
@@ -2977,10 +3343,20 @@
         "key_cities": []
       },
       "facts": [
-        "**Weaving**: is an integral part of the Mizo culture and the women learn how to weave at an early age. Puans in numerous designs are produced by them on traditional looms. These are somewhat like lungis worn by the women, and are their native dress. Puans are noted for their beautiful design and intricate embroidery which is invariably worked out along with the weave. Mizos have a wealth of motifs. Mizo women also make attractive shawls and shoulder bags. The Hmars weave many designs and some of the important ones are thangsuo puon meaning famous cloth, puon laisen meaning cloth with red in the middle, hmarm - the loin cloth worn by women and zakuolaisen - the blouse piece used mainly by the unmarried girls."
+        "**Weaving**: is an integral part of the Mizo culture and the women learn how to weave at an early age. Puans in numerous designs are produced by them on traditional looms. These are somewhat like lungis worn by the women, and are their native dress. Puans are noted for their beautiful design and intricate embroidery which is invariably worked out along with the weave. Mizos have a wealth of motifs. Mizo women also make attractive shawls and shoulder bags. The Hmars weave many designs and some of the important ones are thangsuo puon meaning famous cloth, puon laisen meaning cloth with red in the middle, hmarm - the loin cloth worn by women and zakuolaisen - the blouse piece used mainly by the unmarried girls.",
+        "Textile: Puan (Mizo woven cloth),Pawndum,Ngotekherh https://share.google/EQ5EaNcJ6Eo7D0FjQ https://www.deviantart.com/tpuia/art/Ngotekherh-874197462, \nHmaram https://share.google/G8UB0PYtFsePwMbtw \n, Kawrchei,Sakeizangzia,Kawkpuizikzial,Lenbuangthuam",
+        "Artists: Zoramthanga cultural promoters; weavers",
+        "Tribal Culture: Mizo, Lusei (Lushai),Ralte,Hmar,Paite",
+        "Tribal Dance: Cheraw; other Mizo folk dances"
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_ensw5",
+            "title": "Visual Arts",
+            "desc": "Bamboo & reed craft art,Puan,Puan motifs,wood carving,Gourd craft,Rock art\n\nhttps://share.google/hynWESh4tRQ3DlTbC \nhttps://share.google/oOBs4cyg2n2cNFajn \nhttps://share.google/f3fSkO31gg2UsJ1Rk \n"
+          }
+        ],
         "performing_arts": [
           {
             "id": "i83z4cz82",
@@ -2999,6 +3375,11 @@
             "img": "/state-images/Mizoram/cheraw-dance.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_cqlt8",
+            "title": "Performing Arts",
+            "desc": "Cheraw (bamboo dance),Khuallam, Chheihlam,Sarlamkai,Par Lam,Rallu Lam,Solakia,Tlanglam"
           }
         ],
         "handicrafts": [
@@ -3080,9 +3461,20 @@
         "capital": "Kohima",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Naga shawls https://share.google/F83SmfoyrbV7qFTY8 ;  longpi  https://share.google/OolZNM4y1oU05d0yR \nhttps://share.google/g5om9wFuY47MOEpZ3 \nhttps://share.google/4XzD971CWHXy2fsen ",
+        "Artists: Renowned textile artists; weavers",
+        "Tribal Culture: Ao; Angami; Sema; many Naga tribes",
+        "Tribal Dance: Hornbill festival dances; warrior dances"
+      ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_3m7xz",
+            "title": "Visual Arts",
+            "desc": "Naga mural motifs; beadwork\nhttps://share.google/8MHH7YdDe7JviuHbQ \n"
+          }
+        ],
         "performing_arts": [
           {
             "id": "86qyfl5ef",
@@ -3092,6 +3484,11 @@
             "img": "/state-images/Nagaland/basket1.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_gi3c8",
+            "title": "Performing Arts",
+            "desc": "Dances-War Dance,Chang Lo (Sua Lua),Zeliang Dance,Kuki Dance,Khupielilie Dance- No Image\nNaga folk theatre-Kabui Naga Dance https://share.google/aO3SAbQCl5gnC7wsS \nhttps://share.google/n2uqljCOoGSqsRxcE "
           }
         ],
         "handicrafts": [
@@ -3154,7 +3551,11 @@
         "key_cities": []
       },
       "facts": [
-        "Dhauli hills are presumed to be the area of the bloody battle of Kalinga, won by the Mauryan emperor Ashoka in third cen. BCE. Though he conquered, his horrors of having slain over 1,50,000 people and the misery it inflicted on the people filled Ashoka with remorse and brought about a sudden change of heart. The great Mauryan king renouncing the path of violence embraced Buddhism and spread the dharma through rock edicts, installed in different parts around the empire."
+        "Dhauli hills are presumed to be the area of the bloody battle of Kalinga, won by the Mauryan emperor Ashoka in third cen. BCE. Though he conquered, his horrors of having slain over 1,50,000 people and the misery it inflicted on the people filled Ashoka with remorse and brought about a sudden change of heart. The great Mauryan king renouncing the path of violence embraced Buddhism and spread the dharma through rock edicts, installed in different parts around the empire.",
+        "Textile: Sambalpuri ikat; Bomkai",
+        "Artists: Pattachitra masters; stone sculptors",
+        "Tribal Culture: Kondh; Saora; tribal painters",
+        "Tribal Dance: Saora tribal dances  https://share.google/PGKyOVAsC2uML6AGM ; "
       ],
       "art_forms": {
         "paintings": [
@@ -3166,6 +3567,11 @@
             "img": "/state-images/Orissa/patachitra-1.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_kvfnd",
+            "title": "Visual Arts",
+            "desc": "Pattachitra; stone carving\n\nInstrument- Jhanjh (Assam, Odisha) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "performing_arts": [
@@ -3186,6 +3592,11 @@
             "img": "/state-images/Orissa/kelucharan.webp",
             "historical_significance": "1900-1947",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_tggtj",
+            "title": "Performing Arts",
+            "desc": "Odissi dance,Gotipua,Chhau,Danda Nata,Pala,Dasakathia,Changu Nata,Karma Naach https://share.google/UkCSgxpUIxqJEptbr ,Jatra https://share.google/I6HIzzv5twm5A1i8k \nhttps://share.google/R1FbHd4wLkWzktVgP ,\n\nDanda Nata https://commons.wikimedia.org/wiki/File:Interesting_part_of_Danda_nritya.jpg \n\nChaiti Ghoda  https://share.google/gEVbnE5JdlebubAdK  \n Dhanu Jatra https://share.google/pvQhrcyxJNM7Fk2X9 , https://share.google/E2OCcmyYy6X2tcn9g \nRanappa https://share.google/qYWqwvLeEAPV1sJYA \n"
           }
         ],
         "handicrafts": [
@@ -3375,10 +3786,27 @@
         "capital": "Puducherry",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Local handloom; embroidery",
+        "Artists: Franco-Tamil artists; local painters",
+        "Tribal Culture: Limited tribal presence; Creole cultural mix",
+        "Tribal Dance: Local folk dances; temple performances"
+      ],
       "art_forms": {
-        "paintings": [],
-        "performing_arts": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_h0l5w",
+            "title": "Visual Arts",
+            "desc": "French-colonial visual arts\nhttps://share.google/qzXUv1CQy8HrD7cSA \n\n; frescoes"
+          }
+        ],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_dgrnk",
+            "title": "Performing Arts",
+            "desc": "Bharatanatyam influences; folklore theatre\n\nNo Image"
+          }
+        ],
         "handicrafts": [
           {
             "id": "s0ow7cnip",
@@ -3485,9 +3913,20 @@
         "capital": "Chandigarh",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Phulkari embroidery,Khes fabric,Durries,",
+        "Artists: Folk performers; Phulkari artisans",
+        "Tribal Culture: Various rural tribal/caste-linked groups",
+        "Tribal Dance: Bhangra; Giddha"
+      ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_r5qpa",
+            "title": "Visual Arts",
+            "desc": "Phulkari; folk painting motifs"
+          }
+        ],
         "performing_arts": [
           {
             "id": "qgjfjpvr8",
@@ -3506,6 +3945,11 @@
             "img": "/state-images/Punjab/kikli.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_513ec",
+            "title": "Performing Arts",
+            "desc": "Bhangra; Giddha,Gatka https://share.google/1qLVk6aLtnoRRDOK6 \nhttps://share.google/a0ygtVx3xUh05G5w6 \nhttps://share.google/rHCIFsE4Kii1Jygll \nKikkli, \n\nInstuments - Dholak/Dholaki (Punjab) - https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -3609,7 +4053,11 @@
         "**Rajasthan- The Chhatri or Cenotaphs**: Like the Rajputs, the marwaris erected cenotaphs on cremation grounds in the memory of their ancestors. A dome shaped structure sustained by as many as 32 pillars, the cenotaph may contain in its basement several rooms and a Shiva temple. The size of the memorial reflects the importance of the family who constructed it. For the wellbeing of the local population as well as for the fame of their name the merchant community financed the construction of various buildings such as wells, step wells and water reservoirs, temples, caravan sarai etc. Them marwaris patronized craftsmen who decorated not only their own residence but also all the buildings they had constructed. Paintings are to be found everywhere in profusion, on walls, balconies, ceilings, arches and pillars, on the dome of the cenotaphs and even on the rim of the wells.",
         "**Rajasthan- Udaipur**: Udaipur is a city of palaces, lakes, temples, gardens, carrying the flavor of a great past, epitomizing valor and chivalry. Set on three beautiful lakes and surrounded by hills, Udaipur, one of the most picturesque cities is known for its terracotta artists, the special lahariya (or wave patterned) tie-and-dye fabrics and brightly colored toys called pichhvais.",
         "**Rajasthan- Jodhpur**: The Sun City of Jodhpur stands on the edge of the Thar desert. Also called the Blue City as most houses, according to an age-old practice are painted with indigo blue color to ward off mosquitoes. Overlooking the city, with the superbly designed Umaid Bhawan Palace, is the",
-        "**Jadau and Kundan Jewellery**: Jaipurs Kundan jadau and meenakari are part of great jewellery heritage of India. Jewellers craft range of old style necklace, rings and earrings. Enamelling or meenakari work involves a laborious process wherein the piece is fixed on a stick of lacquer and delicate designs engraved on it. Engravings are made in the groves and the enamel colours filled in with the delicacy of miniature paintings. Part of the Mughal jewellery heritage, the kundan craft of Jaipur has uncut stones set in open lacy gold work. The hollows in which the stones are set are filled with gold of pure quality. In Jadau the techniques of both kundan and enamelling are combined so that a piece of jewellery has equally beautiful surfaces on both the sides: kundan set in gems in front and exquisite enamel work on the reverse."
+        "**Jadau and Kundan Jewellery**: Jaipurs Kundan jadau and meenakari are part of great jewellery heritage of India. Jewellers craft range of old style necklace, rings and earrings. Enamelling or meenakari work involves a laborious process wherein the piece is fixed on a stick of lacquer and delicate designs engraved on it. Engravings are made in the groves and the enamel colours filled in with the delicacy of miniature paintings. Part of the Mughal jewellery heritage, the kundan craft of Jaipur has uncut stones set in open lacy gold work. The hollows in which the stones are set are filled with gold of pure quality. In Jadau the techniques of both kundan and enamelling are combined so that a piece of jewellery has equally beautiful surfaces on both the sides: kundan set in gems in front and exquisite enamel work on the reverse.",
+        "Textile: Bandhani; block-printed textiles,Leheriya",
+        "Artists: Bhuri Bai and folk painters",
+        "Tribal Culture: Bhil; Meena; Rabari",
+        "Tribal Dance: Kalbeliya; Bhil dance forms\nhttps://share.google/p6gK8uNecYuDwaK5t \n\n"
       ],
       "art_forms": {
         "paintings": [
@@ -3621,6 +4069,11 @@
             "img": "/state-images/Rajasthan/bundi-miniature-painting.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_zfexj",
+            "title": "Visual Arts",
+            "desc": "Miniature - this Rajasthani miniature painting from the 18th century. The three people you see in the lush green landscape are the musician Tansen, his guru Swami Haridas and the Mughal emperor Akbar. https://ncert.nic.in/textbook.php?gekr1=16-20 Swami Haridasa with Tansen and Akbar at Vrindavana, 1700–1760 CE, miniature painting from Rajasthan.\n\n fresco; folk painting,Phad paintings- Stories of Puranas, kings and battles they\nfought. Praise of local deities like Pabuji and Devnarayan. https://ncert.nic.in/textbook.php?gekr1=4-20 cl-7 ch-4 \nPhad painting by Prakash Joshi - https://ncert.nic.in/textbook.php?gekr1=6-20 cl-7 ch-6 pg no. 69\n\nMandana,Blue Pottery,Molela Terracotta,Meenakari,Thewa,Marble carving"
           }
         ],
         "performing_arts": [
@@ -3659,6 +4112,11 @@
             "img": "/state-images/Rajasthan/padma-talwalkar-jaipur-gharana.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_f4syw",
+            "title": "Performing Arts",
+            "desc": "Kalbeliya; Ghoomar,Kathputli,Bhavai https://share.google/Bn65XR1j2uYlgIVhQ \nhttps://share.google/t5uggkeD1hEr3478g \n\n\nNagara (Rajasthan) - https://ncert.nic.in/textbook.php?hekr1=6-19  "
           }
         ],
         "handicrafts": [
@@ -4049,7 +4507,11 @@
       },
       "facts": [
         "Monasteries are mostly known as Gompas. But Gompa literally means \"a place of solitude\", a religious escape where monks are iner aspects of Tibetan Buddhism. Most gompas in Sikkim are found in solitary places since isolation from the world has always been an important aspect of Buddhist learning merely as an escape from worldly temptations. Monasteries usually occupy commanding and frequently picturesque sites. The monastic buildings cluster around the main building which is also used as the Assembly Hall or du-khang. Rows of prayer flags and chortens are lined up along the path to Gompa.",
-        "**Carpet Weaving**: The women of Sikkim practice what is perhaps the oldest form of carpet weaving in the world. The tradition is essentially Central Asian and a frame loom is used for the purpose. The women of the Bhutia community are believed to be expert weavers. The warp is prepared from cotton and is stretched on a frame. Different colors of wool are introduced into the pattern and so are a number of rods. The patterns commonly woven onto the carpets are a dragon holding a ball in his mouth or stylized floral motifs. Patterns are based on Buddhist motifs and figures. Geometrical patterns are popular too. Most patterns draw heavily on the surrounding beauty of the landscape."
+        "**Carpet Weaving**: The women of Sikkim practice what is perhaps the oldest form of carpet weaving in the world. The tradition is essentially Central Asian and a frame loom is used for the purpose. The women of the Bhutia community are believed to be expert weavers. The warp is prepared from cotton and is stretched on a frame. Different colors of wool are introduced into the pattern and so are a number of rods. The patterns commonly woven onto the carpets are a dragon holding a ball in his mouth or stylized floral motifs. Patterns are based on Buddhist motifs and figures. Geometrical patterns are popular too. Most patterns draw heavily on the surrounding beauty of the landscape.",
+        "Textile: Handloom woolens; yak wool,Bhutia carpet weaving\n",
+        "Artists: Documenting artists; monastery painters",
+        "Tribal Culture: Lepcha; Bhutia",
+        "Tribal Dance: Cham masked dances https://share.google/cgTq6Tye1RNevAzKV \nhttps://share.google/OunQu7uKOQe4MkAm0 ; Lepcha rituals\n\nhttps://share.google/ex2IBpn4OHHMhY5Rb \nhttps://share.google/e0WR9kFdUtWSYvfG3 "
       ],
       "art_forms": {
         "paintings": [
@@ -4061,9 +4523,20 @@
             "img": "",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_hzioa",
+            "title": "Visual Arts",
+            "desc": "Thangka painting; monastery art,Wood carving,Mask making,Cane and bamboo crafts"
           }
         ],
-        "performing_arts": [],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_al232",
+            "title": "Performing Arts",
+            "desc": "Cham masked dances, Maruni and Tamang Selo  https://share.google/92PJG03MkTY63KIO3 https://share.google/M42VP3q83YiwEqc5e \nhttps://share.google/sUsGiEcfeicqjp8zF  ,Limboo (Shyabru),Chutkay https://share.google/C2pmLFmURFbB7UClY "
+          }
+        ],
         "handicrafts": [
           {
             "id": "wg9cwfnmz",
@@ -4153,7 +4626,11 @@
       },
       "facts": [
         "The ancient craft of bronze or panchaloha casting of icons which reached its zenith of excellence under the Cholas is done by the cire perdue or lost wax method. The icon is first made in wax and three layers of clay applied on the wax model which is then allowed to dry. When perfectly dry, the clay coated mould is heated over an open ground oven and the molten wax forced out through appropriate holes in the icons. When the mould is completely drained of wax, molten metal is poured into the mould and allowed to set. The mould is broken after a few days and the bronze icon emerges. Chiselling, detailing and polishing follow. The icon is now complete, the only one of its kind in creation. The best bronze icons are still made in the old Chola centres of Swamimalai, Madurai and Tiruchirapalli strictly according to shilpa shastra rules. The term 'Nataraj' means 'King of Dancers' (Sanskrit nata = dance; raja = king). This cosmic dance of Shiva is called 'Anandatandava,' meaning the Dance of Bliss, and symbolizes the cosmic cycles of creation and destruction, as well as the daily rhythm of birth and death. An extraordinary symbolic representation, it was developed in southern India by ninth and tenth century artists during the Chola period (880-1279 CE) in a series of beautiful bronze sculptures. Nataraj is shown with four hands representing the cardinal directions. He is dancing, with his left foot elegantly raised and the right foot on a prostrate figure  Apasmara Purusha, the personification of illusion and ignorance over whom Shiva triumphs. The upper left hand holds a flame, the lower left hand points down to the dwarf, who is shown holding a cobra. The upper right hand holds an hourglass drum or 'dumroo' that stands for the male-female vital principle, the lower shows the gesture of Abhaya. Snakes that stand for selfishness, are seen uncoiling from his arms, legs, and hair, which is braided and bejeweled. His matted hair is whirling as he dances within an arch of flames representing the endless cycle of birth and death. On his head is a skull, which symbolizes his conquest over death. Goddess Ganga, the epitome of the holy river Ganges, also sits on his hairdo. His third eye is symbolic of his omniscience, insight, and enlightenment. The whole idol rests on a lotus pedestal, the symbol of the creative forces of the universe.",
-        "Kolams (Rangoli) are floor painting decorations generally drawn with rice flour. They are special to Pongal. The idea behind using rice flour is that the insects would feed on it and bless the household. At the centre of it a lump of cow dung holds a five-petal pumpkin flower, which is regarded as a symbol of fertility and an offering of love to the presiding deity. In a similar way the houses are also cleaned, painted and decorated. Kolams (Rangoli) are made in the front yards of the houses and new clothes for the whole family are bought to mark the festivities. Even the cattle are gaily caparisoned with beads, bells and flowers-their horns painted and capped with gleaming metals."
+        "Kolams (Rangoli) are floor painting decorations generally drawn with rice flour. They are special to Pongal. The idea behind using rice flour is that the insects would feed on it and bless the household. At the centre of it a lump of cow dung holds a five-petal pumpkin flower, which is regarded as a symbol of fertility and an offering of love to the presiding deity. In a similar way the houses are also cleaned, painted and decorated. Kolams (Rangoli) are made in the front yards of the houses and new clothes for the whole family are bought to mark the festivities. Even the cattle are gaily caparisoned with beads, bells and flowers-their horns painted and capped with gleaming metals.",
+        "Textile: Kanchipuram silk; handloom,Madurai Sungudi,Bhavani Jamakkalam,Toda Embroidery",
+        "Artists: K. M. Adimoolam links; Tanjore artists",
+        "Tribal Culture: Todas; Nilgiri tribes,,Kotas,Irulas,Kurumbas,Malayalis",
+        "Tribal Dance: Devotional temple dances; Toda rituals"
       ],
       "art_forms": {
         "paintings": [
@@ -4165,9 +4642,20 @@
             "img": "/state-images/Tamil_Nadu/tanjore-painting-1.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_guwjk",
+            "title": "Visual Arts",
+            "desc": "Tanjore painting; kolam art,Thanjavur Painting,Batik Painting,Bronze Statues,Wood Carving"
           }
         ],
-        "performing_arts": [],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_wla8e",
+            "title": "Performing Arts",
+            "desc": "Karagattam https://share.google/dF1IDXvXpWhxgG5uX \nhttps://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Karagattam.webp/640px-Karagattam.webp.png  \n\n,Bommalattam https://share.google/JSR0XLCPdQnowB013 \n\nTheru Koothu\nhttps://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Aritharam.JPG/640px-Aritharam.JPG \nKavadi Attam,\nBharatanatyam,\nCarnatic Music; \n\nUdukkai (Tamil Nadu) - https://ncert.nic.in/textbook.php?hekr1=6-19 \n\nAn artist playing the Veena cl-7 ch-6 kriti"
+          }
+        ],
         "handicrafts": [
           {
             "id": "salcgv4fa",
@@ -4346,9 +4834,20 @@
         "capital": "Agartala",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Handloom Tripuri textiles",
+        "Artists: Akhakumar Deb links; local artisans",
+        "Tribal Culture: Tripuri tribal groups",
+        "Tribal Dance: Hojagiri; Garia dances"
+      ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_6kfof",
+            "title": "Visual Arts",
+            "desc": "Bamboo crafts; indigenous motifs"
+          }
+        ],
         "performing_arts": [
           {
             "id": "x13ph02v7",
@@ -4367,6 +4866,11 @@
             "img": "/state-images/Tripura/goriadance.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_527ie",
+            "title": "Performing Arts",
+            "desc": "Garia; Hojagiri"
           }
         ],
         "handicrafts": [
@@ -4480,10 +4984,20 @@
         "**Uttar Pradesh- Introduction- Mathura**: Mathura, the birthplace of Lord Krishna was known as Brij Bhoomi. Mathura is surrounded by numerous sites which have been associated with Lord Krishna. Vrindavan was the place where He spent his childhood with cowherds, and gopis, or the village maidens is located a few kms from Mathura. This region has hundreds of small and big temples which attract pilgrims throughtout the year. Some of the significant temples are, Dwarikadeesh temple, the temple at Krishna Janmbhoomi, Shri Radha Raman temple, Shri Govind Dev temple etc.",
         "**Uttar Pradesh- Introduction- Agra**: Agra, the city of architectural wonders is more than just a decadent city of graveyards and stones. It is a vibrant centre of culture, art and religious philosophies. Agra is one of the richest heritage sites in India with numerous amazing Mughal monuments from the magnificent Taj Mahal to sober tombs likeAkbar's mausoleum at Sikandra. Agra is an architect's and historian's delight. The impressive Agra fort, the tombs of Mughal royalty, formal Mughal gardens and the fabulous city of Fatehpur Sikri near Agra are historic sites having unique architectural features and represent the best examples of Mughal architecture in India.",
         "**Uttar Pradesh- Introduction- Varanasi**: The land of Varanasi (Kashi) has been the ultimate pilgrimage spot for Hindus for ages. Often referred to as Benares, Varanasi is the oldest living city in the world. Varanasi has also been a great center of learning for ages and is associated with spiritualism, mysticism, Sanskrit, yoga and honored authors such as the ever-famous novelist Prem Chand and Tulsi Das, the famous saint-poet who wrote RamCharit Manas.",
-        "**Bharat Kala Bhawan- Varanasi**: Bharat Kala Bhavan located in the Banaras Hindu University has an outstanding collection of sculptures, paintings and textiles which began with the private collection of the eminent art historian Rai Krishnadasa. The sculpture collection includes terracotta and clay objects, stone and bronze and cast metal objects. Ancient terracotta varying from ritual icons to toys to utilitarian objects date to the Indus Valley civilisation, Mauryan, Sunga and Gupta periods. Among the stone sculpture are red sandstone reliefs from the second century BCE Buddhist stupa at Bharhut and rare images and statues from well known schools like Gandhara, which saw the synthesis of Greek and Indian styles and Mathura, a powerful art centre during the Kushana period. The large and impressive collection of textiles contain precious examples of Banaras silks and brocades, embroidered shawls from Kashmir and the rare Chamba rumal, onceused to wrap ceremonial gifts and offerings. They consist of rich embroidered pieces with designs and stories from the life of Krishna. Miniatures from almost all the schools of painting are represented here: Mughal, Rajasthani and Pahari."
+        "**Bharat Kala Bhawan- Varanasi**: Bharat Kala Bhavan located in the Banaras Hindu University has an outstanding collection of sculptures, paintings and textiles which began with the private collection of the eminent art historian Rai Krishnadasa. The sculpture collection includes terracotta and clay objects, stone and bronze and cast metal objects. Ancient terracotta varying from ritual icons to toys to utilitarian objects date to the Indus Valley civilisation, Mauryan, Sunga and Gupta periods. Among the stone sculpture are red sandstone reliefs from the second century BCE Buddhist stupa at Bharhut and rare images and statues from well known schools like Gandhara, which saw the synthesis of Greek and Indian styles and Mathura, a powerful art centre during the Kushana period. The large and impressive collection of textiles contain precious examples of Banaras silks and brocades, embroidered shawls from Kashmir and the rare Chamba rumal, onceused to wrap ceremonial gifts and offerings. They consist of rich embroidered pieces with designs and stories from the life of Krishna. Miniatures from almost all the schools of painting are represented here: Mughal, Rajasthani and Pahari.",
+        "Textile: Chikankari embroidery",
+        "Artists: Uday Shankar historical links; local artists",
+        "Tribal Culture: Tharu; other tribal pockets",
+        "Tribal Dance: Tharu dances (No image); Nautanki performances (No image)"
       ],
       "art_forms": {
-        "paintings": [],
+        "paintings": [
+          {
+            "id": "va_1772913899361_vf2fh",
+            "title": "Visual Arts",
+            "desc": "Mughal-influenced miniatures; folk art (No Image)\n\nSanjhi - https://ncert.nic.in/textbook.php?fekr1=4-22 \nSanjhi is a traditional art form that is practiced in Mathura and its surrounding regions in Uttar Pradesh. It is believed that this art was originally used as a stencil for rangoli. Nowadays, these stencils are made of paper and are very intricately cut out in a variety of designs and images. "
+          }
+        ],
         "performing_arts": [
           {
             "id": "z3yvy8ccx",
@@ -4502,6 +5016,11 @@
             "img": "/state-images/Uttar_Pradesh/kathak.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_qiiwp",
+            "title": "Performing Arts",
+            "desc": "Kathak; Nautanki\n\nInstruments - Surbahar - https://ncert.nic.in/textbook.php?hekr1=6-19 \nThe surbahar is a plucked string instrument, often called the ‘bass sitar’, used in Hindustani classical music. It has a deeper and lower tonal range than the sitar, making it suitable for elaborate alaap sections.\nAnnapurna Devi (1927–2018), born Roshanara Khan, was one of the most influential figures in Indian classical music"
           }
         ],
         "handicrafts": [
@@ -4836,7 +5355,12 @@
         "capital": "Dehradun",
         "key_cities": []
       },
-      "facts": [],
+      "facts": [
+        "Textile: Pahadi woollen shawls",
+        "Artists: Lalit Mohan Sharma links; folk artists",
+        "Tribal Culture: Jaunsari\n\nhttps://commons.wikimedia.org/wiki/File:Harul_Dance_by_Jaunsar_Tribals.jpg \nhttps://share.google/jTyaSv1rXHF7XJqHu \n\nBhotia; Bhotiya groups",
+        "Tribal Dance: Jhora; Chholiya ritual dances"
+      ],
       "art_forms": {
         "paintings": [
           {
@@ -4874,6 +5398,11 @@
             "img": "/state-images/Uttarkhand/pattas.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_gyui4",
+            "title": "Visual Arts",
+            "desc": "Aipan painting; temple art"
           }
         ],
         "performing_arts": [
@@ -4885,6 +5414,11 @@
             "img": "/state-images/Uttarkhand/kumaaun-folk-dance-bhotiya.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "pa_1772913899361_7n1pu",
+            "title": "Performing Arts",
+            "desc": "Jhora (NO Image); Chholiya https://share.google/Saf1heDfs823LSTWa \nhttps://share.google/VACPasqRMAFOLHmtE \nhttps://share.google/b1twZ3hKvkiLKKTMl \nhttps://share.google/H4O1dEUE4a2qwMO9x \nhttps://share.google/FPlSMCie886mUrUYD \n\nChanchari Dance\nhttps://commons.wikimedia.org/wiki/File:Chanchari_dance.jpg \n\nInstrument- Nafiri (Uttarakhand) https://ncert.nic.in/textbook.php?gekr1=8-20 "
           }
         ],
         "handicrafts": [
@@ -4967,7 +5501,11 @@
         "key_cities": []
       },
       "facts": [
-        "**Kantha Embroidery**: Kantha evolved out of necessity to drape or protect against cold. Kontha in Sanskrit means rags. It can rightly be called the recycling art. The precious silks and muslins when became worn-out, women instead of throwing them away, piled them in layers and stitched. The Kantha narrates a story, the emotions and the life of the artist. The process involves laying the worn clothes in layers and stitching them together. Though the stitch used is variations of running stitch, the motifs can range from being simple to very intricate. Apart from floral motifs, kantha also displays animals, birds and"
+        "**Kantha Embroidery**: Kantha evolved out of necessity to drape or protect against cold. Kontha in Sanskrit means rags. It can rightly be called the recycling art. The precious silks and muslins when became worn-out, women instead of throwing them away, piled them in layers and stitched. The Kantha narrates a story, the emotions and the life of the artist. The process involves laying the worn clothes in layers and stitching them together. Though the stitch used is variations of running stitch, the motifs can range from being simple to very intricate. Apart from floral motifs, kantha also displays animals, birds and",
+        "Textile: Tant\nhttps://share.google/WQZ6Rwd0Jo9Yd8szE \nhttps://share.google/evkEooiPcqWZa4bL4 \nhttps://share.google/J2XVy7TnrVt6Elxd1 \nhttps://commons.wikimedia.org/wiki/File:Customers_Selecting_Tant_Sarees_-_2_Natun_Phulia_-_Nadia_2016-11-12_1862.JPG \n; Baluchari\nhttps://share.google/ZQonvFZqXTS8gmEYG \nhttps://share.google/H8OAQBpAUKU7J1ENC \n; Dhakai Jamdani Saree\n\nhttps://share.google/gdqnC7DdWcWpvZKYE ",
+        "Artists: Bengal modern and folk artists",
+        "Tribal Culture: Santhal; Lodha; Oraon",
+        "Tribal Dance: Santhal jhumur (No Image)\n\nhttps://share.google/gLvhT1AsQ7zUXGqxa \n; Chhau tribal dances\nhttps://share.google/teujBw5Uog8WKmVnT \nhttps://commons.wikimedia.org/wiki/File:Performance_of_Chhau_dance_of_Purulia.jpg \nhttps://share.google/9SnLjrzYLSKOH1Xzg \n\n\nKarmanach of Santhal Tribe \nhttps://commons.wikimedia.org/wiki/File:Karamnach.jpg "
       ],
       "art_forms": {
         "paintings": [
@@ -5006,9 +5544,20 @@
             "img": "/state-images/West_Bengal/nandlal-bose.webp",
             "historical_significance": "Contemporary",
             "materials": ""
+          },
+          {
+            "id": "va_1772913899361_nyc2v",
+            "title": "Visual Arts",
+            "desc": "Kalighat; clay craft; terracotta\nface painting- Bahurupi\nhttps://commons.wikimedia.org/wiki/File:Bahurupi.jpg\n "
           }
         ],
-        "performing_arts": [],
+        "performing_arts": [
+          {
+            "id": "pa_1772913899361_po31s",
+            "title": "Performing Arts",
+            "desc": "Rabindra Sangeet; Chhau; Baul"
+          }
+        ],
         "handicrafts": [
           {
             "id": "x31uvxfs7",
