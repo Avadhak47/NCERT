@@ -149,7 +149,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                     return palette[i % palette.length];
                 })
                 .attr('stroke', colors.stroke)
-                .attr('stroke-width', '1');
+                .attr('stroke-width', '0.5');
 
             // Create POI group container once
             svg.append('g').attr('class', 'poi-group transition-opacity duration-500');
@@ -218,41 +218,37 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
             if (activeState) {
                 if (mappedStateName === activeState) {
-                    element.style('opacity', 1).attr('stroke-width', '2');
+                    element.style('opacity', 1).attr('stroke-width', '1');
                 } else {
                     element.style('opacity', 0).attr('stroke-width', '0');
                 }
             } else if (activeRegion) {
                 if (stateRegion === activeRegion) {
-                    element.style('opacity', 1).attr('stroke-width', '2');
+                    element.style('opacity', 1).attr('stroke-width', '1');
                     if (activeRegion === 'UT') {
                         element.raise();
+
+                        // Flashing effect for the region by toggling opacity via css class or inline transition
+                        element.classed('animate-pulse', true);
+
                         const centroid = pathGen.centroid(d);
                         const bounds = pathGen.bounds(d);
 
                         if (!isNaN(centroid[0]) && !isNaN(centroid[1]) && bounds) {
-                            const width = bounds[1][0] - bounds[0][0];
                             const height = bounds[1][1] - bounds[0][1];
-                            const maxDim = Math.max(width, height);
-
-                            // Target dimension in SVG space (around 80px)
-                            const targetScale = maxDim > 0 ? (80 / maxDim) : 2.5;
-                            // Clamp scale so tiny islands don't become massive continents, but are still visible
-                            const finalScale = Math.min(Math.max(targetScale, 1.5), 20);
-
-                            element.attr('transform', `translate(${centroid[0]}, ${centroid[1]}) scale(${finalScale}) translate(${-centroid[0]}, ${-centroid[1]})`);
                             utLabelsData.push({
                                 name: mappedStateName,
                                 x: centroid[0],
-                                y: centroid[1] + (height * finalScale / 2) + 15
+                                y: centroid[1] + (height / 2) + 10
                             });
                         }
                     }
                 } else {
-                    element.style('opacity', 0.1).attr('stroke-width', '0.5');
+                    element.style('opacity', 0.1).attr('stroke-width', '0.2');
                 }
             } else {
-                element.style('opacity', 1).attr('stroke-width', '1');
+                element.classed('animate-pulse', false);
+                element.style('opacity', 1).attr('stroke-width', '0.5');
             }
         });
 
