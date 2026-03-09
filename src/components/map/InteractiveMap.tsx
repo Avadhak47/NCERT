@@ -76,6 +76,46 @@ const REGION_MAP: Record<string, string> = {
     'Puducherry': 'UT'
 };
 
+const STATE_COLORS: Record<string, string> = {
+    'Jammu & Kashmir': '#E0F7FA', // Snow/Ice
+    'Ladakh': '#B2EBF2', // Cold Desert/Ice
+    'Himachal Pradesh': '#81C784', // Mountains/Forest
+    'Punjab': '#FFF176', // Agriculture/Wheat
+    'Uttarkhand': '#FFB74D', // Mountains/Spiritual
+    'Haryana': '#AED581', // Agriculture
+    'Uttar Pradesh': '#DCE775', // Fertile Plains
+    'Rajasthan': '#FFE082', // Desert/Sand
+    'Gujarat': '#FFCC80', // Arid/Coastal
+    'Madhya Pradesh': '#4CAF50', // Central Forests
+    'Chhattisgarh': '#AB47BC', // Minerals/Forests
+    'Bihar': '#FFF59D', // Plains
+    'Jharkhand': '#A1887F', // Minerals/Earth
+    'West Bengal': '#E57373', // Delta/Culture/Terracotta
+    'Orissa': '#9575CD', // Coast/Temples
+    'Maharashtra': '#D4E157', // Deccan Plateau
+    'Goa': '#4DD0E1', // Beaches
+    'Andhra Pradesh': '#80CBC4', // Coast/Agriculture
+    'Telangana': '#FFAB91', // Plateau
+    'Karnataka': '#4DB6AC', // Forests/Tech
+    'Kerala': '#26A69A', // Tropical/Backwaters
+    'Tamil Nadu': '#FF8A65', // Temples/Warm Coast
+    'Sikkim': '#80DEEA', // Mountains
+    'Assam': '#8BC34A', // Tea Gardens
+    'Arunachal Pradesh': '#F48FB1', // Mountains/Sunrise
+    'Nagaland': '#E53935', // Hills/Tribal
+    'Manipur': '#BA68C8', // Hills/Culture
+    'Mizoram': '#00BFA5', // Bamboo/Hills
+    'Tripura': '#FFD54F', // Valleys
+    'Meghalaya': '#90CAF9', // Clouds/Rain
+    'Andaman & Nicobar': '#4FC3F7', // Deep Ocean
+    'Lakshadweep': '#18FFFF', // Coral Reefs
+    'Delhi': '#B0BEC5', // Urban
+    'Chandigarh': '#A7FFEB', // Planned City
+    'Puducherry': '#C5CAE9', // French Colonial
+    'Dadar & Nagar Haveli': '#C8E6C9', // Greenery
+    'Daman & Diu': '#FFF9C4' // Coastal/Forts
+};
+
 const REGIONS = ['North', 'West', 'Central', 'East', 'South', 'Northeast', 'UT'];
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({
@@ -144,9 +184,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                 .append('path')
                 .attr('class', 'state cursor-pointer transition-all duration-300 hover:brightness-110 focus:outline-none focus:ring-2')
                 .attr('d', pathGenerator as any)
-                .attr('fill', (_d: any, i: number) => {
-                    const palette = colors.fill;
-                    return palette[i % palette.length];
+                .attr('fill', (d: any) => {
+                    const rawStateName = d.properties.st_nm;
+                    const mappedStateName = STATE_NAME_MAPPING[rawStateName] || rawStateName;
+                    return STATE_COLORS[mappedStateName] || '#E2E8F0';
                 })
                 .attr('stroke', colors.stroke)
                 .attr('stroke-width', '0.5');
