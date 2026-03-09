@@ -19,11 +19,14 @@ interface InteractiveMapProps {
 
 const STATE_NAME_MAPPING: Record<string, string> = {
     'Andaman and Nicobar Islands': 'Andaman & Nicobar',
+    'ANDAMAN & NICOBAR ISLANDS': 'Andaman & Nicobar',
     'Dadra and Nagar Haveli': 'Dadar & Nagar Haveli',
+    'Dadra & Nagar Haveli': 'Dadar & Nagar Haveli',
     'Daman and Diu': 'Daman & Diu',
     'Jammu and Kashmir': 'Jammu & Kashmir',
     'Odisha': 'Orissa',
-    'Uttarakhand': 'Uttarkhand'
+    'Uttarakhand': 'Uttarkhand',
+    'LAKSHADWEEP': 'Lakshadweep'
 };
 
 const REGION_MAP: Record<string, string> = {
@@ -225,12 +228,23 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                     if (activeRegion === 'UT') {
                         element.raise();
                         const centroid = pathGen.centroid(d);
-                        if (!isNaN(centroid[0]) && !isNaN(centroid[1])) {
-                            element.attr('transform', `translate(${centroid[0]}, ${centroid[1]}) scale(2.5) translate(${-centroid[0]}, ${-centroid[1]})`);
+                        const bounds = pathGen.bounds(d);
+
+                        if (!isNaN(centroid[0]) && !isNaN(centroid[1]) && bounds) {
+                            const width = bounds[1][0] - bounds[0][0];
+                            const height = bounds[1][1] - bounds[0][1];
+                            const maxDim = Math.max(width, height);
+
+                            // Target dimension in SVG space (around 80px)
+                            const targetScale = maxDim > 0 ? (80 / maxDim) : 2.5;
+                            // Clamp scale so tiny islands don't become massive continents, but are still visible
+                            const finalScale = Math.min(Math.max(targetScale, 1.5), 20);
+
+                            element.attr('transform', `translate(${centroid[0]}, ${centroid[1]}) scale(${finalScale}) translate(${-centroid[0]}, ${-centroid[1]})`);
                             utLabelsData.push({
                                 name: mappedStateName,
                                 x: centroid[0],
-                                y: centroid[1] + 25
+                                y: centroid[1] + (height * finalScale / 2) + 15
                             });
                         }
                     }
