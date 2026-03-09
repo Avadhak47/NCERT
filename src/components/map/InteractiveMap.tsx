@@ -265,20 +265,28 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             .attr('y', d => d.y)
             .text(d => d.name)
             .attr('text-anchor', 'middle')
-            .attr('class', 'font-sans font-bold text-[10px] fill-slate-800 cursor-pointer hover:font-black hover:fill-blue-600 transition-all drop-shadow-md')
+            .attr('class', 'font-sans font-bold text-[10px] fill-slate-800 cursor-pointer hover:font-black hover:fill-blue-600 transition-all drop-shadow-md pointer-events-auto')
             .style('paint-order', 'stroke fill')
             .style('stroke', 'white')
             .style('stroke-width', '3px')
             .style('opacity', 0)
             .on('click', (event, d: any) => {
+                event.preventDefault();
                 event.stopPropagation();
                 onStateClick(d.name, d.name);
             })
             .merge(labels as any)
+            .on('click', (event, d: any) => {
+                event.preventDefault();
+                event.stopPropagation();
+                onStateClick(d.name, d.name);
+            })
             .transition().duration(500)
             .attr('x', d => d.x)
             .attr('y', d => d.y)
             .style('opacity', 1);
+
+        labelsGroup.raise(); // Ensure labels are physically drawn on top of the DOM order
 
     }, [activeState, activeRegion, mapData, pathGen]);
 
