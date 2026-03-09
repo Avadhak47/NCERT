@@ -224,15 +224,21 @@ const ExplorePage = () => {
                             <div className={`pt-4 px-4 sm:pt-6 sm:px-6 z-20 flex flex-nowrap items-center gap-2 sm:gap-4 transition-all duration-700 ease-in-out shrink-0 bg-slate-950/20 backdrop-blur-sm lg:rounded-t-[40px] ${activeState ? '!rounded-none' : ''}`}>
                                 {/* Scroll container with persistent styling frame to avoid scroll-tear */}
                                 <div className="flex gap-2 bg-white/40 p-1.5 rounded-full backdrop-blur-2xl border border-white/40 shadow-sm relative overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full lg:w-max">
-                                    {['NORTH', 'SOUTH', 'EAST', 'WEST', 'CENTRAL', 'NORTH EAST'].map(r => (
-                                        <button
-                                            key={r}
-                                            onClick={() => actions.navigateToRegion(r === 'NORTH EAST' ? 'Northeast' : r.charAt(0) + r.slice(1).toLowerCase())}
-                                            className={`px-3 sm:px-5 py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest transition-all whitespace-nowrap shrink-0 ${activeRegion === (r === 'NORTH EAST' ? 'Northeast' : r.charAt(0) + r.slice(1).toLowerCase()) ? 'bg-slate-900 text-white shadow-md' : 'text-slate-800 hover:bg-white/50 hover:shadow-md hover:-translate-y-0.5'}`}
-                                        >
-                                            {r}
-                                        </button>
-                                    ))}
+                                    {['NORTH', 'SOUTH', 'EAST', 'WEST', 'CENTRAL', 'NORTH EAST', 'UNION TERRITORIES'].map(r => {
+                                        let regionId = r.charAt(0) + r.slice(1).toLowerCase();
+                                        if (r === 'NORTH EAST') regionId = 'Northeast';
+                                        if (r === 'UNION TERRITORIES') regionId = 'UT';
+
+                                        return (
+                                            <button
+                                                key={r}
+                                                onClick={() => actions.navigateToRegion(regionId)}
+                                                className={`px-3 sm:px-5 py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest transition-all whitespace-nowrap shrink-0 ${activeRegion === regionId ? 'bg-slate-900 text-white shadow-md' : 'text-slate-800 hover:bg-white/50 hover:shadow-md hover:-translate-y-0.5'}`}
+                                            >
+                                                {r}
+                                            </button>
+                                        );
+                                    })}
                                 </div>
 
                                 <div className="ml-auto flex gap-2 w-auto shrink-0">

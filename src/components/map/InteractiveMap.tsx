@@ -28,22 +28,16 @@ const STATE_NAME_MAPPING: Record<string, string> = {
 
 const REGION_MAP: Record<string, string> = {
     // North
-    'Jammu and Kashmir': 'North',
     'Himachal Pradesh': 'North',
     'Punjab': 'North',
-    'Uttarakhand': 'North',
+    'Uttarkhand': 'North',
     'Haryana': 'North',
-    'Delhi': 'North',
     'Uttar Pradesh': 'North',
-    'Chandigarh': 'North',
-    'Ladakh': 'North',
     // West
     'Rajasthan': 'West',
     'Gujarat': 'West',
     'Maharashtra': 'West',
     'Goa': 'West',
-    'Dadra and Nagar Haveli': 'West',
-    'Daman and Diu': 'West',
     // Central
     'Madhya Pradesh': 'Central',
     'Chhattisgarh': 'Central',
@@ -51,16 +45,13 @@ const REGION_MAP: Record<string, string> = {
     'Bihar': 'East',
     'Jharkhand': 'East',
     'West Bengal': 'East',
-    'Odisha': 'East',
+    'Orissa': 'East',
     // South
     'Andhra Pradesh': 'South',
     'Telangana': 'South',
     'Karnataka': 'South',
     'Kerala': 'South',
     'Tamil Nadu': 'South',
-    'Puducherry': 'South',
-    'Andaman and Nicobar Islands': 'South',
-    'Lakshadweep': 'South',
     // Northeast
     'Sikkim': 'Northeast',
     'Assam': 'Northeast',
@@ -69,10 +60,20 @@ const REGION_MAP: Record<string, string> = {
     'Manipur': 'Northeast',
     'Mizoram': 'Northeast',
     'Tripura': 'Northeast',
-    'Meghalaya': 'Northeast'
+    'Meghalaya': 'Northeast',
+    // UTs
+    'Andaman & Nicobar': 'UT',
+    'Chandigarh': 'UT',
+    'Dadar & Nagar Haveli': 'UT',
+    'Daman & Diu': 'UT',
+    'Delhi': 'UT',
+    'Jammu & Kashmir': 'UT',
+    'Ladakh': 'UT',
+    'Lakshadweep': 'UT',
+    'Puducherry': 'UT'
 };
 
-const REGIONS = ['North', 'West', 'Central', 'East', 'South', 'Northeast'];
+const REGIONS = ['North', 'West', 'Central', 'East', 'South', 'Northeast', 'UT'];
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({
     activeState,
@@ -97,8 +98,9 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
         REGIONS.forEach(region => {
             const features = mapData.features.filter((f: any) => {
-                const name = f.properties.st_nm;
-                return REGION_MAP[name] === region;
+                const rawName = f.properties.st_nm;
+                const mappedName = STATE_NAME_MAPPING[rawName] || rawName;
+                return REGION_MAP[mappedName] === region;
             });
 
             if (features.length === 0) return;
@@ -161,7 +163,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                 event.stopPropagation();
                 const stNm = d.properties.st_nm;
                 const stateName = STATE_NAME_MAPPING[stNm] || stNm;
-                const stateRegion = REGION_MAP[stNm] || 'Unknown';
+                const stateRegion = REGION_MAP[stateName] || 'Unknown';
 
                 console.log('Click on:', stNm, 'Region:', stateRegion, 'ActiveRegion:', activeRegion, 'ActiveState:', activeState);
 
@@ -194,14 +196,22 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
     // Styling and Opacity Logic
     useEffect(() => {
-        if (!svgRef.current) return;
+        if (!svgRef.current || !pathGen) return;
         const svg = d3.select(svgRef.current);
+        const utGroup = svg.selectAll('g.ut-labels').data([1]);
+        utGroup.enter().append('g').attr('class', 'ut-labels pointer-events-none z-50');
+        const labelsGroup = svg.select('g.ut-labels');
+        labelsGroup.raise(); // Keep labels on top
+
+        let utLabelsData: any[] = [];
 
         svg.selectAll('path.state').each(function (d: any) {
             const rawStateName = d.properties.st_nm;
             const mappedStateName = STATE_NAME_MAPPING[rawStateName] || rawStateName;
-            const stateRegion = REGION_MAP[rawStateName] || 'Unknown';
+            const stateRegion = REGION_MAP[mappedStateName] || 'Unknown';
             const element = d3.select(this);
+
+            element.attr('transform', null);
 
             if (activeState) {
                 if (mappedStateName === activeState) {
@@ -212,6 +222,18 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             } else if (activeRegion) {
                 if (stateRegion === activeRegion) {
                     element.style('opacity', 1).attr('stroke-width', '2');
+                    if (activeRegion === 'UT') {
+                        element.raise();
+                        const centroid = pathGen.centroid(d);
+                        if (!isNaN(centroid[0]) && !isNaN(centroid[1])) {
+                            element.attr('transform', `translate(${centroid[0]}, ${centroid[1]}) scale(2.5) translate(${-centroid[0]}, ${-centroid[1]})`);
+                            utLabelsData.push({
+                                name: mappedStateName,
+                                x: centroid[0],
+                                y: centroid[1] + 25
+                            });
+                        }
+                    }
                 } else {
                     element.style('opacity', 0.1).attr('stroke-width', '0.5');
                 }
@@ -220,7 +242,27 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             }
         });
 
-    }, [activeState, activeRegion, mapData]);
+        const labels = labelsGroup.selectAll('text').data(activeRegion === 'UT' && !activeState ? utLabelsData : [], (d: any) => d.name);
+        labels.exit().transition().duration(300).style('opacity', 0).remove();
+
+        labels.enter()
+            .append('text')
+            .attr('x', d => d.x)
+            .attr('y', d => d.y)
+            .text(d => d.name)
+            .attr('text-anchor', 'middle')
+            .attr('class', 'font-sans font-bold text-[10px] fill-slate-800 pointer-events-none drop-shadow-md')
+            .style('paint-order', 'stroke fill')
+            .style('stroke', 'white')
+            .style('stroke-width', '3px')
+            .style('opacity', 0)
+            .merge(labels as any)
+            .transition().duration(500)
+            .attr('x', d => d.x)
+            .attr('y', d => d.y)
+            .style('opacity', 1);
+
+    }, [activeState, activeRegion, mapData, pathGen]);
 
     // Zoom Logic
     useEffect(() => {
