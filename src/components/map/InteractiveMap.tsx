@@ -202,7 +202,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         if (!svgRef.current || !pathGen) return;
         const svg = d3.select(svgRef.current);
         const utGroup = svg.selectAll('g.ut-labels').data([1]);
-        utGroup.enter().append('g').attr('class', 'ut-labels pointer-events-none z-50');
+        utGroup.enter().append('g').attr('class', 'ut-labels z-50'); // Removed pointer-events-none
         const labelsGroup = svg.select('g.ut-labels');
         labelsGroup.raise(); // Keep labels on top
 
@@ -218,7 +218,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
             if (activeState) {
                 if (mappedStateName === activeState) {
-                    element.style('opacity', 1).attr('stroke-width', '1');
+                    element.style('opacity', 1).attr('stroke-width', '0.2');
                 } else {
                     element.style('opacity', 0).attr('stroke-width', '0');
                 }
