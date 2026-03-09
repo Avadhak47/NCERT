@@ -236,11 +236,15 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
                         if (!isNaN(centroid[0]) && !isNaN(centroid[1]) && bounds) {
                             const height = bounds[1][1] - bounds[0][1];
-                            utLabelsData.push({
-                                name: mappedStateName,
-                                x: centroid[0],
-                                y: centroid[1] + (height / 2) + 10
-                            });
+                            const ignoredLabels = ['Jammu & Kashmir', 'Ladakh'];
+
+                            if (!ignoredLabels.includes(mappedStateName)) {
+                                utLabelsData.push({
+                                    name: mappedStateName,
+                                    x: centroid[0],
+                                    y: centroid[1] + (height / 2) + 10
+                                });
+                            }
                         }
                     }
                 } else {
@@ -261,11 +265,15 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             .attr('y', d => d.y)
             .text(d => d.name)
             .attr('text-anchor', 'middle')
-            .attr('class', 'font-sans font-bold text-[10px] fill-slate-800 pointer-events-none drop-shadow-md')
+            .attr('class', 'font-sans font-bold text-[10px] fill-slate-800 cursor-pointer hover:font-black hover:fill-blue-600 transition-all drop-shadow-md')
             .style('paint-order', 'stroke fill')
             .style('stroke', 'white')
             .style('stroke-width', '3px')
             .style('opacity', 0)
+            .on('click', (event, d: any) => {
+                event.stopPropagation();
+                onStateClick(d.name, d.name);
+            })
             .merge(labels as any)
             .transition().duration(500)
             .attr('x', d => d.x)
