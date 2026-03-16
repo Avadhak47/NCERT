@@ -18,16 +18,16 @@ const GlossaryPage = () => {
     const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     return (
-        <div className="w-full h-full overflow-hidden flex flex-col md:flex-row relative bg-transparent">
+        <div className="w-full min-h-full overflow-hidden flex flex-col md:flex-row relative bg-transparent">
             {/* Sidebar A–Z */}
-            <aside className="w-full md:w-24 shrink-0 bg-white/10 backdrop-blur-3xl md:h-full overflow-x-auto md:overflow-y-auto z-10 p-2 pt-24 md:pt-32 pb-8 flex md:flex-col gap-1.5 items-center no-scrollbar border-r border-white/20 shadow-[4px_0_24px_rgba(0,0,0,0.1)]">
+            <aside className="w-full md:w-24 shrink-0 bg-white/10 backdrop-blur-3xl md:h-full overflow-x-auto md:overflow-y-auto z-10 p-2 pt-20 sm:pt-24 md:pt-32 pb-6 md:pb-8 flex flex-row md:flex-col gap-1.5 items-center justify-start md:justify-start no-scrollbar border-b md:border-b-0 md:border-r border-white/20 shadow-[4px_0_24px_rgba(0,0,0,0.1)]">
                 {alphabet.map(letter => {
                     const hasEntries = groupedGlossary.some(([key]) => key === letter);
                     return (
                         <a
                             key={letter}
                             href={`#letter-${letter}`}
-                            className={`shrink-0 w-8 md:w-10 aspect-square flex items-center justify-center rounded-xl font-bold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent ${hasEntries
+                            className={`shrink-0 w-9 h-9 sm:w-8 md:w-10 aspect-square flex items-center justify-center rounded-xl font-bold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent min-w-[2.25rem] ${hasEntries
                                 ? 'bg-white/20 text-white hover:bg-white/40 shadow-sm border border-white/20 hover:scale-105'
                                 : 'text-white/30 cursor-not-allowed'
                                 }`}
@@ -41,9 +41,9 @@ const GlossaryPage = () => {
             </aside>
 
             {/* Main content */}
-            <div className="flex-1 overflow-y-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-6 sm:pb-8 md:px-12 md:pb-12 md:max-w-6xl mx-auto scroll-smooth">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 sm:pt-24 md:pt-32 pb-6 sm:pb-8 md:px-12 md:pb-12 md:max-w-6xl mx-auto scroll-smooth">
                 <header className="mb-8 sm:mb-12 text-center md:text-left">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white drop-shadow-md mb-3">Cultural Glossary</h2>
+                    <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-white drop-shadow-md mb-3">Cultural Glossary</h2>
                     <p className="text-white/80 text-base sm:text-lg max-w-2xl font-medium">
                         A curated dictionary of historical terms, concepts, and cultural artefacts from across India.
                     </p>

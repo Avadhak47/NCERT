@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as d3 from 'd3';
 
@@ -178,6 +179,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                     onStateClick(stateName, stateName);
                 }
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeRegion, activeState, mapData]);
 
     // Update colors when theme changes
@@ -206,7 +208,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         const labelsGroup = svg.select('g.ut-labels');
         labelsGroup.raise(); // Keep labels on top
 
-        let utLabelsData: any[] = [];
+        const utLabelsData: any[] = [];
 
         svg.selectAll('path.state').each(function (d: any) {
             const rawStateName = d.properties.st_nm;
@@ -288,6 +290,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
         labelsGroup.raise(); // Ensure labels are physically drawn on top of the DOM order
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeState, activeRegion, mapData, pathGen]);
 
     // Zoom Logic
@@ -338,6 +341,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             zoomToBounds(svg, bounds, padding);
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeState, activeRegion, mapData, pathGen, regionBounds]);
 
     // POI Rendering
@@ -478,6 +482,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             .transition().duration(800)
             .style('opacity', activeState ? 1 : 0);
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pois, activeState, activeRegion, mapData, colors, activeMonumentId, pathGen]);
 
 

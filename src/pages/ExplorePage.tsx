@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { motion, useSpring, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import InteractiveMap from '../components/map/InteractiveMap';
 import StateTile from '../components/core/StateTile';
-import { ScrollContext } from '../components/core/MainLayout';
+import { ScrollContext } from '../contexts/ScrollContext';
 import { Sparkles, ChevronRight, ChevronLeft, Eye } from 'lucide-react';
 import { useMapEngine } from '../hooks/useMapEngine';
 
@@ -44,7 +44,7 @@ const ExplorePage = () => {
 
     // --- Map Engine Integration ---
     const engine = useMapEngine({
-        onStateSelect: (_id, _name) => {
+        onStateSelect: () => {
             // Scroll to map when state is selected
             setTimeout(() => {
                 if (mapContainerRef.current) {
@@ -117,18 +117,17 @@ const ExplorePage = () => {
     }, [activeState, activeRegion]);
 
     return (
-        <div className="w-full min-h-full relative flex flex-col pt-12 md:pt-0">
+        <div className="w-full min-h-full relative flex flex-col pt-4 sm:pt-12 md:pt-0 overflow-x-hidden">
 
             {/* Content on top of bg - centered hero exactly matching Figma */}
             <div className="relative z-10 flex flex-col items-center w-full pt-28 sm:pt-36 md:pt-40 pb-8">
 
                 {/* Main Title - BHARAT bleeding into top spacing */}
-                <div className="relative w-[92%] max-w-5xl flex flex-col items-center">
-                    <h1 className="text-6xl sm:text-8xl md:text-[9rem] lg:text-[11rem] xl:text-[14rem] font-serif font-black text-white tracking-tighter leading-[0.8] select-none drop-shadow-2xl text-center">
+                <div className="relative w-[92%] max-w-5xl flex flex-col items-center px-1">
+                    <h1 className="text-5xl min-[480px]:text-6xl sm:text-8xl md:text-[9rem] lg:text-[11rem] xl:text-[14rem] font-serif font-black text-white tracking-tighter leading-[0.8] select-none drop-shadow-2xl text-center">
                         BHARAT
                     </h1>
-
-                    <p className="mt-6 md:mt-10 text-xs sm:text-sm md:text-lg lg:text-xl text-white font-bold font-sans tracking-[0.4em] sm:tracking-[0.8em] uppercase drop-shadow-lg text-center">
+                    <p className="mt-4 sm:mt-6 md:mt-10 text-[10px] min-[480px]:text-xs sm:text-sm md:text-lg lg:text-xl text-white font-bold font-sans tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.8em] uppercase drop-shadow-lg text-center break-words">
                         THE LAND OF TIMELESS HERITAGE
                     </p>
                 </div>
@@ -138,7 +137,7 @@ const ExplorePage = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="grid grid-cols-3 gap-2 md:gap-8 mt-8 sm:mt-16 md:mt-24 z-20 w-[92%] max-w-5xl mx-auto px-4 sm:px-8 py-4 md:py-6 bg-gradient-to-b from-white/20 to-black/40 backdrop-blur-xl rounded-[2rem] border border-white/20 shadow-2xl"
+                    className="grid grid-cols-3 gap-1 sm:gap-2 md:gap-8 mt-6 sm:mt-16 md:mt-24 z-20 w-[92%] max-w-5xl mx-auto px-3 sm:px-8 py-3 sm:py-4 md:py-6 bg-gradient-to-b from-white/20 to-black/40 backdrop-blur-xl rounded-xl sm:rounded-[2rem] border border-white/20 shadow-2xl"
                 >
                     {[
                         { label: 'STATES & UTs', value: stats.states },
@@ -146,10 +145,10 @@ const ExplorePage = () => {
                         { label: 'LANGUAGES', value: 22 },
                     ].map((stat, i) => (
                         <div key={i} className="flex flex-col items-center justify-center text-center">
-                            <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white font-bold drop-shadow-md">
+                            <div className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif text-white font-bold drop-shadow-md">
                                 <NumberTicker value={stat.value} />{i === 1 ? '+' : ''}
                             </div>
-                            <div className="text-[9px] md:text-[10px] lg:text-xs text-white/90 font-bold tracking-[0.2em] mt-2 uppercase">{stat.label}</div>
+                            <div className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-bold tracking-[0.15em] sm:tracking-[0.2em] mt-1 sm:mt-2 uppercase">{stat.label}</div>
                         </div>
                     ))}
                 </motion.div>
@@ -254,7 +253,7 @@ const ExplorePage = () => {
 
                             {/* Map Viewport & State Info Split */}
                             <div className="flex flex-col lg:flex-row flex-1 w-full relative min-h-0 bg-transparent">
-                                <div className={`w-full lg:flex-1 shrink-0 ${activeState ? 'h-[60vh]' : 'h-full'} lg:h-full relative pt-4 px-4 pb-8 transition-all`}>
+                                <div className={`w-full lg:flex-1 shrink-0 min-h-[280px] sm:min-h-[360px] ${activeState ? 'h-[60vh]' : 'h-full'} lg:h-full relative pt-4 px-4 pb-8 transition-all`}>
                                     <InteractiveMap
                                         activeState={activeState}
                                         activeRegion={activeRegion}
@@ -283,7 +282,7 @@ const ExplorePage = () => {
                                             animate={{ opacity: 1, x: 0, y: 0 }}
                                             exit={{ opacity: 0, x: '100%', y: '100%' }}
                                             transition={{ duration: 0.6, ease: "easeInOut" }}
-                                            className="w-full lg:w-[53%] shrink-0 lg:h-full z-40 bg-slate-950/80 backdrop-blur-3xl shadow-2xl lg:border-l border-t lg:border-t-0 border-white/20 flex flex-col h-[85vh] lg:min-h-0"
+                                            className="w-full lg:w-[53%] shrink-0 lg:h-full z-40 bg-slate-950/80 backdrop-blur-3xl shadow-2xl lg:border-l border-t lg:border-t-0 border-white/20 flex flex-col min-h-[50vh] max-h-[85vh] sm:min-h-[60vh] lg:min-h-0 lg:max-h-none overflow-y-auto"
                                         >
                                             <StateTile
                                                 stateId={activeState}

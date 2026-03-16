@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef, createContext } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
 import { Map, Clock, Image as ImageIcon, Gamepad2, Book, Info, Send, Menu, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import statesData from '../../data/states.json';
 import { getFallbackImage } from '../../utils/fallbackImages';
+import { ScrollContext } from '../../contexts/ScrollContext';
 
 // Auto-rotating heritage images for global background
 const HERO_IMAGES = [
@@ -25,8 +26,6 @@ const navItems = [
     { to: '/glossary', label: 'Glossary', icon: Book },
     { to: '/acknowledgement', label: 'Credits', icon: Info },
 ];
-
-export const ScrollContext = createContext<React.RefObject<HTMLDivElement | null> | null>(null);
 
 const MainLayout = () => {
     const navigate = useNavigate();
@@ -56,8 +55,10 @@ const MainLayout = () => {
     const compactNavOpacity = useTransform(scrollY, [70, 150], [0, 1]);
     const compactNavX = useTransform(scrollY, [70, 150], [-10, 0]);
 
-    const navElementsPointerEvents = useTransform(scrollY, (v) => v < 75 ? 'auto' : 'none') as any;
-    const compactElementsPointerEvents = useTransform(scrollY, (v) => v > 75 ? 'auto' : 'none') as any;
+    // When at top of page: center nav is visible — nav links get clicks; compact must not block.
+    // When scrolled: compact logo is visible — compact gets clicks.
+    const navElementsPointerEvents = useTransform(scrollY, [0, 100], ['auto', 'none']);
+    const compactElementsPointerEvents = useTransform(scrollY, [0, 80], ['none', 'auto']);
 
     useEffect(() => {
         const t = setInterval(() => {
@@ -78,7 +79,7 @@ const MainLayout = () => {
 
     const handleNavClick = (path: string) => {
         const target = path.startsWith('/') ? path : `/${path}`;
-        window.location.href = target;
+        navigate(target);
     };
 
     return (
@@ -115,25 +116,24 @@ const MainLayout = () => {
                     style={{ borderRadius: navBorderRadius, backgroundColor: backgroundStyle, backdropFilter: backdropFilterStyle, padding: navPadding }}
                     className="border border-white/50 shadow-lg flex items-center justify-between"
                 >
-                    <div className="flex items-center justify-between w-full relative h-[42px]">
+                    <div className="flex items-center justify-between w-full relative min-h-[44px] sm:min-h-[42px]">
                         {/* Left Side: Center Nav Elements vs Compact Logo */}
                         <div className="flex items-center flex-1 h-full">
                             <motion.nav
                                 style={{ opacity: centerNavOpacity, y: centerNavY, pointerEvents: navElementsPointerEvents }}
-                                className="absolute left-0 flex items-center gap-1 sm:gap-2"
+                                className="absolute left-0 z-10 flex items-center gap-1 sm:gap-2"
                             >
                                 {navItems.map((item) => {
                                     const Icon = item.icon;
                                     return (
-                                        <button
+                                        <Link
                                             key={item.to}
-                                            type="button"
-                                            onClick={() => handleNavClick(item.to)}
-                                            className="flex items-center gap-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100/50 px-3 py-2 font-medium text-sm whitespace-nowrap transition-all rounded-full"
+                                            to={item.to}
+                                            className="flex items-center gap-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100/50 px-2.5 sm:px-3 py-2.5 sm:py-2 font-medium text-xs sm:text-sm whitespace-nowrap transition-all rounded-full min-h-[44px] sm:min-h-0 justify-center"
                                         >
                                             <Icon className="w-4 h-4 shrink-0" />
                                             <span className="hidden lg:inline">{item.label}</span>
-                                        </button>
+                                        </Link>
                                     );
                                 })}
                             </motion.nav>
@@ -205,7 +205,7 @@ const MainLayout = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed top-20 right-4 w-64 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl p-4 z-[101] flex flex-col gap-2 origin-top-right"
+                        className="fixed top-20 right-4 sm:right-6 w-[min(16rem,calc(100vw-2rem))] max-h-[calc(100vh-6rem)] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-2xl p-4 z-[101] flex flex-col gap-2 origin-top-right"
                     >
                         <div className="flex justify-between items-center mb-2 px-2 pb-2 border-b border-slate-100">
                             <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Navigation</span>
@@ -216,18 +216,15 @@ const MainLayout = () => {
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             return (
-                                <button
+                                <Link
                                     key={item.to}
-                                    type="button"
-                                    onClick={() => {
-                                        setIsMobileMenuOpen(false);
-                                        handleNavClick(item.to);
-                                    }}
+                                    to={item.to}
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                     className="flex items-center gap-3 text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 px-4 py-3 font-medium text-sm transition-all rounded-xl w-full text-left"
                                 >
                                     <Icon className="w-5 h-5 shrink-0 text-[var(--color-brand-primary)] opacity-80" />
                                     {item.label}
-                                </button>
+                                </Link>
                             );
                         })}
                     </motion.div>
@@ -236,7 +233,7 @@ const MainLayout = () => {
 
             {/* Main Content */}
             <ScrollContext.Provider value={scrollRef}>
-                <main ref={scrollRef} id="main-scroll-container" className="flex-1 w-full h-full relative overflow-x-hidden overflow-y-auto scroll-smooth flex flex-col min-h-0">
+                <main ref={scrollRef} id="main-scroll-container" className="flex-1 w-full h-full relative overflow-x-hidden overflow-y-auto scroll-smooth flex flex-col min-h-0 pt-20 sm:pt-24 pointer-events-auto">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={location.pathname}
@@ -244,7 +241,7 @@ const MainLayout = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
-                            className="w-full h-full overflow-y-auto scroll-smooth relative flex flex-col"
+                            className="w-full h-full overflow-y-auto scroll-smooth relative flex flex-col pointer-events-auto"
                         >
                             <Outlet />
                         </motion.div>

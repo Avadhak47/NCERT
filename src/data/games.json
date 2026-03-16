@@ -1,6 +1,6 @@
 {
   "games": [
-    { "id": 1, "title": "State Capital Match", "type": "Quiz", "difficulty": "Easy", "color": "bg-emerald-500", "description": "Match the correct capital city to its state.", "icon": "MapPin" },
+    { "id": 1, "title": "State on Map", "type": "Drag & Drop", "difficulty": "Easy", "color": "bg-emerald-500", "description": "Drag each state onto its correct location on the India map.", "icon": "MapPin" },
     { "id": 2, "title": "Heritage Site Builder", "type": "Puzzle", "difficulty": "Medium", "color": "bg-blue-500", "description": "Reconstruct famous monuments from mixed puzzle pieces.", "icon": "Puzzle" },
     { "id": 3, "title": "Guess the Dance Form", "type": "Interactive", "difficulty": "Medium", "color": "bg-purple-500", "description": "Identify the classical dance form from the state it belongs to.", "icon": "Music" },
     { "id": 4, "title": "Historical Timeline", "type": "Drag & Drop", "difficulty": "Hard", "color": "bg-orange-500", "description": "Place Indian history periods in the correct chronological order.", "icon": "Clock" },

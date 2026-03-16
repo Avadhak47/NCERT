@@ -49,8 +49,10 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
 
         // Add Monuments
         if (stateRecord.monuments) {
-            stateRecord.monuments.forEach((m: any) => items.push({
+            stateRecord.monuments.forEach((m: Record<string, unknown>) => items.push({
                 ...m,
+                name: m.name as string,
+                desc: m.desc as string,
                 type: 'Monument',
                 icon: Landmark,
                 colorClass: 'text-amber-300',
@@ -60,9 +62,10 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
 
         // Add Paintings
         if (stateRecord.art_forms?.paintings) {
-            stateRecord.art_forms.paintings.forEach((p: any) => items.push({
+            stateRecord.art_forms.paintings.forEach((p: Record<string, unknown>) => items.push({
                 ...p,
-                name: p.title || p.name,
+                desc: p.desc as string,
+                name: (p.title || p.name) as string,
                 type: 'Visual Art',
                 icon: ImageIcon,
                 colorClass: 'text-pink-300',
@@ -72,8 +75,10 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
 
         // Add Handicrafts
         if (stateRecord.art_forms?.handicrafts) {
-            stateRecord.art_forms.handicrafts.forEach((h: any) => items.push({
+            stateRecord.art_forms.handicrafts.forEach((h: Record<string, unknown>) => items.push({
                 ...h,
+                name: h.name as string,
+                desc: h.desc as string,
                 type: 'Handicraft',
                 icon: ImageIcon,
                 colorClass: 'text-orange-300',
@@ -83,9 +88,10 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
 
         // Add Performing Arts
         if (stateRecord.art_forms?.performing_arts) {
-            stateRecord.art_forms.performing_arts.forEach((pa: any) => items.push({
+            stateRecord.art_forms.performing_arts.forEach((pa: Record<string, unknown>) => items.push({
                 ...pa,
-                name: pa.title || pa.name,
+                desc: pa.desc as string,
+                name: (pa.title || pa.name) as string,
                 type: 'Performing Art',
                 icon: Video,
                 colorClass: 'text-purple-300',
@@ -99,7 +105,9 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
     // Auto-scroll to active monument
     useEffect(() => {
         if (activeMonumentId) {
-            setExpandedArticleId(activeMonumentId);
+            setTimeout(() => {
+                setExpandedArticleId(activeMonumentId);
+            }, 0);
             // Find the element and scroll it into view after a short delay to ensure rendering
             setTimeout(() => {
                 const el = document.getElementById(`article-${activeMonumentId}`);
@@ -124,7 +132,7 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
 
     const renderImage = (item: GalleryItem, className: string) => {
         const primaryUrl = getImageUrl(item.img!);
-        const fallbackUrl = getFallbackImage(item.name, item.type.toLowerCase() as any);
+        const fallbackUrl = getFallbackImage(item.name, item.type.toLowerCase());
 
         // If primary URL has failed previously, use fallback directly
         const urlToUse = hasImage(item.img) && !failedImageUrls.has(primaryUrl)

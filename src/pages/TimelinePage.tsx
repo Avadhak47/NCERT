@@ -17,7 +17,7 @@ interface TimelineItem {
 }
 
 const TimelinePage = () => {
-    const [activeItem, setActiveItem] = useState<any>(null);
+    const [activeItem, setActiveItem] = useState<TimelineItem | null>(null);
     const [expandedEraId, setExpandedEraId] = useState<string | null>(null);
     const [failedImageIds, setFailedImageIds] = useState<Set<string>>(new Set());
     const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -39,7 +39,7 @@ const TimelinePage = () => {
             const el = itemRefs.current[activeItem.id];
 
             if (el) {
-                let start = Date.now();
+                const start = Date.now();
                 // 60fps polling to match the 500ms CSS transition
                 const interval = setInterval(() => {
                     if (Date.now() - start > 600) {
@@ -140,8 +140,8 @@ const TimelinePage = () => {
             </div>
 
             {/* The Scrollable Horizontal Timeline Section */}
-            <div ref={scrollContainerRef} className="w-full overflow-x-auto timeline-scroll flex-1 bg-transparent flex items-center px-4 md:px-12 scroll-smooth">
-                <div className="relative flex items-center h-full min-h-[500px] w-max gap-8 md:gap-12 lg:gap-16 pt-[100px] pb-[100px]">
+            <div ref={scrollContainerRef} className="w-full overflow-x-auto timeline-scroll flex-1 bg-transparent flex items-center px-3 sm:px-4 md:px-12 scroll-smooth">
+                <div className="relative flex items-center h-full min-h-[400px] sm:min-h-[500px] w-max gap-4 sm:gap-8 md:gap-12 lg:gap-16 pt-20 sm:pt-[100px] pb-20 sm:pb-[100px]">
                     {/* The literal horizontal line spanning all elements */}
                     <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--color-brand-primary)] opacity-20 -translate-y-1/2 z-0" />
 
@@ -155,7 +155,7 @@ const TimelinePage = () => {
                             <div
                                 key={item.id}
                                 ref={(el) => { itemRefs.current[item.id] = el; }}
-                                className={`relative flex items-center justify-center shrink-0 group transition-all duration-500 ease-in-out ${isActive ? 'w-[90vw] md:w-[800px] mx-8 z-50' : (isEra ? 'w-[200px]' : 'w-[160px]')}`}
+                                className={`relative flex items-center justify-center shrink-0 group transition-all duration-500 ease-in-out ${isActive ? 'w-[95vw] max-w-[90vw] sm:w-[90vw] md:w-[800px] mx-2 sm:mx-8 z-50' : (isEra ? 'w-[140px] sm:w-[200px]' : 'w-[120px] sm:w-[160px]')}`}
                             >
 
                                 {!isActive && (
@@ -205,13 +205,13 @@ const TimelinePage = () => {
                                         animate={{ opacity: 1, scaleX: 1 }}
                                         exit={{ opacity: 0, scaleX: 0.8 }}
                                         transition={{ duration: 0.4 }}
-                                        className="w-full flex bg-white/10 backdrop-blur-2xl rounded-2xl sm:rounded-[2.5rem] shadow-[0_24px_64px_-12px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden relative z-50 h-[420px] sm:h-[500px]"
+                                        className="w-full flex flex-col sm:flex-row bg-white/10 backdrop-blur-2xl rounded-2xl sm:rounded-[2.5rem] shadow-[0_24px_64px_-12px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden relative z-50 min-h-[420px] max-h-[85vh] sm:h-[500px] sm:max-h-none"
                                     >
                                         <button onClick={() => { setActiveItem(null); if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('nav-collapse', { detail: { collapsed: false } })); }} className="absolute top-6 right-6 z-50 w-10 h-10 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center transition-colors text-white">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                                         </button>
 
-                                        <div className="w-2/5 h-full relative shrink-0 overflow-hidden bg-white/5">
+                                        <div className="w-full sm:w-2/5 h-48 sm:h-full relative shrink-0 overflow-hidden bg-white/5">
                                             <img src={activeItem.type === 'event' ? getEventImageUrl(activeItem) : getTimelineFallbackImage(activeItem.title, activeItem.desc)} alt={activeItem.title} onError={(e) => { handleImageError(activeItem.id); (e.target as HTMLImageElement).src = getTimelineFallbackImage(activeItem.title, activeItem.desc); }} className="w-full h-full object-cover object-center absolute inset-0 opacity-90" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                                             <div className="absolute bottom-8 left-8 text-white font-bold tracking-widest text-xl font-sans drop-shadow-lg">
@@ -224,7 +224,7 @@ const TimelinePage = () => {
                                             )}
                                         </div>
 
-                                        <div className="p-10 md:p-14 flex-1 flex flex-col justify-center overflow-y-auto">
+                                        <div className="p-5 sm:p-10 md:p-14 flex-1 flex flex-col justify-center overflow-y-auto min-h-0">
                                             {activeItem.type === 'event' && (
                                                 <span className="text-sm font-bold text-white/70 uppercase tracking-[0.2em] mb-4 block">{activeItem.parentEra}</span>
                                             )}

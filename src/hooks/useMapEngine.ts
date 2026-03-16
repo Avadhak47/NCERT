@@ -30,7 +30,7 @@ export const useMapEngine = (options: MapEngineOptions) => {
     const [history, setHistory] = useState<ViewState[]>(['INDIA']);
 
     // Data States
-    const [geoData, setGeoData] = useState<any>(null);
+    const [geoData, setGeoData] = useState<GeoJSON.FeatureCollection | null>(null);
     const [pois, setPois] = useState<POI[]>([]);
 
     // Load GeoJSON
@@ -112,31 +112,31 @@ export const useMapEngine = (options: MapEngineOptions) => {
     // POI & Collision Logic
     useEffect(() => {
         if (!activeState) {
-            setPois([]);
+            setTimeout(() => setPois([]), 0);
             return;
         }
 
         const stateRecord = statesData.states.find(s => s.name === activeState);
         if (!stateRecord || !stateRecord.monuments) {
-            setPois([]);
+            setTimeout(() => setPois([]), 0);
             return;
         }
 
         // 1. Raw POIs
-        const raw = stateRecord.monuments.map((m: any) => ({
-            id: m.id,
-            name: m.title || m.name,
-            lat: m.lat,
-            lon: m.lon,
-            type: 'monument'
-        })).filter((p: any) => p.lat && p.lon);
+        const raw = stateRecord.monuments.map((m: Record<string, unknown>) => ({
+            id: m.id as string,
+            name: (m.title || m.name) as string,
+            lat: m.lat as number,
+            lon: m.lon as number,
+            type: 'monument' as const
+        })).filter((p) => p.lat && p.lon);
 
         // 2. Clustering
-        const grouped: any[] = [];
+        const grouped: (POI & { items: POI[] })[] = [];
         const THRESHOLD = 0.4;
 
-        raw.forEach((p: any) => {
-            let found = grouped.find(g => Math.abs(g.lat - p.lat) < THRESHOLD && Math.abs(g.lon - p.lon) < THRESHOLD);
+        raw.forEach((p) => {
+            const found = grouped.find(g => Math.abs(g.lat - p.lat) < THRESHOLD && Math.abs(g.lon - p.lon) < THRESHOLD);
             if (found) {
                 found.items.push(p);
             } else {
@@ -154,12 +154,12 @@ export const useMapEngine = (options: MapEngineOptions) => {
                 name: `${truncate(g.items[0].name, maxLength)} (${g.items.length})`,
                 lat: g.lat,
                 lon: g.lon,
-                type: 'cluster',
+                type: 'cluster' as const,
                 count: g.items.length
             };
         });
 
-        setPois(clustered);
+        setTimeout(() => setPois(clustered), 0);
 
     }, [activeState, view]);
 

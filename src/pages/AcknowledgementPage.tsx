@@ -2,15 +2,15 @@
 
 const AcknowledgementPage = () => {
     return (
-        <div className="w-full h-full overflow-y-auto pt-28 sm:pt-36 pb-12 px-6 md:px-16 md:pb-16 flex justify-center bg-transparent">
+        <div className="w-full min-h-full overflow-y-auto overflow-x-hidden pt-24 sm:pt-28 md:pt-36 pb-8 sm:pb-12 px-4 sm:px-6 md:px-16 md:pb-16 flex justify-center bg-transparent">
             <div className="w-full max-w-3xl relative">
                 {/* Museum style decorative frame */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20" />
-                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white/20" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20" />
+                <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-t border-l border-white/20" />
+                <div className="absolute top-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-t border-r border-white/20" />
+                <div className="absolute bottom-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-b border-l border-white/20" />
+                <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-b border-r border-white/20" />
 
-                <div className="p-12 md:p-20 flex flex-col items-center text-center z-10 relative">
+                <div className="p-6 sm:p-12 md:p-20 flex flex-col items-center text-center z-10 relative">
                     <h2 className="text-2xl md:text-4xl font-serif text-white/90 tracking-[0.2em] uppercase font-light drop-shadow-md">Acknowledgements</h2>
                     <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent my-10" />
 
