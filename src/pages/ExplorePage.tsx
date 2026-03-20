@@ -1,45 +1,28 @@
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { motion, useSpring, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import InteractiveMap from '../components/map/InteractiveMap';
 import StateTile from '../components/core/StateTile';
 import { ScrollContext } from '../contexts/ScrollContext';
-import { Sparkles, ChevronRight, ChevronLeft, Eye } from 'lucide-react';
+import { Sparkles, Eye } from 'lucide-react';
 import { useMapEngine } from '../hooks/useMapEngine';
+import MudraModelViewer from '../components/core/MudraModelViewer';
 
-const TRIVIA_FACTS = [
-    { title: "World's First University", fact: "Takshashila, founded in 700 BC, was the world's first university, teaching over 60 subjects to 10,500 students from around the globe." },
-    { title: "The Game of Chess", fact: "Chess was invented in India before the 6th century AD. It was originally called 'Chaturanga', meaning the four divisions of the military." },
-    { title: "Ayurveda", fact: "Ayurveda is humanity's earliest school of medicine, known to have existed for over 5000 years in India." },
-    { title: "The Floating Post Office", fact: "India has the largest postal network in the world, including a floating post office on Dal Lake in Srinagar, Kashmir." },
-    { title: "Bandhavgarh's Royal Tigers", fact: "Madhya Pradesh is known as the 'Tiger State of India', boasting the highest density of Royal Bengal Tigers in the world at Bandhavgarh National Park." },
-    { title: "The Root Bridges", fact: "In Meghalaya, Khasi and Jaintia tribes have trained the roots of rubber trees to grow into natural, living bridges that last for hundreds of years." },
-    { title: "Magnetic Hill", fact: "There is a 'Magnetic Hill' in Ladakh that has such a strong magnetic pull that it can pull stationary cars uphill!" },
-    { title: "Origins of Yoga", fact: "Yoga originated in ancient India over 5,000 years ago as a physical, mental, and spiritual practice to achieve harmony." },
+// Curated mudras for the Explore page showcase
+const EXPLORE_MUDRAS = [
+    { name: 'Alapadma', folder: 'single-hand' },
+    { name: 'anjali', folder: 'two-hand' },
+    { name: 'Pataka', folder: 'single-hand' },
+    { name: 'Garuda', folder: 'two-hand' },
+    { name: 'Mayura', folder: 'single-hand' },
+    { name: 'Chakra', folder: 'two-hand' },
 ];
 
-const NumberTicker = ({ value }: { value: number | string }) => {
-    const ref = useRef<HTMLSpanElement>(null);
-    const motionValue = useSpring(0, { stiffness: 80, damping: 25 });
-    const isNumber = typeof value === 'number';
-    useEffect(() => {
-        if (isNumber) motionValue.set(value as number);
-    }, [value, motionValue, isNumber]);
-    useEffect(() => {
-        if (isNumber) {
-            return motionValue.on('change', (latest) => {
-                if (ref.current) ref.current.textContent = Intl.NumberFormat('en-US').format(Math.round(latest));
-            });
-        }
-    }, [motionValue, isNumber]);
-    return <span ref={ref}>{isNumber ? 0 : value}</span>;
-};
+
 
 const ExplorePage = () => {
     const location = useLocation();
     const { stateId: stateIdParam } = useParams<{ stateId?: string }>();
-    const [triviaIndex, setTriviaIndex] = useState(0);
-    const stats = { states: 36, cultures: 0 };
     const mapContainerRef = useRef<HTMLElement>(null);
 
     // --- Map Engine Integration ---
@@ -64,24 +47,15 @@ const ExplorePage = () => {
         actions
     } = engine;
 
-    // Trivia rotation
-    useEffect(() => {
-        const t = setInterval(() => {
-            setTriviaIndex(prev => (prev + 1) % TRIVIA_FACTS.length);
-        }, 8000);
-        return () => clearInterval(t);
-    }, []);
 
-    const nextTrivia = () => setTriviaIndex(prev => (prev + 1) % TRIVIA_FACTS.length);
-    const prevTrivia = () => setTriviaIndex(prev => (prev - 1 + TRIVIA_FACTS.length) % TRIVIA_FACTS.length);
 
     // Fluid Expansion values
     const scrollRef = useContext(ScrollContext);
     const { scrollY } = useScroll({ container: scrollRef as React.RefObject<HTMLDivElement> });
 
     const mapWidth = useTransform(scrollY, [150, 450], ['92%', '100%']);
-    const mapMaxWidth = useTransform(scrollY, [150, 450], ['896px', '100%']);
-    const mapHeight = useTransform(scrollY, [150, 450], ['75vh', '100vh']);
+    const mapMaxWidth = useTransform(scrollY, [150, 450], ['100%', '100%']);
+    const mapHeight = useTransform(scrollY, [150, 450], ['100vh', '100vh']);
     const mapBorderRadius = useTransform(scrollY, [150, 450], ['40px', '0px']);
     const mapMarginTop = useTransform(scrollY, [150, 450], ['40px', '0px']);
     const mapPaddingBottom = useTransform(scrollY, [150, 450], ['64px', '0px']);
@@ -132,71 +106,41 @@ const ExplorePage = () => {
                     </p>
                 </div>
 
-                {/* Live Stats Bar - Compact Glassmorphic Card */}
+                {/* ═══ 3D Heritage Showcase ═══ */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="grid grid-cols-3 gap-1 sm:gap-2 md:gap-8 mt-6 sm:mt-16 md:mt-24 z-20 w-[92%] max-w-5xl mx-auto px-3 sm:px-8 py-3 sm:py-4 md:py-6 bg-gradient-to-b from-white/20 to-black/40 backdrop-blur-xl rounded-xl sm:rounded-[2rem] border border-white/20 shadow-2xl"
+                    className="w-[92%] max-w-5xl mx-auto mt-6 sm:mt-16 md:mt-24 z-20"
                 >
-                    {[
-                        { label: 'STATES & UTs', value: stats.states },
-                        { label: 'YEARS HISTORY', value: 5000 },
-                        { label: 'LANGUAGES', value: 22 },
-                    ].map((stat, i) => (
-                        <div key={i} className="flex flex-col items-center justify-center text-center">
-                            <div className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif text-white font-bold drop-shadow-md">
-                                <NumberTicker value={stat.value} />{i === 1 ? '+' : ''}
-                            </div>
-                            <div className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-bold tracking-[0.15em] sm:tracking-[0.2em] mt-1 sm:mt-2 uppercase">{stat.label}</div>
-                        </div>
-                    ))}
-                </motion.div>
-
-                {/* Cultural Trivia Carousel - Compact */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5, duration: 0.6 }}
-                    className="w-[92%] max-w-5xl mx-auto mt-4 sm:mt-6 z-20"
-                >
-                    <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/20 rounded-[2rem] p-4 sm:p-6 shadow-2xl flex items-center justify-between group">
-
-                        {/* Decorative background glow */}
+                    <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-[2rem] p-4 sm:p-6 md:p-8 shadow-2xl">
+                        {/* Background glow */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 blur-3xl rounded-full pointer-events-none" />
 
-                        <button onClick={prevTrivia} className="p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/20 text-white/50 hover:text-white transition-all border border-white/10 hover:border-white/30 z-10 hidden sm:block shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50">
-                            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-                        </button>
-
-                        <div className="flex-1 flex flex-col md:flex-row items-center gap-6 md:gap-12 px-2 sm:px-6 relative z-10 w-full overflow-hidden">
-                            <div className="flex items-center justify-center p-4 bg-gradient-to-br from-amber-400/20 to-orange-600/20 border border-amber-400/30 rounded-2xl shadow-inner shrink-0 text-amber-400">
-                                <Sparkles className="w-8 h-8 md:w-10 md:h-10" />
+                        <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-gradient-to-br from-amber-400/20 to-orange-600/20 border border-amber-400/30 rounded-xl text-amber-400">
+                                    <Sparkles className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-amber-500/90 uppercase block">Explore in 3D</span>
+                                    <h3 className="text-lg md:text-xl font-serif font-bold text-white leading-tight">Ancient Hasta Mudras</h3>
+                                </div>
                             </div>
 
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={triviaIndex}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                                    className="flex flex-col items-center md:items-start text-center md:text-left flex-1"
-                                >
-                                    <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-amber-500/90 uppercase mb-1 block w-full">Did You Know?</span>
-                                    <h3 className="text-lg md:text-xl font-serif font-bold text-white mb-1 leading-tight">
-                                        {TRIVIA_FACTS[triviaIndex].title}
-                                    </h3>
-                                    <p className="text-xs md:text-sm text-white/80 font-medium leading-relaxed max-w-3xl border-l-[3px] border-amber-500/50 pl-3 md:pl-4 ml-1 py-0.5 italic">
-                                        "{TRIVIA_FACTS[triviaIndex].fact}"
-                                    </p>
-                                </motion.div>
-                            </AnimatePresence>
+                            {/* Horizontal scroll of curated models */}
+                            <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                                {EXPLORE_MUDRAS.map(({ name, folder }) => (
+                                    <div key={name} className="shrink-0 w-36 sm:w-44">
+                                        <MudraModelViewer
+                                            name={name}
+                                            src={`/models/${folder}/${name}.glb`}
+                                            compact
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-
-                        <button onClick={nextTrivia} className="p-2 md:p-3 rounded-full bg-white/5 hover:bg-white/20 text-white/50 hover:text-white transition-all border border-white/10 hover:border-white/30 z-10 hidden sm:block shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50">
-                            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-                        </button>
                     </div>
                 </motion.div>
 
@@ -220,7 +164,7 @@ const ExplorePage = () => {
                         >
 
                             {/* Regional Tabs Interface */}
-                            <div className={`pt-4 px-4 sm:pt-6 sm:px-6 z-20 flex flex-nowrap items-center gap-2 sm:gap-4 transition-all duration-700 ease-in-out shrink-0 bg-slate-950/20 backdrop-blur-sm lg:rounded-t-[40px] ${activeState ? '!rounded-none' : ''}`}>
+                            <div className={`pt-4 px-4 sm:pt-6 sm:px-6 z-20 flex flex-nowrap items-center gap-2 sm:gap-4 transition-all duration-700 ease-in-out shrink-0 bg-transparent lg:rounded-t-[40px] ${activeState ? '!rounded-none' : ''}`}>
                                 {/* Scroll container with persistent styling frame to avoid scroll-tear */}
                                 <div className="flex gap-2 bg-white/40 p-1.5 rounded-full backdrop-blur-2xl border border-white/40 shadow-sm relative overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full lg:w-max">
                                     {['NORTH', 'SOUTH', 'EAST', 'WEST', 'CENTRAL', 'NORTH EAST', 'UNION TERRITORIES'].map(r => {

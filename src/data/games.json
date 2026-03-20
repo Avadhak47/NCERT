@@ -5,6 +5,7 @@
     { "id": 3, "title": "Guess the Dance Form", "type": "Interactive", "difficulty": "Medium", "color": "bg-purple-500", "description": "Identify the classical dance form from the state it belongs to.", "icon": "Music" },
     { "id": 4, "title": "Historical Timeline", "type": "Drag & Drop", "difficulty": "Hard", "color": "bg-orange-500", "description": "Place Indian history periods in the correct chronological order.", "icon": "Clock" },
     { "id": 5, "title": "Monument & State", "type": "Quiz", "difficulty": "Easy", "color": "bg-cyan-500", "description": "Guess which state a famous heritage site or monument belongs to.", "icon": "Landmark" },
-    { "id": 6, "title": "State to Region", "type": "Drag & Drop", "difficulty": "Medium", "color": "bg-rose-500", "description": "Drag each state to the correct region of India.", "icon": "Map" }
+    { "id": 6, "title": "State to Region", "type": "Drag & Drop", "difficulty": "Medium", "color": "bg-rose-500", "description": "Drag each state to the correct region of India.", "icon": "Map" },
+    { "id": 7, "title": "Culture Trivia Quiz", "type": "Quiz", "difficulty": "Hard", "color": "bg-indigo-500", "description": "Test your knowledge of Indian art, culture, and heritage with hundreds of questions.", "icon": "BookOpen" }
   ]
 }

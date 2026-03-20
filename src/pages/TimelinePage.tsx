@@ -133,14 +133,15 @@ const TimelinePage = () => {
 
     return (
         <div className="w-full h-full flex flex-col bg-transparent relative overflow-hidden">
-            {/* Instructions Header */}
-            <div className={`px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 pb-4 shrink-0 bg-transparent z-10 transition-all duration-300 ${activeItem ? 'opacity-0 h-0 p-0 overflow-hidden' : 'opacity-100'}`}>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black tracking-tight text-white drop-shadow-lg mb-2">Timeline</h2>
-                <p className="text-white/80 text-sm sm:text-base font-medium font-sans">Scroll horizontally or tap a node to explore India's history.</p>
-            </div>
+            {/* The Scrollable Horizontal Timeline Section — full height */}
+            <div ref={scrollContainerRef} className="w-full overflow-x-auto timeline-scroll flex-1 bg-transparent flex items-center px-3 sm:px-4 md:px-12 scroll-smooth relative">
 
-            {/* The Scrollable Horizontal Timeline Section */}
-            <div ref={scrollContainerRef} className="w-full overflow-x-auto timeline-scroll flex-1 bg-transparent flex items-center px-3 sm:px-4 md:px-12 scroll-smooth">
+                {/* Title overlay — collapses when item is active */}
+                <div className={`absolute top-0 left-0 right-0 z-20 px-4 sm:px-6 md:px-12 transition-all duration-500 ease-in-out ${activeItem ? 'opacity-0 -translate-y-8 pointer-events-none h-0' : 'opacity-100 translate-y-0 pt-20 sm:pt-24 pb-4'}`}>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-black tracking-tight text-white drop-shadow-lg mb-2">Timeline</h2>
+                    <p className="text-white/80 text-sm sm:text-base font-medium font-sans">Scroll horizontally or tap a node to explore India's history.</p>
+                </div>
+
                 <div className="relative flex items-center h-full min-h-[400px] sm:min-h-[500px] w-max gap-4 sm:gap-8 md:gap-12 lg:gap-16 pt-20 sm:pt-[100px] pb-20 sm:pb-[100px]">
                     {/* The literal horizontal line spanning all elements */}
                     <div className="absolute top-1/2 left-0 w-full h-1 bg-[var(--color-brand-primary)] opacity-20 -translate-y-1/2 z-0" />

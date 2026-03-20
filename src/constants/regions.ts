@@ -8,7 +8,7 @@ export const STATE_NAME_MAPPING: Record<string, string> = {
     'Daman and Diu': 'Daman & Diu',
     'Jammu and Kashmir': 'Jammu & Kashmir',
     'Odisha': 'Orissa',
-    'Uttarakhand': 'Uttarkhand',
+    'Uttarakhand': 'Uttarakhand',
     'Ladakh': 'Jammu & Kashmir',
 };
 

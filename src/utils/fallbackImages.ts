@@ -1,21 +1,10 @@
-const FALLBACK_MAP: Record<string, string> = {
-  Bhimbetka: 'https://images.unsplash.com/photo-1548013146-7243f490ee0c?w=800&q=80',
-  Temple: 'https://images.unsplash.com/photo-1621360241119-c7520141680d?w=800&q=80',
-  Dance: 'https://images.unsplash.com/photo-1547153760-18fc949fb6d2?w=800&q=80',
-  Monument: 'https://images.unsplash.com/photo-1612438214708-f428a707dd4e?w=800&q=80',
-  Painting: 'https://images.unsplash.com/photo-1580126435011-37d457b01b22?w=800&q=80',
-  Craft: 'https://images.unsplash.com/photo-1580126435011-37d457b01b22?w=800&q=80',
-};
+const ABSTRACT_GRADIENT = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e293b'/%3E%3Cstop offset='100%25' stop-color='%230f172a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='24' fill='%23475569' text-anchor='middle' dy='.3em'%3EVirasat%3C/text%3E%3C/svg%3E`;
 
-const DEFAULT = 'https://images.unsplash.com/photo-1599839619721-397dd3ebf7f5?w=800&q=80';
+const FALLBACK_MAP: Record<string, string> = {};
 
-const TYPE_URLS: Record<string, string> = {
-  monument: 'https://images.unsplash.com/photo-1612438214708-f428a707dd4e?w=800&q=80',
-  painting: 'https://images.unsplash.com/photo-1580126435011-37d457b01b22?w=800&q=80',
-  'performing arts': 'https://images.unsplash.com/photo-1547153760-18fc949fb6d2?w=800&q=80',
-  handicraft: 'https://images.unsplash.com/photo-1580126435011-37d457b01b22?w=800&q=80',
-  Festival: 'https://images.unsplash.com/photo-1547153760-18fc949fb6d2?w=800&q=80',
-};
+const DEFAULT = ABSTRACT_GRADIENT;
+
+const TYPE_URLS: Record<string, string> = {};
 
 export function getFallbackImage(title?: string | null, type?: string | null): string {
   if (type && TYPE_URLS[type]) return TYPE_URLS[type];

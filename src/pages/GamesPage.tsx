@@ -1,10 +1,10 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import html2canvas from 'html2canvas';
-import { PlayCircle, Trophy, Star, ArrowLeft, CheckCircle, XCircle, MapPin, Landmark, Music, Clock, Map, Puzzle, Award, User, Download, Loader2 } from 'lucide-react';
+import { PlayCircle, Trophy, Star, ArrowLeft, CheckCircle, XCircle, MapPin, Landmark, Music, Clock, Map, Puzzle, Award, User, Download, Loader2, BookOpen } from 'lucide-react';
 import gamesData from '../data/games.json';
 import statesData from '../data/states.json';
 import timelineData from '../data/timeline.json';
+import quizData from '../data/quiz.json';
 import { REGIONS, REGION_TO_STATES, STATE_TO_REGION, STATE_NAME_MAPPING } from '../constants/regions';
 
 function shuffle<T>(arr: T[]): T[] {
@@ -867,6 +867,106 @@ function HeritageSiteBuilderGame({ onBack }: { onBack: OnBackFn }) {
     );
 }
 
+// --- Culture Trivia Quiz (id: 7) ---
+function VirasatQuizGame({ onBack }: { onBack: OnBackFn }) {
+    const [roundOptions] = useState(() => pickRandom(quizData.questions, Math.min(10, quizData.questions.length)));
+    const [round, setRound] = useState(0);
+    const [score, setScore] = useState(0);
+    const [answered, setAnswered] = useState<number | null>(null);
+
+    const current = roundOptions[round];
+
+    if (!current) {
+        return (
+            <div className="text-center py-12">
+                <p className="text-white/80 mb-6">Loading quiz data...</p>
+                <button onClick={() => onBack()} className="px-6 py-3 rounded-full bg-slate-600">Back</button>
+            </div>
+        );
+    }
+
+    const handleAnswer = (index: number) => {
+        if (answered !== null) return;
+        setAnswered(index);
+        if (index === current.answer) setScore((s) => s + 1);
+    };
+
+    const next = () => {
+        setAnswered(null);
+        setRound((r) => r + 1);
+    };
+
+    const isDone = round >= roundOptions.length - 1 && answered !== null;
+
+    return (
+        <div className="w-full max-w-2xl mx-auto">
+            <div className="flex justify-between items-center mb-6">
+                <span className="text-white/90 font-bold bg-slate-800 px-4 py-1.5 rounded-xl border border-slate-600 shadow-inner">
+                    Score: <span className="text-amber-400">{score}</span> / {roundOptions.length}
+                </span>
+                <span className="text-slate-400 text-sm font-medium tracking-wide">Question {round + 1} of {roundOptions.length}</span>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden border border-slate-500/40 bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl mb-8 relative">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-500 via-rose-500 to-violet-500"></div>
+                <div className="p-6 md:p-8 flex flex-col items-center text-center">
+                    <span className="px-3 py-1 bg-white/10 text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full mb-4.5 border border-white/10 shadow-sm">{current.category}</span>
+                    <h3 className="text-xl md:text-3xl font-bold text-white leading-snug drop-shadow-md pb-2" style={{ textWrap: 'balance' }}>
+                        {current.question}
+                    </h3>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 flex-col">
+                {current.options.map((opt: string, index: number) => {
+                    const isCorrect = index === current.answer;
+                    const chosen = answered === index;
+                    const showRight = answered !== null;
+                    let style = 'bg-slate-800/80 hover:bg-slate-700/80 border-slate-600/50 text-slate-100 shadow-md hover:-translate-y-0.5';
+                    if (showRight && chosen) style = isCorrect ? 'bg-emerald-600/90 border-emerald-400 text-white shadow-lg shadow-emerald-500/20' : 'bg-red-600/90 border-red-400 text-white shadow-lg shadow-red-500/20';
+                    else if (showRight && isCorrect) style = 'bg-emerald-600/50 border-emerald-400/80 text-white';
+                    else if (showRight) style = 'bg-slate-800/40 border-slate-700/50 text-slate-500 opacity-50 cursor-default';
+
+                    return (
+                        <button
+                            key={index}
+                            disabled={answered !== null}
+                            onClick={() => handleAnswer(index)}
+                            className={`p-4 md:p-5 rounded-xl border-2 text-left transition-all duration-300 flex items-center gap-3 relative overflow-hidden group ${style}`}
+                        >
+                            <span className="w-8 h-8 rounded-full bg-black/20 text-xs font-bold flex items-center justify-center shrink-0 tracking-widest text-white/50 border border-white/10">{['A', 'B', 'C', 'D'][index]}</span>
+                            <span className="flex-1 font-medium text-sm md:text-base pr-8">{opt}</span>
+                            {showRight && chosen && (isCorrect ? <CheckCircle className="absolute right-4 w-6 h-6 text-white animate-in zoom-in" /> : <XCircle className="absolute right-4 w-6 h-6 text-white animate-in zoom-in" />)}
+                            {showRight && !chosen && isCorrect && <CheckCircle className="absolute right-4 w-6 h-6 text-emerald-300" />}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {answered !== null && !isDone && (
+                <div className="mt-8 text-center animate-in fade-in slide-in-from-bottom-2">
+                    <button onClick={next} className="px-8 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 active:scale-[0.98]">
+                        Next Question →
+                    </button>
+                </div>
+            )}
+
+            {isDone && (
+                <div className="mt-10 mb-4 text-center p-8 rounded-3xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-600 shadow-2xl animate-in zoom-in-95 duration-500">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-amber-500/20 flex items-center justify-center mb-4 shadow-[0_0_40px_rgba(245,158,11,0.2)]">
+                        <Award className="w-10 h-10 text-amber-400" />
+                    </div>
+                    <p className="text-3xl font-black text-white mb-2 tracking-tight">Quiz Complete!</p>
+                    <p className="text-slate-300 text-lg mb-8 font-medium">You scored <span className="text-amber-400 text-2xl font-bold ml-1">{score}</span> out of {roundOptions.length}</p>
+                    <button onClick={() => onBack(`${score}/${roundOptions.length}`)} className="px-8 py-4 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white font-bold transition-all shadow-xl hover:-translate-y-0.5 border border-slate-500">
+                        ← Return to Arcade
+                    </button>
+                </div>
+            )}
+        </div>
+    );
+}
+
 // --- Placeholder for other coming-soon games ---
 function PlaceholderGame({ title, onBack }: { title: string; onBack: OnBackFn }) {
     return (
@@ -882,7 +982,7 @@ function PlaceholderGame({ title, onBack }: { title: string; onBack: OnBackFn })
 }
 
 const GAME_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-    MapPin, Puzzle, Music, Clock, Landmark, Map,
+    MapPin, Puzzle, Music, Clock, Landmark, Map, BookOpen
 };
 
 // Slightly transparent background image per game (Unsplash — from user-provided links)
@@ -893,13 +993,14 @@ const GAME_BG_IMAGES: Record<number, string> = {
     4: 'https://images.unsplash.com/photo-1765451816990-9d55690b5867?w=800&q=80', // Historical Timeline — silhouette/timeline
     5: 'https://images.unsplash.com/photo-1632941184796-fbbbf2c44e66?w=800&q=80', // Monument & State — building (Hawa Mahal)
     6: 'https://images.unsplash.com/photo-1635713792607-ed81197ecad0?w=800&q=80', // State to Region — mountain range
+    7: 'https://images.unsplash.com/photo-1582481005114-1e5ce6c4ac0a?w=800&q=80', // Culture Trivia Quiz — cultural abstract (books/history)
 };
 
 function generateCertificateId(): string {
     return `CERT-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
 }
 
-type CertificateData = { gameTitle: string; score?: string };
+type CertificateData = { gameTitle: string; score?: string; certName?: string; certId?: string };
 
 type LastResult = { gameTitle: string; score?: string };
 
@@ -909,7 +1010,12 @@ const GamesPage = () => {
     const [activeGame, setActiveGame] = useState<number | null>(null);
     const [certificate, setCertificate] = useState<CertificateData | null>(null);
     const [lastResult, setLastResult] = useState<LastResult | null>(null);
+    const [showCertForm, setShowCertForm] = useState(false);
+    const [certFormName, setCertFormName] = useState('');
     const [isDownloading, setIsDownloading] = useState(false);
+    const [downloadedCerts, setDownloadedCerts] = useState<any[]>(() => {
+        try { return JSON.parse(localStorage.getItem('virasat_certs') || '[]'); } catch { return []; }
+    });
     const certificateRef = useRef<HTMLDivElement>(null);
     const gameMeta = gamesData.games.find(g => g.id === activeGame);
 
@@ -920,16 +1026,39 @@ const GamesPage = () => {
     };
 
     const handleLeaveGame = (score?: string) => {
-        // Only show certificate when user finished the game (left with a score). Header back = no score = just go to games list.
+        // Only show certificate form when user finished the game (left with a score).
         if (gameMeta && score != null && score !== '') {
-            setCertificate({ gameTitle: gameMeta.title, score });
             setLastResult({ gameTitle: gameMeta.title, score });
+            setCertFormName(playerName);
+            setShowCertForm(true);
         }
         setActiveGame(null);
     };
 
     const handleOpenCertificateForDownload = () => {
-        if (lastResult) setCertificate({ gameTitle: lastResult.gameTitle, score: lastResult.score });
+        if (lastResult) {
+            setCertFormName(playerName);
+            setShowCertForm(true);
+        }
+    };
+
+    const handleGenerateCertificate = (e: React.FormEvent) => {
+        e.preventDefault();
+        setShowCertForm(false);
+        const nameToUse = certFormName.trim() || playerName;
+        if (lastResult) {
+            const newCert = {
+                id: generateCertificateId(),
+                gameTitle: lastResult.gameTitle,
+                score: lastResult.score,
+                name: nameToUse,
+                date: new Date().toISOString()
+            };
+            const updated = [newCert, ...downloadedCerts];
+            setDownloadedCerts(updated);
+            localStorage.setItem('virasat_certs', JSON.stringify(updated));
+            setCertificate({ gameTitle: lastResult.gameTitle, score: lastResult.score, certName: nameToUse, certId: newCert.id });
+        }
     };
 
     const handleCertificateClose = () => {
@@ -938,22 +1067,121 @@ const GamesPage = () => {
     };
 
     const handleDownloadCertificate = async () => {
-        if (!certificateRef.current || isDownloading) return;
+        if (!certificate || isDownloading) return;
         setIsDownloading(true);
+
         try {
-            const canvas = await html2canvas(certificateRef.current, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#fefce8',
-                logging: false,
-            });
-            const link = document.createElement('a');
-            link.download = `Certificate_${playerName.replace(/\s+/g, '_')}_${certificate?.gameTitle?.replace(/\s+/g, '_') ?? 'Game'}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        } catch {
-            window.print();
-        } finally {
+            // Create a high-quality offscreen canvas as the "predefined template"
+            const canvas = document.createElement('canvas');
+            const width = 1200;
+            const height = 800;
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) throw new Error("Could not get canvas context");
+
+            // 1. Background
+            ctx.fillStyle = '#fefce8'; // Elegant cream background
+            ctx.fillRect(0, 0, width, height);
+
+            // 2. Borders
+            ctx.lineWidth = 12;
+            ctx.strokeStyle = '#1e293b'; // slate-800
+            ctx.strokeRect(6, 6, width - 12, height - 12);
+
+            // 3. Tricolour Top
+            ctx.fillStyle = '#FF9933';
+            ctx.fillRect(12, 12, width / 3 - 4, 16);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(12 + width / 3 - 4, 12, width / 3, 16);
+            ctx.fillStyle = '#138808';
+            ctx.fillRect(12 + (width / 3) * 2 - 4, 12, width / 3 - 8, 16);
+
+            // 4. Tricolour Bottom
+            ctx.fillStyle = '#FF9933';
+            ctx.fillRect(12, height - 28, width / 3 - 4, 16);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(12 + width / 3 - 4, height - 28, width / 3, 16);
+            ctx.fillStyle = '#138808';
+            ctx.fillRect(12 + (width / 3) * 2 - 4, height - 28, width / 3 - 8, 16);
+
+            // Helper for centered text
+            const drawText = (text: string, y: number, font: string, color: string = '#1e293b') => {
+                ctx.font = font;
+                ctx.fillStyle = color;
+                ctx.textAlign = 'center';
+                ctx.fillText(text, width / 2, y);
+            };
+
+            // 5. Official Header
+            drawText('GOVERNMENT OF INDIA', 110, 'bold 16px Arial, sans-serif', '#475569');
+            drawText('MINISTRY OF CULTURE', 150, 'bold 28px Arial, sans-serif', '#1e293b');
+            drawText('National Council of Educational Research and Training (NCERT)', 190, 'bold 20px Arial, sans-serif', '#475569');
+            drawText('Digital India · Cultural Exploration Platform', 220, '18px Arial, sans-serif', '#64748b');
+
+            // Line separator
+            ctx.beginPath();
+            ctx.moveTo(350, 260);
+            ctx.lineTo(850, 260);
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 6. Certificate Title
+            drawText('Certificate of Participation', 340, 'bold 64px "Times New Roman", serif', '#0f172a');
+
+            // 7. Body
+            drawText('This is to certify that', 420, 'italic 24px "Times New Roman", serif', '#334155');
+            drawText(certificate.certName || playerName, 490, 'bold 56px "Times New Roman", serif', '#0f172a');
+            drawText('has successfully completed the game', 560, 'italic 24px "Times New Roman", serif', '#334155');
+            drawText(certificate.gameTitle, 620, 'bold 40px "Times New Roman", serif', '#0f172a');
+
+            if (certificate.score != null) {
+                drawText(`Score: ${certificate.score}`, 670, '22px Arial, sans-serif', '#475569');
+            }
+
+            // 8. Footer (Date and ID)
+            const certId = certificate.certId || generateCertificateId();
+            const dateStr = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+            
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillStyle = '#64748b';
+            ctx.textAlign = 'left';
+            ctx.fillText(`Date: ${dateStr}`, 100, 720);
+            
+            ctx.textAlign = 'right';
+            ctx.fillText(`Certificate No.: ${certId}`, width - 100, 720);
+
+            // Directly generate Blob URL and trigger the programmatic click download
+            // We use toBlob here because Chrome strictly drops custom filenames for large Base64 Data URLs
+            canvas.toBlob((blob) => {
+                if (!blob) {
+                    setIsDownloading(false);
+                    return;
+                }
+                const objectUrl = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                
+                // Format filename: username_game_HHhMMm.png
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2, '0')}h${String(now.getMinutes()).padStart(2, '0')}m`;
+                const certNameFixed = (certificate?.certName || playerName).replace(/[^a-zA-Z0-9]/g, '_');
+                const gameTitleFixed = (certificate?.gameTitle || 'Game').replace(/[^a-zA-Z0-9]/g, '_');
+                
+                link.download = `${certNameFixed}_${gameTitleFixed}_${timeStr}.png`;
+                link.href = objectUrl;
+                
+                // Append link to body to ensure it clicks successfully in all browsers
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                URL.revokeObjectURL(objectUrl);
+                setIsDownloading(false);
+            }, 'image/png', 1.0);
+
+        } catch (err) {
+            console.error('Failed to generate cert background canvas', err);
             setIsDownloading(false);
         }
     };
@@ -1019,9 +1247,31 @@ const GamesPage = () => {
         );
     }
 
+    // Form before certificate
+    if (showCertForm && lastResult) {
+        return (
+            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm px-4">
+                <div className="w-full max-w-md bg-slate-900 border border-slate-700 p-8 rounded-2xl shadow-xl">
+                    <h3 className="text-2xl font-serif font-bold text-white mb-2">Claim Your Certificate</h3>
+                    <p className="text-slate-400 mb-6 text-sm">Enter the details to be printed on your official certificate for completing <strong>{lastResult.gameTitle}</strong>.</p>
+                    <form onSubmit={handleGenerateCertificate} className="space-y-4">
+                        <div>
+                            <label className="block text-slate-300 text-sm font-medium mb-1">Full Name</label>
+                            <input required type="text" value={certFormName} onChange={e => setCertFormName(e.target.value)} className="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                        </div>
+                        <div className="flex gap-3 mt-6">
+                            <button type="button" onClick={() => setShowCertForm(false)} className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors">Cancel</button>
+                            <button type="submit" className="flex-1 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold transition-colors">Generate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
+    }
+
     // Certificate overlay (after leaving a game) — NCERT / Ministry of Culture style, rectangle, with spacing from navbar
     if (certificate) {
-        const certId = generateCertificateId();
+        const certId = certificate.certId || generateCertificateId();
         const dateStr = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
         return (
             <div className="fixed inset-0 z-50 flex flex-col items-center bg-black/60 backdrop-blur-sm pt-20 sm:pt-28 md:pt-32 pb-6 sm:pb-8 px-3 sm:px-4 overflow-y-auto">
@@ -1065,7 +1315,7 @@ const GamesPage = () => {
                                 This is to certify that
                             </p>
                             <p className="text-slate-900 font-serif text-2xl sm:text-3xl font-bold text-center mb-4">
-                                {playerName}
+                                {certificate.certName || playerName}
                             </p>
                             <p className="text-slate-700 text-center text-sm leading-relaxed mb-2">
                                 has successfully completed the game
@@ -1094,12 +1344,12 @@ const GamesPage = () => {
                             type="button"
                             onClick={handleDownloadCertificate}
                             disabled={isDownloading}
-                            className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:bg-amber-500/70 disabled:cursor-not-allowed text-slate-900 font-semibold shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+                            className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:bg-amber-500/70 disabled:cursor-not-allowed text-slate-900 font-semibold shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900 cursor-pointer"
                         >
                             {isDownloading ? (
                                 <>
                                     <Loader2 className="w-5 h-5 animate-spin" />
-                                    Downloading…
+                                    Generating…
                                 </>
                             ) : (
                                 <>
@@ -1123,7 +1373,7 @@ const GamesPage = () => {
 
     return (
         <div className="w-full min-h-full overflow-y-auto overflow-x-hidden bg-transparent px-3 sm:px-6 py-6 sm:py-8 md:py-12">
-            <header className="mb-10 md:mb-14 text-center">
+            <header className="mb-10 md:mb-14 text-center pt-16">
                 <div
                     className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 border-2 border-amber-400/40"
                     style={{
@@ -1223,7 +1473,8 @@ const GamesPage = () => {
                         {activeGame === 4 && <TimelineOrderGame onBack={handleLeaveGame} />}
                         {activeGame === 5 && <MonumentStateGame onBack={handleLeaveGame} />}
                         {activeGame === 6 && <StateToRegionGame onBack={handleLeaveGame} />}
-                        {![1, 2, 3, 4, 5, 6].includes(activeGame) && (
+                        {activeGame === 7 && <VirasatQuizGame onBack={handleLeaveGame} />}
+                        {![1, 2, 3, 4, 5, 6, 7].includes(activeGame) && (
                             <PlaceholderGame title="Game" onBack={handleLeaveGame} />
                         )}
                     </div>

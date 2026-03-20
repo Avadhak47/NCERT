@@ -4,6 +4,23 @@ import { X, MapPin, Image as ImageIcon } from 'lucide-react';
 import statesData from '../data/states.json';
 import { getImageUrl, hasImage } from '../utils/imageUrl';
 import { getFallbackImage } from '../utils/fallbackImages';
+import MudraModelViewer from '../components/core/MudraModelViewer';
+
+// --- Mudra model data ---
+const SINGLE_HAND_MUDRAS = [
+  'Alapadma', 'Arala', 'Ardhachandra', 'Ardhapataka', 'Bhramara', 'Catura',
+  'Chandrakala', 'Hamsapaksa', 'Hamsaya', 'Kangula', 'Kapittha', 'Kartarinukha',
+  'Katakamukha', 'Mayura', 'Mrgasirsa', 'Mukula', 'Musti', 'Padmakosa',
+  'Pataka', 'Sandamsa', 'Sarpashirsa', 'Simhamukha', 'Suchi', 'Sukatunda',
+  'Tamracuda', 'Tripataka', 'Trisula', 'sikhara',
+];
+
+const TWO_HAND_MUDRAS = [
+  'anjali', 'Bherunda', 'Chakra', 'Dola', 'Garuda', 'kapota',
+  'karkata', 'Kartarisvastika', 'Katakavardhana', 'Katva', 'Kilaka', 'Kurma',
+  'Matsya', 'Nagabandha', 'Pasa', 'puspaputa', 'Sakata', 'Sankha',
+  'Sivalinga', 'svastika', 'Utsanga', 'Varaha',
+];
 
 interface ArtFormItem {
     id: string;
@@ -34,18 +51,117 @@ function artTypeToFallbackType(t: string): string {
 }
 
 const ImageGallery = ({ images, title }: { images: string[], title: string }) => {
+    const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
     if (!images || images.length === 0) return null;
     return (
+        <>
         <div className="mt-4">
             <h5 className="text-white/90 font-bold mb-2 text-sm flex items-center gap-1"><ImageIcon className="w-4 h-4"/> {title}</h5>
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-white/20">
                 {images.map((img, idx) => (
-                    <img key={idx} src={getImageUrl(img)} alt={`${title} ${idx}`} className="h-24 w-auto rounded-lg border border-white/10 object-cover shrink-0 bg-white/5" />
+                    <img 
+                        key={idx} 
+                        src={getImageUrl(img)} 
+                        alt={`${title} ${idx}`} 
+                        className="h-24 w-auto rounded-lg border border-white/10 object-cover shrink-0 bg-white/5 cursor-pointer hover:scale-105 hover:border-amber-400/50 hover:shadow-lg transition-all" 
+                        onClick={(e) => { e.stopPropagation(); setSelectedImg(getImageUrl(img)); }}
+                    />
                 ))}
             </div>
         </div>
+
+        {/* Floating Expanded Viewer */}
+        <AnimatePresence>
+            {selectedImg && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }}
+                    className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-3xl"
+                >
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative max-w-3xl max-h-[50vh] w-full flex justify-center"
+                    >
+                        <button
+                            onClick={(e) => { e.stopPropagation(); setSelectedImg(null); }}
+                            className="absolute sm:-right-12 sm:top-0 -top-12 right-0 p-2.5 bg-black/50 backdrop-blur-lg hover:bg-white/20 rounded-full border border-white/20 transition-all text-white shadow-xl hover:rotate-90 hover:scale-110 z-[210]"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+                        <img 
+                            src={selectedImg} 
+                            alt={`Expanded ${title}`} 
+                            className="w-full h-full max-h-[45vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10 bg-transparent"
+                        />
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+        </>
     );
 }
+
+const HastaMudrasSection = () => {
+    const [mudraTab, setMudraTab] = useState<'single' | 'two'>('single');
+    const mudras = mudraTab === 'single' ? SINGLE_HAND_MUDRAS : TWO_HAND_MUDRAS;
+    const basePath = mudraTab === 'single' ? '/models/single-hand' : '/models/two-hand';
+
+    return (
+        <div className="mt-12 pt-16 border-t border-white/20 pb-8">
+            <header className="mb-10 text-center">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-black tracking-tight text-[#ffd700] drop-shadow-md mb-4">
+                    Hasta Mudras
+                </h2>
+                <p className="text-white/80 max-w-3xl mx-auto text-base sm:text-lg font-medium font-sans px-2">
+                    Explore the ancient hand gestures of Indian classical dance — interact with each 3D model by rotating and zooming.
+                </p>
+            </header>
+
+            {/* Single / Two-hand tabs */}
+            <div className="flex justify-center gap-3 mb-10">
+                <button
+                    onClick={() => setMudraTab('single')}
+                    className={`px-6 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-250 border ${
+                        mudraTab === 'single'
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-400/50 shadow-md scale-[1.02]'
+                            : 'bg-white/10 text-white/80 border-white/20 hover:bg-white/20 hover:text-white'
+                    }`}
+                >
+                    Asamyukta (Single Hand)
+                </button>
+                <button
+                    onClick={() => setMudraTab('two')}
+                    className={`px-6 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all duration-250 border ${
+                        mudraTab === 'two'
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-400/50 shadow-md scale-[1.02]'
+                            : 'bg-white/10 text-white/80 border-white/20 hover:bg-white/20 hover:text-white'
+                    }`}
+                >
+                    Samyukta (Two Hands)
+                </button>
+            </div>
+
+            {/* 3D Model Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                <AnimatePresence mode="wait">
+                    {mudras.map((name) => (
+                        <MudraModelViewer
+                            key={name}
+                            name={name}
+                            src={`${basePath}/${name}.glb`}
+                        />
+                    ))}
+                </AnimatePresence>
+            </div>
+        </div>
+    );
+};
 
 const ArtFormsPage = () => {
     const [activeTab, setActiveTab] = useState('All');
@@ -95,7 +211,17 @@ const ArtFormsPage = () => {
             }
         });
 
-        return compiled.sort(() => 0.5 - Math.random());
+        // Shuffle first for masonry variety
+        const shuffled = compiled.sort(() => 0.5 - Math.random());
+        
+        // Then sort by presence of real images (true comes before false)
+        return shuffled.sort((a, b) => {
+            const aHas = hasImage(a.img);
+            const bHas = hasImage(b.img);
+            if (aHas && !bHas) return -1;
+            if (!aHas && bHas) return 1;
+            return 0;
+        });
     }, []);
 
     const classicalDances = useMemo(() => {
@@ -110,14 +236,23 @@ const ArtFormsPage = () => {
     }, []);
 
     const filteredArts = useMemo(() => {
-        if (activeTab === 'All') return allArtForms;
-        return allArtForms.filter(art => {
+        const baseSet = activeTab === 'All' ? allArtForms : allArtForms.filter(art => {
             if (activeTab === 'Monuments' && art.type === 'Monument') return true;
             if (activeTab === 'Festivals' && art.type === 'Festival') return true;
             if (activeTab === 'Folk Dance' && art.type === 'Folk Dance') return true;
             return art.type === activeTab;
         });
-    }, [activeTab, allArtForms]);
+
+        // Aggressively re-sort the UI dynamically: anything that results in a 404 fallback sinks to the bottom!
+        return [...baseSet].sort((a, b) => {
+            const aValid = hasImage(a.img) && !failedImageUrls.has(getImageUrl(a.img!));
+            const bValid = hasImage(b.img) && !failedImageUrls.has(getImageUrl(b.img!));
+            
+            if (aValid && !bValid) return -1;
+            if (!aValid && bValid) return 1;
+            return 0; // Maintain original masonry shuffle order if logically tied
+        });
+    }, [activeTab, allArtForms, failedImageUrls]);
 
     const tabs = ['All', 'Painting', 'Performing Arts', 'Handicrafts', 'Monuments', 'Festivals', 'Folk Dance'];
 
@@ -191,6 +326,9 @@ const ArtFormsPage = () => {
                     ))}
                 </AnimatePresence>
             </div>
+
+            {/* ═══ Hasta Mudras — 3D Hand Gesture Gallery ═══ */}
+            <HastaMudrasSection />
 
             {/* Dedicated Classical Dance Section */}
             {classicalDances.length > 0 && (

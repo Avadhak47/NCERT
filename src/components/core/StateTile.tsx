@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import statesData from '../../data/states.json';
 import { getImageUrl, hasImage } from '../../utils/imageUrl';
 import { getFallbackImage } from '../../utils/fallbackImages';
+import state3dMapping from '../../utils/state3dMapping.json';
+import StateModelViewer from './StateModelViewer';
 
 interface StateTileProps {
     stateId: string;
@@ -184,35 +186,29 @@ const StateTile: React.FC<StateTileProps> = ({ stateName, onClose, activeMonumen
                 <div className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden flex flex-col relative group">
                     <div className="absolute -right-20 -top-20 opacity-30 w-64 h-64 bg-white/20 rounded-full blur-3xl z-0 pointer-events-none" />
 
-                    <div className="p-6 md:p-8 relative z-10 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                        {/* 3D Model Placeholder Container */}
-                        <div className="w-28 h-28 bg-black/40 border border-white/10 rounded-2xl flex items-center justify-center relative shrink-0 overflow-hidden shadow-inner">
-                            <div className="w-16 h-16 relative perspective-1000">
-                                <div className="w-full h-full absolute preserve-3d animate-[spinCube_8s_linear_infinite]">
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "translateZ(32px)" }}></div>
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 -translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "rotateY(180deg) translateZ(32px)" }}></div>
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 rotate-y-90 translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "rotateY(90deg) translateZ(32px)" }}></div>
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 -rotate-y-90 translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "rotateY(-90deg) translateZ(32px)" }}></div>
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 rotate-x-90 translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "rotateX(90deg) translateZ(32px)" }}></div>
-                                    <div className="absolute w-full h-full border border-white/30 bg-indigo-500/20 -rotate-x-90 translate-z-8 flex items-center justify-center font-bold text-white/50 text-[8px] backdrop-blur-sm rounded-lg" style={{ transform: "rotateX(-90deg) translateZ(32px)" }}></div>
-                                </div>
-                            </div>
-                            <span className="absolute bottom-2 text-[8px] font-bold text-white/50 tracking-widest uppercase">3D Tour</span>
-                        </div>
+                    <div className="p-6 md:p-12 relative z-10 flex items-center min-h-[250px]">
+                        {/* 3D Model Background */}
+                        {state3dMapping[stateName as keyof typeof state3dMapping] && (
+                            <StateModelViewer 
+                                name={stateName}
+                                src={`/models/states/${state3dMapping[stateName as keyof typeof state3dMapping]}`}
+                                isBackground={true}
+                            />
+                        )}
 
                         {/* Title and Quick Facts */}
-                        <div className="flex-1 flex flex-col justify-center w-full text-center sm:text-left">
-                            <h1 className="text-3xl md:text-5xl font-serif font-black text-white drop-shadow-lg leading-tight mb-3">
+                        <div className="relative z-10 flex-1 flex flex-col justify-center w-full text-center sm:text-left pointer-events-none">
+                            <h1 className="text-4xl md:text-6xl font-serif font-black text-white drop-shadow-2xl leading-tight mb-4 tracking-tight">
                                 {stateName}
                             </h1>
-                            <p className="text-sm md:text-base text-white/80 font-medium leading-relaxed mb-4 line-clamp-2 md:line-clamp-none">
+                            <p className="text-base md:text-lg text-white/95 font-medium leading-relaxed mb-6 drop-shadow-lg max-w-2xl pointer-events-auto">
                                 {stateRecord?.facts?.[0] || `Explore the incredible heritage and culture of ${stateName}.`}
                             </p>
 
-                            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                            <div className="flex flex-wrap gap-2 justify-center sm:justify-start drop-shadow-md pointer-events-auto">
                                 {stateRecord?.geography?.key_cities?.length ? (
-                                    <span className="flex items-center gap-1.5 bg-black/40 border border-white/10 text-white px-3 py-1.5 rounded-lg text-xs font-bold backdrop-blur-md shadow-inner">
-                                        <Globe className="w-3.5 h-3.5 text-green-400" /> Cities: <span className="text-white ml-0.5">{stateRecord.geography.key_cities.length}</span>
+                                    <span className="flex items-center gap-1.5 bg-black/40 border border-white/20 text-white px-4 py-2 rounded-xl text-sm font-bold backdrop-blur-md shadow-inner">
+                                        <Globe className="w-4 h-4 text-green-400" /> Cities: <span className="text-white ml-0.5">{stateRecord.geography.key_cities.length}</span>
                                     </span>
                                 ) : null}
                             </div>

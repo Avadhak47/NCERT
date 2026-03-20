@@ -26,7 +26,6 @@ const STATE_NAME_MAPPING: Record<string, string> = {
     'Daman and Diu': 'Daman & Diu',
     'Jammu and Kashmir': 'Jammu & Kashmir',
     'Odisha': 'Orissa',
-    'Uttarakhand': 'Uttarkhand',
     'LAKSHADWEEP': 'Lakshadweep'
 };
 
@@ -34,7 +33,7 @@ const REGION_MAP: Record<string, string> = {
     // North
     'Himachal Pradesh': 'North',
     'Punjab': 'North',
-    'Uttarkhand': 'North',
+    'Uttarakhand': 'North',
     'Haryana': 'North',
     'Uttar Pradesh': 'North',
     // West
