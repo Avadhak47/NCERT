@@ -6,6 +6,7 @@ import ArtFormsPage from './pages/ArtFormsPage';
 import GamesPage from './pages/GamesPage';
 import GlossaryPage from './pages/GlossaryPage';
 import AcknowledgementPage from './pages/AcknowledgementPage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
           <Route path="games" element={<GamesPage />} />
           <Route path="glossary" element={<GlossaryPage />} />
           <Route path="acknowledgement" element={<AcknowledgementPage />} />
-          <Route path="admin" element={<div className="p-8 text-center text-slate-600">Admin (coming soon)</div>} />
+          <Route path="admin" element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

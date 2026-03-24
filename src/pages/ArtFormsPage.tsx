@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Image as ImageIcon } from 'lucide-react';
 import statesData from '../data/states.json';
+import extraArtFormsData from '../data/extra_artforms.json';
 import { getImageUrl, hasImage } from '../utils/imageUrl';
 import { getFallbackImage } from '../utils/fallbackImages';
 import MudraModelViewer from '../components/core/MudraModelViewer';
@@ -211,6 +212,11 @@ const ArtFormsPage = () => {
             }
         });
 
+        // Add dynamically parsed extra art forms (GI Tags, Songs, Facts)
+        extraArtFormsData.forEach((art: any) => {
+            compiled.push({ ...art, height: heights[hIdx++ % heights.length] });
+        });
+
         // Shuffle first for masonry variety
         const shuffled = compiled.sort(() => 0.5 - Math.random());
         
@@ -254,7 +260,7 @@ const ArtFormsPage = () => {
         });
     }, [activeTab, allArtForms, failedImageUrls]);
 
-    const tabs = ['All', 'Painting', 'Performing Arts', 'Handicrafts', 'Monuments', 'Festivals', 'Folk Dance'];
+    const tabs = ['All', 'Painting', 'Performing Arts', 'Handicrafts', 'Monuments', 'Festivals', 'Folk Dance', 'GI Tags', 'Songs & Artists', 'Key Facts'];
 
     const [selectedArt, setSelectedArt] = useState<ArtFormItem | null>(null);
 

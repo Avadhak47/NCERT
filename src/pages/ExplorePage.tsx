@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import InteractiveMap from '../components/map/InteractiveMap';
@@ -6,21 +6,18 @@ import StateTile from '../components/core/StateTile';
 import { ScrollContext } from '../contexts/ScrollContext';
 import { Sparkles, Eye } from 'lucide-react';
 import { useMapEngine } from '../hooks/useMapEngine';
-import MudraModelViewer from '../components/core/MudraModelViewer';
-
-// Curated mudras for the Explore page showcase
-const EXPLORE_MUDRAS = [
-    { name: 'Alapadma', folder: 'single-hand' },
-    { name: 'anjali', folder: 'two-hand' },
-    { name: 'Pataka', folder: 'single-hand' },
-    { name: 'Garuda', folder: 'two-hand' },
-    { name: 'Mayura', folder: 'single-hand' },
-    { name: 'Chakra', folder: 'two-hand' },
-];
-
-
+import factsData from '../data/facts.json';
 
 const ExplorePage = () => {
+    const [factIndex, setFactIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFactIndex(prev => (prev + 1) % factsData.length);
+        }, 8000);
+        return () => clearInterval(interval);
+    }, []);
+
     const location = useLocation();
     const { stateId: stateIdParam } = useParams<{ stateId?: string }>();
     const mapContainerRef = useRef<HTMLElement>(null);
@@ -106,39 +103,43 @@ const ExplorePage = () => {
                     </p>
                 </div>
 
-                {/* ═══ 3D Heritage Showcase ═══ */}
+                {/* ═══ Did You Know? Showcase ═══ */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="w-[92%] max-w-5xl mx-auto mt-6 sm:mt-16 md:mt-24 z-20"
+                    className="w-[92%] max-w-5xl mx-auto mt-4 sm:mt-12 md:mt-20 z-20"
                 >
-                    <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-[2rem] p-4 sm:p-6 md:p-8 shadow-2xl">
+                    <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl">
                         {/* Background glow */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 blur-3xl rounded-full pointer-events-none" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 blur-3xl rounded-full pointer-events-none" />
 
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="p-2 bg-gradient-to-br from-amber-400/20 to-orange-600/20 border border-amber-400/30 rounded-xl text-amber-400">
-                                    <Sparkles className="w-5 h-5" />
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+                            <div className="flex items-center gap-3 shrink-0">
+                                <div className="p-3 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 border border-blue-400/30 rounded-xl text-blue-400 shadow-inner">
+                                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
                                 </div>
-                                <div>
-                                    <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-amber-500/90 uppercase block">Explore in 3D</span>
-                                    <h3 className="text-lg md:text-xl font-serif font-bold text-white leading-tight">Ancient Hasta Mudras</h3>
+                                <div className="md:hidden">
+                                    <h3 className="text-lg font-serif font-bold text-white leading-tight">Did You Know?</h3>
                                 </div>
                             </div>
 
-                            {/* Horizontal scroll of curated models */}
-                            <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                                {EXPLORE_MUDRAS.map(({ name, folder }) => (
-                                    <div key={name} className="shrink-0 w-36 sm:w-44">
-                                        <MudraModelViewer
-                                            name={name}
-                                            src={`/models/${folder}/${name}.glb`}
-                                            compact
-                                        />
-                                    </div>
-                                ))}
+                            <div className="flex-1 text-center md:text-left overflow-hidden">
+                                <div className="hidden md:block mb-1.5">
+                                    <h3 className="text-base font-serif font-bold text-white/90 leading-tight">Did You Know?</h3>
+                                </div>
+                                <AnimatePresence mode="wait">
+                                    <motion.p
+                                        key={factIndex}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="text-white/80 text-xs sm:text-sm md:text-base italic leading-relaxed"
+                                    >
+                                        "{factsData[factIndex]}"
+                                    </motion.p>
+                                </AnimatePresence>
                             </div>
                         </div>
                     </div>
