@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import originalData from '../data/states.json';
 import { Save, CheckCircle2, AlertCircle, Edit2, Trash2, Plus, ChevronRight } from 'lucide-react';
 
