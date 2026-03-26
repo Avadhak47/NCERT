@@ -76,6 +76,57 @@ const REGION_MAP: Record<string, string> = {
     'Puducherry': 'UT'
 };
 
+const STATE_COLOR_MAP: Record<string, string> = {
+    // North
+    'Jammu & Kashmir': '#FF9933', // Saffron
+    'Ladakh': '#008080',          // Teal
+    'Himachal Pradesh': '#87CEEB', // Sky Blue
+    'Punjab': '#8B4513',          // Brown
+    'Haryana': '#C5B358',         // Muddy Yellow
+    'Uttarakhand': '#FF9933',      // Saffron
+    'Uttar Pradesh': '#008080',    // Teal
+    'Delhi': '#87CEEB',           // Sky Blue
+    'Chandigarh': '#FF9933',      // Saffron
+
+    // West
+    'Rajasthan': '#8B4513',       // Brown
+    'Gujarat': '#FF9933',         // Saffron
+    'Maharashtra': '#008080',      // Teal
+    'Goa': '#87CEEB',             // Sky Blue
+    'Daman & Diu': '#8B4513',
+    'Dadar & Nagar Haveli': '#8B4513',
+
+    // Central
+    'Madhya Pradesh': '#87CEEB',  // Sky Blue
+    'Chhattisgarh': '#8B4513',    // Brown
+
+    // East
+    'Bihar': '#C5B358',           // Muddy Yellow
+    'Jharkhand': '#FF9933',       // Saffron
+    'West Bengal': '#008080',      // Teal
+    'Orissa': '#8B4513',          // Brown
+
+    // South
+    'Andhra Pradesh': '#87CEEB',   // Sky Blue
+    'Telangana': '#FF9933',       // Saffron
+    'Karnataka': '#8B4513',       // Brown
+    'Kerala': '#C5B358',          // Muddy Yellow
+    'Tamil Nadu': '#008080',       // Teal
+    'Puducherry': '#87CEEB',
+    'Lakshadweep': '#000000',
+    'Andaman & Nicobar': '#FF9933',
+
+    // Northeast
+    'Sikkim': '#8B4513',
+    'Assam': '#FF9933',
+    'Arunachal Pradesh': '#008080',
+    'Nagaland': '#C5B358',
+    'Manipur': '#87CEEB',
+    'Mizoram': '#8B4513',
+    'Tripura': '#87CEEB',
+    'Meghalaya': '#008080'
+};
+
 const REGIONS = ['North', 'West', 'Central', 'East', 'South', 'Northeast', 'UT'];
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({
@@ -144,9 +195,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                 .append('path')
                 .attr('class', 'state cursor-pointer transition-all duration-300 hover:brightness-110 focus:outline-none focus:ring-2')
                 .attr('d', pathGenerator as any)
-                .attr('fill', (_d: any, i: number) => {
-                    const palette = colors.fill;
-                    return palette[i % palette.length];
+                .attr('fill', (d: any) => {
+                    const stNm = d.properties.st_nm;
+                    const stateName = STATE_NAME_MAPPING[stNm] || stNm;
+                    return STATE_COLOR_MAP[stateName] || colors.fill[0];
                 })
                 .attr('stroke', colors.stroke)
                 .attr('stroke-width', '0.5');
@@ -186,9 +238,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         if (!svgRef.current) return;
         const svg = d3.select(svgRef.current);
         svg.selectAll('path.state')
-            .attr('fill', (_d: any, i: number) => {
-                const palette = colors.fill;
-                return palette[i % palette.length];
+            .attr('fill', (d: any) => {
+                const stNm = d.properties.st_nm;
+                const stateName = STATE_NAME_MAPPING[stNm] || stNm;
+                return STATE_COLOR_MAP[stateName] || colors.fill[0];
             })
             .attr('stroke', colors.stroke);
 
@@ -217,47 +270,53 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
             element.attr('transform', null);
 
+            const isIsland = mappedStateName === 'Lakshadweep' || mappedStateName === 'Andaman & Nicobar';
+
             if (activeState) {
                 if (mappedStateName === activeState) {
                     element.style('opacity', 1).attr('stroke-width', '0.2');
                 } else {
                     element.style('opacity', 0).attr('stroke-width', '0');
                 }
-            } else if (activeRegion) {
-                if (stateRegion === activeRegion) {
-                    element.style('opacity', 1).attr('stroke-width', '1');
-                    if (activeRegion === 'UT') {
-                        element.raise();
-
-                        // Flashing effect for the region by toggling opacity via css class or inline transition
-                        element.classed('animate-pulse', true);
-
-                        const centroid = pathGen.centroid(d);
-                        const bounds = pathGen.bounds(d);
-
-                        if (!isNaN(centroid[0]) && !isNaN(centroid[1]) && bounds) {
-                            const height = bounds[1][1] - bounds[0][1];
-                            const ignoredLabels = ['Jammu & Kashmir', 'Ladakh'];
-
-                            if (!ignoredLabels.includes(mappedStateName)) {
-                                utLabelsData.push({
-                                    name: mappedStateName,
-                                    x: centroid[0],
-                                    y: centroid[1] + (height / 2) + 10
-                                });
-                            }
-                        }
+            } else {
+                // Determine opacity and stroke
+                if (activeRegion) {
+                    if (stateRegion === activeRegion) {
+                        element.style('opacity', 1).attr('stroke-width', '1');
+                    } else {
+                        element.style('opacity', 0.1).attr('stroke-width', '0.2');
                     }
                 } else {
-                    element.style('opacity', 0.1).attr('stroke-width', '0.2');
+                    element.style('opacity', 1).attr('stroke-width', '0.5');
                 }
-            } else {
-                element.classed('animate-pulse', false);
-                element.style('opacity', 1).attr('stroke-width', '0.5');
+
+                // Handle Labels & Raising
+                if ((activeRegion === 'UT' && stateRegion === 'UT') || (!activeState && isIsland)) {
+                    element.raise();
+                    if (activeRegion === 'UT' && stateRegion === 'UT') {
+                        element.classed('animate-pulse', true);
+                    } else {
+                        element.classed('animate-pulse', false);
+                    }
+
+                    const centroid = pathGen.centroid(d);
+                    const bounds = pathGen.bounds(d);
+
+                    if (!isNaN(centroid[0]) && !isNaN(centroid[1]) && bounds) {
+                        const h = bounds[1][1] - bounds[0][1];
+                        utLabelsData.push({
+                            name: mappedStateName,
+                            x: centroid[0],
+                            y: centroid[1] + (h / 2) + 15
+                        });
+                    }
+                } else {
+                  element.classed('animate-pulse', false);
+                }
             }
         });
 
-        const labels = labelsGroup.selectAll('text').data(activeRegion === 'UT' && !activeState ? utLabelsData : [], (d: any) => d.name);
+        const labels = labelsGroup.selectAll('text').data((activeRegion === 'UT' || !activeRegion) && !activeState ? utLabelsData : [], (d: any) => d.name);
         labels.exit().transition().duration(300).style('opacity', 0).remove();
 
         labels.enter()
@@ -543,11 +602,17 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             <svg
                 ref={svgRef}
                 viewBox="-20 -140 840 1060"
-                className={`w-full h-full drop-shadow-2xl transition-opacity duration-500 ${mapData ? 'opacity-100' : 'opacity-0'}`}
-                style={{ filter: 'drop-shadow(0 20px 25px rgba(0,0,0,0.5))' }}
+                className={`w-full h-full drop-shadow-3xl transition-opacity duration-500 ${mapData ? 'opacity-100' : 'opacity-0'}`}
+                style={{ filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.4))' }}
                 onClick={onBackgroundClick}
             >
-                <rect width="100%" height="100%" fill="transparent" />
+                <defs>
+                    <radialGradient id="mapGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#f8fafc" stopOpacity="0" />
+                    </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#mapGradient)" />
             </svg>
         </div>
     );

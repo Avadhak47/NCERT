@@ -56,7 +56,7 @@ const LanguageSelector: React.FC = () => {
         >
             <button
                 type="button"
-                className="flex items-center gap-1.5 px-3 py-2 text-white/70 hover:text-white font-medium text-sm rounded-full hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                className="flex items-center gap-1.5 px-3 py-2 text-slate-900 hover:text-[var(--color-brand-primary)] font-semibold text-sm rounded-full hover:bg-white/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-primary)]/40 backdrop-blur-md border border-white/20"
                 aria-label="Select Language"
                 aria-expanded={isOpen}
                 aria-haspopup="true"
@@ -67,21 +67,21 @@ const LanguageSelector: React.FC = () => {
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-52 bg-slate-900/95 backdrop-blur-2xl rounded-xl shadow-2xl border border-white/15 overflow-hidden ring-1 ring-white/5 py-1">
-                    <div className="max-h-72 overflow-y-auto">
+                <div className="absolute right-0 mt-3 w-52 bg-white/80 backdrop-blur-3xl rounded-2xl shadow-2xl border border-white/40 overflow-hidden ring-1 ring-black/5 py-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="max-h-72 overflow-y-auto no-scrollbar">
                         {LANGUAGES.map((lang) => (
                             <button
                                 key={lang.code}
                                 type="button"
                                 onClick={() => handleSelect(lang)}
-                                className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 transition-colors hover:bg-white/10 ${selectedLang.code === lang.code ? 'bg-white/10 font-semibold text-amber-400' : 'text-white/80'}`}
+                                className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 transition-all hover:bg-[var(--color-brand-primary)]/10 group ${selectedLang.code === lang.code ? 'bg-[var(--color-brand-primary)]/5 font-bold text-[var(--color-brand-primary)]' : 'text-slate-700 font-semibold'}`}
                             >
-                                <span>{lang.name}</span>
-                                {selectedLang.code === lang.code && <Check className="w-4 h-4 shrink-0 text-amber-400" />}
+                                <span className="group-hover:translate-x-0.5 transition-transform">{lang.name}</span>
+                                {selectedLang.code === lang.code && <Check className="w-4 h-4 shrink-0 text-[var(--color-brand-primary)]" />}
                             </button>
                         ))}
                     </div>
-                    <div className="px-3 py-2 bg-white/5 border-t border-white/10 text-xs text-center text-white/40 font-medium">
+                    <div className="px-3 py-2 bg-slate-50 border-t border-slate-100 text-[10px] text-center text-slate-400 font-bold uppercase tracking-wider">
                         Powered by Bhashini
                     </div>
                 </div>

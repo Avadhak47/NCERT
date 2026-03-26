@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #0284c7;
-  /* Sky Blue - WCAG AA compliant on white */
-  --color-brand-secondary: #ea580c;
-  /* Bright Orange */
-  --color-brand-accent: #16a34a;
-  /* Vibrant Green */
-  --color-brand-purple: #9333ea;
-  /* Playful Purple */
+  --color-brand-primary: #1c3476;
+  /* Navy Blue */
+  --color-brand-secondary: #d7b352;
+  /* Gold */
+  --color-brand-accent: #3c8e4a;
+  /* Green */
+  --color-brand-purple: #1c73a6;
+  /* Light Blue */
 
   --color-accent-cyan: #22d3ee;
   --color-accent-amber: #fbbf24;
   --color-accent-magenta: #ec4899;
+
+  --nav-height-mobile: 3.5rem; /* 56px */
+  --nav-height-desktop: 4rem;  /* 64px */
 
   --color-surface-light: #ffffff;
   --color-surface-muted: #f8fafc;
@@ -159,5 +162,44 @@
   .card-hover:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 40px -12px rgba(2, 132, 199, 0.2), 0 0 0 1px rgba(2, 132, 199, 0.06);
+  }
+
+  /* Red text selection as requested */
+  ::selection {
+    background-color: #ef4444;
+    color: white;
+  }
+
+  /* Golden hover effect */
+  .hover-gold {
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .hover-gold:hover {
+    color: var(--color-brand-secondary) !important;
+    transform: translateY(-1px);
+  }
+
+  /* --- Premium Branding Utilities --- */
+  .text-shimmer-gold {
+    background: linear-gradient(
+      to right,
+      #b8860b 20%,
+      #d4af37 40%,
+      #ffd700 60%,
+      #b8860b 80%
+    );
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine-gold 4s linear infinite;
+    display: inline-block;
+  }
+}
+
+@keyframes shine-gold {
+  to {
+    background-position: 200% center;
   }
 }

@@ -57,7 +57,7 @@ export const useMapEngine = (options: MapEngineOptions) => {
         return {
             base: 'transparent',
             stroke: '#ffffff',
-            fill: ['#0284c7', '#ea580c', '#16a34a', '#8b5cf6', '#eab308', '#ec4899', '#14b8a6'],
+            fill: ['#8B4513', '#FF9933', '#008080', '#C5B358', '#87CEEB'], // Brown, Saffron, Teal, Muddy Yellow, Sky Blue
             text: '#ffffff',
             highlight: '#ffffff',
             poi: '#ffffff',      // Change base to white for contrast

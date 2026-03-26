@@ -7,9 +7,10 @@ interface MudraModelViewerProps {
   src: string;
   compact?: boolean;
   label?: string;
+  description?: string;
 }
 
-const MudraModelViewer = ({ name, src, compact = false, label = 'Hasta Mudra' }: MudraModelViewerProps) => {
+const MudraModelViewer = ({ name, src, label = 'Hasta Mudra', description }: MudraModelViewerProps) => {
   const [loaded, setLoaded] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const viewerRef = useRef<HTMLElement>(null);
@@ -78,9 +79,10 @@ const MudraModelViewer = ({ name, src, compact = false, label = 'Hasta Mudra' }:
         alt={`3D model of ${name}`}
         camera-controls=""
         interaction-prompt="none"
-        shadow-intensity="0.4"
+        shadow-intensity="0.6"
         exposure="1.2"
         touch-action="pan-y"
+        loading="lazy"
         camera-orbit={`${src.includes('two-hand') ? 90 : 0}deg 75deg 105%`}
         min-camera-orbit="auto auto auto"
         max-camera-orbit="auto auto auto"
@@ -103,29 +105,32 @@ const MudraModelViewer = ({ name, src, compact = false, label = 'Hasta Mudra' }:
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         onClick={toggleExpand}
-        className={`relative group rounded-2xl border border-white/15 bg-gradient-to-b from-white/10 to-black/50 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:border-amber-400/30 transition-all duration-300 cursor-pointer overflow-hidden ${compact ? 'flex-shrink-0' : 'flex flex-col hover:-translate-y-1'}`}
+        className={`relative group rounded-[2rem] border border-white/50 bg-white/40 backdrop-blur-xl shadow-sm hover:shadow-xl hover:bg-white/60 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col hover:-translate-y-1.5`}
       >
-        <div className={`relative ${compact ? 'h-[160px] w-full' : 'h-56 sm:h-64 w-full'} shrink-0 object-contain overflow-hidden`}>
+        <div className="relative aspect-[4/5] w-full bg-slate-100/50 overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
           {viewerNode}
           
           {/* Expand Icon */}
           <button
             onClick={toggleExpand}
-            className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/50 backdrop-blur-xl p-1.5 sm:p-2 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 hover:bg-white/20 hover:scale-110 shadow-xl z-20"
+            className="absolute top-3 right-3 bg-white/40 backdrop-blur-md p-2 rounded-full border border-white/40 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 hover:bg-white/60 hover:scale-110 shadow-lg z-20"
             aria-label="View Fullscreen"
           >
-            <Maximize2 className="w-4 h-4 text-white" />
+            <Maximize2 className="w-4 h-4 text-black" />
           </button>
         </div>
 
-        {/* Name label */}
-        <div className={`px-3 ${compact ? 'py-2 absolute bottom-0 w-full' : 'py-3'} bg-gradient-to-t from-black/80 to-transparent pointer-events-none`}>
-          <h4 className={`font-serif font-bold text-white drop-shadow-md leading-tight truncate ${compact ? 'text-xs' : 'text-sm sm:text-base'}`}>
-            {name}
-          </h4>
-          <p className={`text-amber-400/80 font-bold tracking-widest uppercase mt-0.5 truncate ${compact ? 'text-[8px]' : 'text-[9px] sm:text-[10px]'}`}>
-            {label}
+        {/* Info Area */}
+        <div className="p-4 sm:p-5 flex flex-col items-center text-center gap-2 bg-transparent pointer-events-none">
+          <span className="text-xs sm:text-sm font-serif font-black text-black tracking-wide uppercase px-2 drop-shadow-sm">{name}</span>
+          <p className="text-[10px] sm:text-[11px] leading-tight text-slate-700 italic px-2 line-clamp-3">
+            {description || "Cultural hand gesture used in Indian classical dance."}
           </p>
+          <div className="mt-1 px-2 py-0.5 rounded-full bg-[var(--color-brand-primary)]/10 border border-[var(--color-brand-primary)]/10">
+            <span className="text-[8px] font-black uppercase tracking-widest text-[var(--color-brand-primary)]">
+              {label}
+            </span>
+          </div>
         </div>
       </motion.div>
 
@@ -137,53 +142,80 @@ const MudraModelViewer = ({ name, src, compact = false, label = 'Hasta Mudra' }:
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsExpanded(false)}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8 bg-slate-950/95 backdrop-blur-2xl"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8 bg-white/20 backdrop-blur-2xl"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl h-[80vh] bg-gradient-to-b from-white/10 to-black/60 border border-white/20 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+              className="relative w-full max-w-4xl h-[80vh] bg-white/40 backdrop-blur-3xl border border-white/50 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
             >
               {/* Header */}
-              <div className="flex justify-between items-center p-4 sm:p-6 border-b border-white/10 bg-black/40">
+              <div className="flex justify-between items-center p-4 sm:p-6 border-b border-white/20 bg-white/40">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-white">{name}</h3>
-                  <span className="text-amber-400/80 font-bold uppercase tracking-widest text-[10px] sm:text-xs">
+                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-black">{name}</h3>
+                  <span className="text-[var(--color-brand-primary)] font-black uppercase tracking-widest text-[10px] sm:text-xs">
                     {src.includes('two-hand') ? 'Samyukta Hasta (Two Hands)' : 'Asamyukta Hasta (Single Hand)'}
                   </span>
                 </div>
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="p-3 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 transition-all text-white hover:text-red-400 hover:rotate-90 hover:scale-105"
+                  className="p-3 bg-white/40 hover:bg-white/60 rounded-full border border-white/40 transition-all text-black hover:text-red-600 hover:rotate-90 hover:scale-105"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Expanded Viewer Body */}
-              <div className="flex-1 w-full relative">
-                <model-viewer
-                  src={src}
-                  alt={`3D model of ${name}`}
-                  camera-controls=""
-                  auto-rotate=""
-                  rotation-per-second="10deg"
-                  shadow-intensity="1"
-                  exposure="1.2"
-                  camera-orbit={`${src.includes('two-hand') ? 90 : 0}deg 75deg 105%`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    background: 'transparent',
-                    outline: 'none',
-                    ['--poster-color' as string]: 'transparent',
-                  }}
-                />
+              <div className="flex-1 w-full relative flex flex-col md:flex-row bg-transparent">
+                <div className="flex-1 h-full relative">
+                  <model-viewer
+                    src={src}
+                    alt={`3D model of ${name}`}
+                    camera-controls=""
+                    auto-rotate=""
+                    rotation-per-second="10deg"
+                    shadow-intensity="1"
+                    exposure="1.2"
+                    camera-orbit={`${src.includes('two-hand') ? 90 : 0}deg 75deg 105%`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      background: 'transparent',
+                      outline: 'none',
+                      ['--poster-color' as string]: 'transparent',
+                    }}
+                  />
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-white/60 backdrop-blur-md rounded-full border border-white/20 text-black/60 text-xs font-black tracking-widest uppercase pointer-events-none">
+                    Drag to rotate • Scroll to zoom
+                  </div>
+                </div>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-white/60 text-xs font-bold tracking-widest uppercase pointer-events-none">
-                  Drag to rotate • Scroll to zoom
+                {/* Details Side Panel */}
+                <div className="w-full md:w-80 p-6 sm:p-8 bg-white/40 backdrop-blur-md border-t md:border-t-0 md:border-l border-white/20 overflow-y-auto">
+                  <h4 className="text-black font-black mb-4 uppercase text-xs tracking-[0.2em] border-b border-black/10 pb-2">Symbolism & Usage</h4>
+                  <div className="space-y-4">
+                    {description ? (
+                      description.split('|').map((part, i) => {
+                        const [title, content] = part.split(':');
+                        return (
+                          <div key={i} className="space-y-1">
+                            {content ? (
+                              <>
+                                <p className="text-[10px] font-black uppercase text-[var(--color-brand-primary)] tracking-widest">{title.trim()}</p>
+                                <p className="text-sm text-slate-800 font-medium leading-relaxed">{content.trim()}</p>
+                              </>
+                            ) : (
+                              <p className="text-sm text-slate-800 font-medium leading-relaxed">{part.trim()}</p>
+                            )}
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <p className="text-sm text-slate-800 font-medium leading-relaxed">Detailed cultural documentation for this gesture is integrated into classical Indian dance traditions like Bharatanatyam.</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
